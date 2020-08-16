@@ -1,18 +1,8 @@
 export default {
-  /*
-   ** Nuxt rendering mode
-   ** See https://nuxtjs.org/api/configuration-mode
-   */
   mode: 'universal',
-  /*
-   ** Nuxt target
-   ** See https://nuxtjs.org/api/configuration-target
-   */
+
   target: 'server',
-  /*
-   ** Headers of the page
-   ** See https://nuxtjs.org/api/configuration-head
-   */
+
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -26,43 +16,29 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
-  /*
-   ** Global CSS
-   */
-  css: [],
-  /*
-   ** Plugins to load before mounting the App
-   ** https://nuxtjs.org/guide/plugins
-   */
-  plugins: [],
-  /*
-   ** Auto import components
-   ** See https://nuxtjs.org/api/configuration-components
-   */
+
+  css: [
+    '@/assets/fonts/web-icons/style.css',
+    '@/assets/fonts/socicon/style.css',
+    '@/assets/fonts/roboto/style.css',
+    '@/assets/scss/theme.scss',
+  ],
+
+  plugins: [{ src: '~/plugins/ApiErrorResponse.js', ssr: true }],
+
   components: true,
-  /*
-   ** Nuxt.js dev-modules
-   */
-  buildModules: [
-    // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module',
-  ],
-  /*
-   ** Nuxt.js modules
-   */
-  modules: [
-    // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
-    '@nuxtjs/pwa',
-  ],
-  /*
-   ** Axios module configuration
-   ** See https://axios.nuxtjs.org/options
-   */
-  axios: {},
-  /*
-   ** Build configuration
-   ** See https://nuxtjs.org/api/configuration-build/
-   */
+
+  buildModules: ['@nuxtjs/eslint-module'],
+
+  modules: ['@nuxtjs/axios', '@nuxtjs/pwa', '@nuxtjs/style-resources'],
+
+  axios: {
+    baseURL: process.env.BASE_API_URL || 'http://127.0.0.1:8000/api',
+  },
+
+  styleResources: {
+    scss: ['@/assets/scss/_vars.scss'],
+  },
+
   build: {},
 }
