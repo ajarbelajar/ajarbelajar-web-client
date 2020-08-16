@@ -24,6 +24,7 @@ export default {
       store.commit('setAuth', user)
       return {
         success: true,
+        message: '',
       }
     } catch (e) {}
     return {
