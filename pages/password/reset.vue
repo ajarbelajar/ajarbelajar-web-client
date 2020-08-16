@@ -1,22 +1,22 @@
 <template>
   <div>
     <h3 class="text-uppercase text-center font-weight-bold text-secondary">
-      Masuk ke akun anda
+      Atur ulang kata sandi
     </h3>
     <div
-      v-if="!!errors.message"
+      v-if="errors.token || errors.message"
       class="alert alert-danger dark font-weight-bold text-center"
     >
-      {{ errors.message }}
+      {{ errors.token || errors.message }}
     </div>
-    <form method="POST" class="row mt-4" @submit.prevent="login(form)">
+    <form method="POST" class="row mt-4" @submit.prevent="reset(form)">
       <div class="col-12">
         <app-input
-          v-model="form.identity"
+          v-model="form.email"
           type="text"
-          :error="errors.identity || errors.email || errors.username || ''"
+          :error="errors.email"
           :label="false"
-          placeholder="Alamat Email atau Nama Pengguna"
+          placeholder="Alamat Email"
         />
       </div>
 
@@ -26,24 +26,19 @@
           type="password"
           :error="errors.password"
           :label="false"
-          placeholder="Password"
+          placeholder="Password Baru"
         />
       </div>
 
-      <div class="col-12 mt-3">
+      <div class="col-12">
         <div class="form-group">
           <button
             type="submit"
             class="btn btn-primary font-weight-bold btn-block"
             :disabled="loading"
           >
-            {{ loading ? 'MOHON TUNGGU' : 'MASUK' }}
+            {{ loading ? 'MOHON TUNGGU' : 'UBAH PASSWORD' }}
           </button>
-          <nuxt-link
-            to="/password/email"
-            class="btn btn-block mt-2 text-primary"
-            >Lupa Kata Sandi?</nuxt-link
-          >
         </div>
       </div>
     </form>
@@ -51,21 +46,31 @@
 </template>
 
 <script>
-const Cookie = process.client ? require('js-cookie') : undefined
-
 export default {
   layout: 'auth',
   middleware: 'notAuthenticated',
-  data() {
+  async asyncData({ query, $axios, error, app }) {
+    const token = query.token || ''
+    const email = query.email || ''
+    try {
+      await $axios.$get(`password/reset?token=${token}&email=${email}`)
+    } catch (e) {
+      let message = e.message
+      if (e.response && e.response.data && e.response.data.message) {
+        message = e.response.data.message
+      }
+      console.log(message)
+      return error({ statusCode: 401, message })
+    }
     return {
       form: {
-        identity: '',
+        token,
+        email,
         password: '',
       },
       errors: {
-        identity: '',
+        token: '',
         email: '',
-        username: '',
         password: '',
         message: '',
       },
@@ -73,19 +78,16 @@ export default {
     }
   },
   methods: {
-    async login(data) {
+    async reset(data) {
       this.loading = true
       this.errors = {
-        identity: '',
+        token: '',
         email: '',
-        username: '',
         password: '',
         message: '',
       }
       try {
-        const user = await this.$axios.$post('/login', data)
-        this.$store.commit('setAuth', user)
-        Cookie.set('api-token', user.apiToken, { expires: 7 })
+        await this.$axios.$put('/password/reset', data)
         this.redirect()
       } catch (e) {
         data = this.$errorResponse(e)
@@ -94,10 +96,10 @@ export default {
       this.loading = false
     },
     redirect() {
-      if (this.$route.query.next) {
-        return this.$router.push(this.$route.query.next)
-      }
-      return this.$router.push('/')
+      setTimeout(() => {
+        this.$toast.success('Password berhasil diubah, silahkan login.')
+      }, 200)
+      return this.$router.push('/login')
     },
   },
 }
