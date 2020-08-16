@@ -22,9 +22,13 @@ export default {
     '@/assets/fonts/socicon/style.css',
     '@/assets/fonts/roboto/style.css',
     '@/assets/scss/theme.scss',
+    'izitoast/dist/css/iziToast.css',
   ],
 
-  plugins: [{ src: '~/plugins/ApiErrorResponse.js', ssr: true }],
+  plugins: [
+    { src: '~/plugins/ApiErrorResponse.js', ssr: true },
+    { src: '~/plugins/IziToast.js', ssr: false },
+  ],
 
   components: true,
 

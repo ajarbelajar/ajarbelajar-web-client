@@ -111,6 +111,11 @@ export default {
       this.loading = false
     },
     redirect() {
+      setTimeout(() => {
+        this.$toast.success(
+          'Register berhasil, silahkan cek email verifikasi yang telah kami kirimkan.'
+        )
+      }, 500)
       if (this.$route.query.next) {
         return this.$router.push(this.$route.query.next)
       }
