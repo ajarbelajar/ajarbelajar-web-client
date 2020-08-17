@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-Vue.prototype.$errorResponse = (e) => {
+const errorResponse = (e) => {
   let errors
   let message
 
@@ -19,4 +19,25 @@ Vue.prototype.$errorResponse = (e) => {
   if (!message) message = ''
 
   return { errors, message }
+}
+const errorMessage = (e) => {
+  let message
+
+  if (e.response && e.response.data && e.response.data.message) {
+    message = e.response.data.message
+  } else if (e.response && e.response.message) {
+    message = e.response.message
+  } else {
+    message = e.message
+  }
+
+  return message
+}
+
+Vue.prototype.$errorMessage = errorMessage
+Vue.prototype.$errorResponse = errorResponse
+
+export default function ({ app }) {
+  app.$errorResponse = errorResponse
+  app.$errorMessage = errorMessage
 }
