@@ -1,6 +1,7 @@
 <template>
   <div class="app-layout">
     <app-header></app-header>
+    <app-sidebar></app-sidebar>
     <Nuxt />
   </div>
 </template>

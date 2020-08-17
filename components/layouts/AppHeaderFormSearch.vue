@@ -134,7 +134,7 @@ export default {
   position: relative;
   z-index: 30;
 
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(md) {
     position: fixed;
     display: none;
     &.open {
@@ -175,7 +175,7 @@ export default {
         display: none;
       }
 
-      @include media-breakpoint-down(sm) {
+      @include media-breakpoint-down(md) {
         display: none;
 
         &.close-toggle {
@@ -294,7 +294,7 @@ export default {
             font-weight: $font-weight-light;
             letter-spacing: 0.5px;
             color: $gray-600;
-            @include media-breakpoint-down(sm) {
+            @include media-breakpoint-down(md) {
               font-size: 12px;
               line-height: 14px;
             }
@@ -304,7 +304,7 @@ export default {
             font-weight: $font-weight-light;
             letter-spacing: 0.5px;
             font-size: 11px;
-            @include media-breakpoint-down(sm) {
+            @include media-breakpoint-down(md) {
               font-size: 9px;
             }
 
@@ -319,7 +319,7 @@ export default {
           font-weight: $font-weight-light;
           letter-spacing: 0.5px;
           font-size: 11px;
-          @include media-breakpoint-down(sm) {
+          @include media-breakpoint-down(md) {
             font-size: 9px;
           }
         }

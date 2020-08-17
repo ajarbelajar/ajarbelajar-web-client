@@ -28,13 +28,17 @@
           <div class="container-fluid">
             <div class="right-wrapper">
               <div class="right-actions">
-                <a href="#" class="action-toggle d-block d-md-none">
+                <a
+                  href="#"
+                  class="action-toggle d-block d-lg-none"
+                  @click.prevent="$sidebar.display(true)"
+                >
                   <i class="wb-menu"></i>
                   <span class="label"></span>
                 </a>
                 <a
                   href="#"
-                  class="action-toggle d-block d-md-none"
+                  class="action-toggle d-block d-lg-none"
                   @click.prevent="searchOpen = true"
                 >
                   <i class="wb-search"></i>
@@ -105,6 +109,10 @@ export default {
       min-width: 240px;
 
       @include media-breakpoint-down(md) {
+        width: 190px;
+        min-width: 190px;
+      }
+      @include media-breakpoint-down(sm) {
         width: 56px;
         min-width: 56px;
       }
@@ -123,7 +131,7 @@ export default {
               display: none;
               height: 36px;
             }
-            @include media-breakpoint-down(md) {
+            @include media-breakpoint-down(sm) {
               display: none;
               &.logo-only {
                 display: block;
@@ -137,7 +145,7 @@ export default {
     .right {
       display: flex;
       margin-left: auto;
-      @include media-breakpoint-down(sm) {
+      @include media-breakpoint-down(md) {
         &:not(.auth) {
           width: 100%;
           margin-left: 0;
@@ -228,7 +236,7 @@ export default {
         height: 36px;
         padding: 2px 0;
         display: flex;
-        @include media-breakpoint-down(sm) {
+        @include media-breakpoint-down(md) {
           margin-left: auto;
         }
         .btn {
