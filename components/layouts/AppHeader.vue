@@ -49,6 +49,9 @@
                 <span class="avatar">
                   <img :src="$auth.avatar" :alt="$auth.name" />
                 </span>
+                <app-header-profile-dropdown
+                  class="app-header-profile-dropdown"
+                />
               </div>
               <div v-else class="right-auth-buttons">
                 <nuxt-link
@@ -148,7 +151,7 @@ export default {
       .right-avatar {
         display: block;
         position: relative;
-        .avatar {
+        > .avatar {
           display: block;
           width: 40px;
           height: 40px;
@@ -161,6 +164,19 @@ export default {
             display: block;
             width: 100%;
           }
+        }
+
+        &:hover {
+          color: $white;
+          .app-header-profile-dropdown {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+
+        .app-header-profile-dropdown {
+          opacity: 0;
+          visibility: hidden;
         }
       }
 
