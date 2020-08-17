@@ -97,7 +97,6 @@ export default {
   },
   methods: {
     sidebarScroll() {
-      console.log(this.elSidebarScrollStyle.getPropertyValue('overflow-y'))
       if (this.elSidebarScrollStyle.getPropertyValue('overflow-y') !== 'auto') {
         if (!this.sidebarPs) {
           this.sidebarPs = new Ps(this.elSidebarScroll)
