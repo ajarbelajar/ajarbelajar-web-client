@@ -26,6 +26,7 @@ export default {
   ],
 
   plugins: [
+    { src: '~/plugins/Axios.js', ssr: true },
     { src: '~/plugins/Auth.js', ssr: true },
     { src: '~/plugins/ApiErrorResponse.js', ssr: true },
     { src: '~/plugins/Sidebar.js', ssr: true },
