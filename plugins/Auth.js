@@ -12,8 +12,7 @@ Vue.mixin({
       this.$toast.confirm.danger(
         () => {
           Cookie.remove('api-token')
-          this.$store.commit('setAuth', null)
-          this.$toast.success('Berhasil keluar.')
+          window.location.reload()
         },
         null,
         { message: 'Anda yakin ingin keluar?' }
