@@ -25,55 +25,59 @@ Vue.mixin({
       const options = {
         progressBarColor: colors.primary,
         theme: 'light',
-        color: '#FFFFFF',
+        color: colors.grays_2,
         titleColor: colors.grays._7,
         titleSize: '16px',
         messageColor: colors.grays._5,
         messageSize: '14px',
-        icon: 'wb-bell',
+        icon: 'ft-bell',
         message: 'Hello World!',
         iconColor: colors.primary,
-        position: 'bottomCenter',
-        transitionIn: 'fadeInUp',
-        transitionInMobile: 'fadeInUp',
-        transitionOut: 'fadeOutDown',
-        transitionOutMobile: 'fadeOutDown',
-        zindex: 9999,
+        position: 'topRight',
+        transitionIn: 'fadeInLeft',
+        transitionInMobile: 'fadeInDown',
+        transitionOut: 'fadeOutRight',
+        transitionOutMobile: 'fadeOutUp',
+        zindex: 99999,
       }
 
       const stateOption = {
         success: () => ({
           iconColor: colors.success,
           progressBarColor: colors.success,
-          icon: 'ion-md-checkmark-circle-outline',
-          title: 'Success',
+          icon: 'ft-check-circle',
+          title: 'Berhasil',
         }),
         warning: () => ({
           iconColor: colors.warning,
           progressBarColor: colors.warning,
-          icon: 'ion-md-warning',
+          icon: 'ft-alert-triangle',
           title: 'Warning',
         }),
         danger: () => ({
           iconColor: colors.danger,
           progressBarColor: colors.danger,
-          icon: 'ion-md-close-circle-outline',
+          icon: 'ft-x-circle',
           title: 'Error',
         }),
         confirm: (resolve, reject) => ({
-          icon: 'ion-md-help-circle-outline',
+          icon: 'ft-help-circle',
           close: false,
           overlay: true,
           progressBar: false,
           timeout: false,
           drag: false,
           displayMode: 'once',
-          title: 'Hey',
-          message: 'Are you sure about that?',
+          title: 'Hei',
+          message: 'Apa kamu yakin akan hal itu?',
           position: 'center',
+          transitionIn: 'fadeInUp',
+          transitionInMobile: 'fadeInUp',
+          transitionOut: 'fadeOutDown',
+          transitionOutMobile: 'fadeOutDown',
           buttons: [
             [
-              '<button><b>YES</b></button>',
+              '<button><b>YA</b></button>',
               function (instance, toast) {
                 if (resolve) resolve(instance, toast)
                 instance.hide({ transitionOut: 'fadeOut' }, toast, 'button')
@@ -81,7 +85,7 @@ Vue.mixin({
               true,
             ],
             [
-              '<button>NO</button>',
+              '<button>TIDAK</button>',
               function (instance, toast) {
                 if (reject) reject(instance, toast)
                 instance.hide({ transitionOut: 'fadeOut' }, toast, 'button')
@@ -99,7 +103,7 @@ Vue.mixin({
             ...customOptions,
           })
         },
-        success(msg = 'Success', customOptions = {}) {
+        success(msg = 'Berhasil', customOptions = {}) {
           iziToast.success({
             ...options,
             ...stateOption.success(),
@@ -115,7 +119,7 @@ Vue.mixin({
             ...customOptions,
           })
         },
-        danger(msg = 'Someting wrong', customOptions = {}) {
+        danger(msg = 'Tampaknya ada yang salah', customOptions = {}) {
           iziToast.error({
             ...options,
             ...stateOption.danger(),
