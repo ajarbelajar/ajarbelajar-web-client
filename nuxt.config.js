@@ -19,7 +19,7 @@ export default {
 
   css: [
     '@/assets/fonts/web-icons/style.css',
-    '@/assets/fonts/socicon/style.css',
+    '@/assets/fonts/feather/style.css',
     '@/assets/fonts/roboto/style.css',
     '@/assets/scss/theme.scss',
     'izitoast/dist/css/iziToast.css',
