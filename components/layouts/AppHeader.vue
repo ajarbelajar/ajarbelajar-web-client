@@ -90,7 +90,7 @@ export default {
   top: 0;
   left: 0;
   right: 0;
-  z-index: $zindex-header;
+  z-index: $zindex-navbar-fixed;
 
   .app-header-root {
     width: 100%;
