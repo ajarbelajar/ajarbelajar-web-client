@@ -59,7 +59,6 @@ export default {
       if (e.response && e.response.data && e.response.data.message) {
         message = e.response.data.message
       }
-      console.log(message)
       return error({ statusCode: 401, message })
     }
     return {
