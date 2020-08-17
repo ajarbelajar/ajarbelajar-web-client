@@ -31,14 +31,7 @@
               <nuxt-link
                 class="list-group-item"
                 to="/"
-                exact-active-class="active"
-                @click.native="$sidebar.display(false)"
-              >
-                <i class="icon wb-home"></i>Home
-              </nuxt-link>
-              <nuxt-link
-                class="list-group-item"
-                to="/home"
+                active-class=""
                 exact-active-class="active"
                 @click.native="$sidebar.display(false)"
               >
@@ -57,13 +50,34 @@
                 <i class="icon wb-users"></i>Minitutor
               </a>
             </div>
-            <div class="list-group">
-              <a class="list-group-item" href="#">
+            <div
+              v-if="($auth && !$auth.minitutor) || !$auth"
+              class="list-group"
+            >
+              <nuxt-link
+                class="list-group-item"
+                to="/join-minitutor"
+                active-class="active"
+                @click.native="$sidebar.display(false)"
+              >
+                <i class="icon wb-dashboard"></i>Jadi Minitutor
+              </nuxt-link>
+            </div>
+            <div v-if="!$auth" class="list-group">
+              <nuxt-link
+                class="list-group-item"
+                to="/register"
+                @click.native="$sidebar.display(false)"
+              >
                 <i class="icon wb-user-circle"></i>Daftar
-              </a>
-              <a class="list-group-item" href="#">
+              </nuxt-link>
+              <nuxt-link
+                class="list-group-item"
+                to="/login"
+                @click.native="$sidebar.display(false)"
+              >
                 <i class="icon wb-user-circle"></i>Masuk
-              </a>
+              </nuxt-link>
             </div>
           </div>
         </div>
@@ -152,6 +166,7 @@ export default {
   background-color: $white;
   box-shadow: $box-shadow;
   transition: transform 400ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  z-index: $zindex-navbar-fixed - 20;
   @include media-breakpoint-down(md) {
     z-index: $zindex-navbar-fixed + 20;
   }

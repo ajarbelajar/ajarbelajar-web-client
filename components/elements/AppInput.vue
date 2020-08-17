@@ -1,6 +1,6 @@
 <template>
   <div class="form-group">
-    <label v-if="label" :for="inputId">{{ placeholder }}</label>
+    <label v-if="label" :for="inputId" class="m-0">{{ placeholder }}</label>
     <textarea
       v-if="textarea"
       :id="inputId"
@@ -11,6 +11,19 @@
       :placeholder="placeholder"
       @input="handleInput"
     ></textarea>
+    <select
+      v-else-if="select.length"
+      :id="inputId"
+      v-bind="$attrs"
+      :value="value"
+      :type="type"
+      class="form-control"
+      :class="{ 'is-invalid': !!error }"
+      @input="handleInput"
+    >
+      <option value="" disabled>{{ placeholder }}</option>
+      <option v-for="i in select" :key="i">{{ i }}</option>
+    </select>
     <input
       v-else
       :id="inputId"
@@ -55,6 +68,10 @@ export default {
     textarea: {
       type: Boolean,
       default: false,
+    },
+    select: {
+      type: Array,
+      default: () => [],
     },
   },
   data() {
