@@ -46,7 +46,7 @@
 <script>
 import Background from '@/assets/img/background/people-team.jpg'
 export default {
-  middleware: 'authenticatedNext',
+  middleware: 'authNext',
   async asyncData({ $axios }) {
     let allowCreate = false
     try {

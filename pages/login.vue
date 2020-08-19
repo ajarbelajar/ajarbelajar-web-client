@@ -55,7 +55,7 @@ const Cookie = process.client ? require('js-cookie') : undefined
 
 export default {
   layout: 'auth',
-  middleware: 'notAuthenticated',
+  middleware: 'guest',
   data() {
     return {
       form: {

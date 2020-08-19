@@ -100,7 +100,7 @@
 <script>
 import FormData from 'form-data'
 export default {
-  middleware: 'authenticatedNext',
+  middleware: 'authNext',
   async asyncData({ $axios, error }) {
     try {
       const { allowCreate } = await $axios.$get('/join-minitutor/status')

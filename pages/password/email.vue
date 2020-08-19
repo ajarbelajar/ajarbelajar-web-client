@@ -48,7 +48,7 @@
 <script>
 export default {
   layout: 'auth',
-  middleware: 'notAuthenticated',
+  middleware: 'guest',
   data() {
     return {
       form: {

@@ -48,7 +48,7 @@
 <script>
 export default {
   layout: 'auth',
-  middleware: 'notAuthenticated',
+  middleware: 'guest',
   async asyncData({ query, $axios, error, app }) {
     const token = query.token || ''
     const email = query.email || ''
