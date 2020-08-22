@@ -38,6 +38,7 @@
     <div v-if="!!error" class="invalid-feedback">
       <strong>{{ error }}</strong>
     </div>
+    <div v-else-if="!!help" class="text-help">{{ help }}</div>
   </div>
 </template>
 
@@ -72,6 +73,10 @@ export default {
     select: {
       type: Array,
       default: () => [],
+    },
+    help: {
+      type: String,
+      default: '',
     },
   },
   data() {

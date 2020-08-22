@@ -49,14 +49,6 @@ export default {
   },
 
   build: {
-    vendor: [
-      'izitoast',
-      'sweetalert2',
-      'perfect-scrollbar',
-      'js-cookie',
-      'cookieparser',
-      'swiper',
-      'form-data',
-    ],
+    vendor: ['axios', 'cookieparser', 'form-data'],
   },
 }
