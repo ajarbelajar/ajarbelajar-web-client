@@ -32,6 +32,7 @@ export default {
     { src: '~/plugins/Sidebar.js', ssr: true },
     { src: '~/plugins/IziToast.js', ssr: false },
     { src: '~/plugins/LazyImage.js', ssr: true },
+    { src: '~/plugins/Sticky.js', ssr: false },
   ],
 
   components: true,
