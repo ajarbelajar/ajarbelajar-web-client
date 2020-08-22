@@ -50,6 +50,6 @@ export default {
   },
 
   build: {
-    vendor: ['axios', 'cookieparser', 'form-data'],
+    vendor: ['axios', 'cookieparser', 'form-data', 'fuse.js'],
   },
 }
