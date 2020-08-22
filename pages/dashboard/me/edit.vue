@@ -166,7 +166,10 @@ export default {
           ...errors,
         }
         if (message) {
-          this.$toast.error(message)
+          this.$toast.danger(message)
+        }
+        if (!Object.keys(errors).length && !message) {
+          this.$toast.danger(this.$errorMessage(e))
         }
       }
       this.form = {
