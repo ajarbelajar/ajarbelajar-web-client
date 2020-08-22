@@ -4,17 +4,11 @@
 
     <div class="container-fluid">
       <div class="ab-profile-card-lg">
-        <div class="avatar">
-          <v-lazy-image
-            :src="$auth.avatar"
-            :src-placeholder="avatar"
-            :alt="$auth.username"
-          ></v-lazy-image>
-        </div>
+        <my-dashboard-avatar-uploader />
         <div class="info">
           <h3 class="name">{{ $auth.name }}</h3>
           <p class="username">@{{ $auth.username }}</p>
-          <span v-if="$auth.email_verified_at" class="email-info unverified"
+          <span v-if="!$auth.email_verified_at" class="email-info unverified"
             >Tidak Diverifikasi</span
           >
           <span v-else class="email-info verified">Diverifikasi</span>
@@ -23,7 +17,7 @@
     </div>
 
     <div class="container-fluid">
-      <ul class="my-dashboard-nav nav-quick nav-quick-sm row">
+      <ul class="my-dashboard-nav nav-quick nav-quick-sm row mb-2">
         <li v-for="link in links" :key="link.to" class="nav-item col">
           <nuxt-link class="nav-link" active-class="active" :to="link.to">
             <i class="icon" :class="link.icon"></i>
@@ -92,28 +86,6 @@ export default {
   @include media-breakpoint-down(md) {
     flex-direction: column;
     padding: 30px 15px;
-  }
-
-  .avatar {
-    display: block;
-    width: 120px;
-    height: 120px;
-    border: 3px solid $primary;
-    margin: 0;
-    margin-right: 15px;
-    img {
-      border: 3px solid $white;
-    }
-
-    @include media-breakpoint-down(md) {
-      margin: 15px auto;
-      width: 100px;
-      height: 100px;
-      border-width: 2px;
-      img {
-        border-width: 2px;
-      }
-    }
   }
 
   .info {
