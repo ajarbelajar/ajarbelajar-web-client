@@ -50,6 +50,7 @@
                 <i class="icon wb-users"></i>Minitutor
               </a>
             </div>
+
             <div
               v-if="($auth && !$auth.minitutor) || !$auth"
               class="list-group"
@@ -63,6 +64,18 @@
                 <i class="icon wb-dashboard"></i>Jadi Minitutor
               </nuxt-link>
             </div>
+
+            <div v-if="$auth" class="list-group">
+              <nuxt-link
+                class="list-group-item"
+                to="/dashboard/me"
+                active-class="active"
+                @click.native="$sidebar.display(false)"
+              >
+                <i class="icon wb-user-circle"></i>Dasbor kamu
+              </nuxt-link>
+            </div>
+
             <div v-if="!$auth" class="list-group">
               <nuxt-link
                 class="list-group-item"

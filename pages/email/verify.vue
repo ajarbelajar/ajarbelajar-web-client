@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="!success">
     <h3 class="text-uppercase text-center font-weight-bold text-secondary">
       Verifikasi Alamat Email
     </h3>
@@ -34,10 +34,8 @@ export default {
   },
   mounted() {
     if (this.success) {
-      setTimeout(() => {
-        this.$toast.success('Alamat Email anda berhasil di verifikasi.')
-      }, 500)
-      return this.$router.push('/')
+      this.$toast.success('Alamat Email anda berhasil di verifikasi.')
+      return this.$router.push('/dashboard/me')
     }
   },
 }

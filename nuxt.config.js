@@ -31,6 +31,7 @@ export default {
     { src: '~/plugins/ApiErrorResponse.js', ssr: true },
     { src: '~/plugins/Sidebar.js', ssr: true },
     { src: '~/plugins/IziToast.js', ssr: false },
+    { src: '~/plugins/LazyImage.js', ssr: true },
   ],
 
   components: true,
@@ -47,5 +48,15 @@ export default {
     scss: ['@/assets/scss/_vars.scss'],
   },
 
-  build: {},
+  build: {
+    vendor: [
+      'izitoast',
+      'sweetalert2',
+      'perfect-scrollbar',
+      'js-cookie',
+      'cookieparser',
+      'swiper',
+      'form-data',
+    ],
+  },
 }
