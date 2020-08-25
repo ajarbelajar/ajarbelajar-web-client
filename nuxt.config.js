@@ -35,6 +35,7 @@ export default {
     { src: '~/plugins/LazyImage.js', ssr: true },
     { src: '~/plugins/Sticky.js', ssr: false },
     { src: '~/plugins/Moment.js', ssr: true },
+    { src: '~/plugins/Editorjs', ssr: false },
   ],
 
   components: true,
