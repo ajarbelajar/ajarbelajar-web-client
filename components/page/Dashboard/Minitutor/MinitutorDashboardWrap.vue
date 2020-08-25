@@ -56,7 +56,7 @@ export default {
           icon: 'wb-user-circle',
         },
         {
-          to: '/dashboard/minitutor/accepted/videos',
+          to: '/dashboard/minitutor/accepted/playlists',
           name: 'Video Diterima',
           icon: 'wb-check-circle',
           badge: 5,
@@ -68,16 +68,16 @@ export default {
           badge: 5,
         },
         {
+          to: '/dashboard/minitutor/playlists',
+          name: 'Playlist',
+          icon: 'wb-video',
+          badge: 4,
+        },
+        {
           to: '/dashboard/minitutor/articles',
           name: 'Artikel',
           icon: 'wb-list',
           badge: 5,
-        },
-        {
-          to: '/dashboard/minitutor/videos',
-          name: 'Video',
-          icon: 'wb-video',
-          badge: 4,
         },
         {
           to: '/dashboard/minitutor/comments',

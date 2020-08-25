@@ -23,6 +23,7 @@ export default {
     '@/assets/fonts/roboto/style.css',
     '@/assets/scss/theme.scss',
     'izitoast/dist/css/iziToast.css',
+    'video.js/dist/video-js.css',
   ],
 
   plugins: [
@@ -33,6 +34,7 @@ export default {
     { src: '~/plugins/IziToast.js', ssr: false },
     { src: '~/plugins/LazyImage.js', ssr: true },
     { src: '~/plugins/Sticky.js', ssr: false },
+    { src: '~/plugins/Moment.js', ssr: true },
   ],
 
   components: true,
@@ -50,6 +52,14 @@ export default {
   },
 
   build: {
-    vendor: ['axios', 'cookieparser', 'form-data', 'fuse.js'],
+    vendor: [
+      'axios',
+      'cookieparser',
+      'form-data',
+      'fuse.js',
+      'moment',
+      'moment/locale/id',
+      'vue-moment',
+    ],
   },
 }

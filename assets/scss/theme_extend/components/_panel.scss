@@ -16,4 +16,8 @@
       transform: translate(0%, -50%);
     }
   }
+
+  &.border-danger {
+    border-color: $danger;
+  }
 }

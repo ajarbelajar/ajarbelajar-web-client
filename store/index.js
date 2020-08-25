@@ -6,14 +6,8 @@ export const state = () => {
   }
 }
 
-export const mutations = {
-  setAuth(state, auth) {
-    state.auth = auth
-  },
-}
-
 export const actions = {
-  async nuxtServerInit({ commit }, { req, app }) {
+  async nuxtServerInit({ commit, dispatch }, { req, app }) {
     let auth = null
 
     if (req.headers.cookie) {
@@ -26,5 +20,13 @@ export const actions = {
       }
     }
     commit('setAuth', auth)
+
+    await dispatch('category/fetch')
+  },
+}
+
+export const mutations = {
+  setAuth(state, auth) {
+    state.auth = auth
   },
 }
