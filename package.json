@@ -29,6 +29,7 @@
     "@nuxtjs/pwa": "^3.0.0-beta.20",
     "@tarekraafat/autocomplete.js": "^7.2.0",
     "animate.css": "^4.1.0",
+    "bootstrap-vue": "^2.16.0",
     "cookieparser": "^0.1.0",
     "form-data": "^3.0.0",
     "fuse.js": "^6.4.1",
@@ -43,9 +44,11 @@
     "v-lazy-image": "^1.4.0",
     "video.js": "^7.8.4",
     "vue-moment": "^4.1.0",
+    "vue-star-rating": "^1.6.1",
     "vue-sticky-directive": "^0.0.10",
     "vue-video-player": "^5.0.2",
-    "vuedraggable": "^2.24.1"
+    "vuedraggable": "^2.24.1",
+    "vuejs-paginate": "^2.1.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.1.0",

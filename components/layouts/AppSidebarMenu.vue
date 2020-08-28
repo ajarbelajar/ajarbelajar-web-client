@@ -10,12 +10,22 @@
       >
         <i class="icon wb-home"></i>Home
       </nuxt-link>
-      <a class="list-group-item" href="#">
+      <nuxt-link
+        class="list-group-item"
+        to="/articles"
+        active-class="active"
+        @click.native="$sidebar.display(false)"
+      >
         <i class="icon wb-order"></i>Artikel
-      </a>
-      <a class="list-group-item" href="#">
-        <i class="icon wb-video"></i>Video
-      </a>
+      </nuxt-link>
+      <nuxt-link
+        class="list-group-item"
+        to="/playlists"
+        active-class="active"
+        @click.native="$sidebar.display(false)"
+      >
+        <i class="icon wb-video"></i>Playlist
+      </nuxt-link>
       <a class="list-group-item" href="#">
         <i class="icon wb-grid-4"></i>Kategori
       </a>
