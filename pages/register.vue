@@ -100,9 +100,9 @@ export default {
         message: '',
       }
       try {
-        const user = await this.$axios.$post('/register', data)
-        this.$store.commit('setAuth', user)
-        Cookie.set('api-token', user.apiToken, { expires: 7 })
+        const { auth, token } = await this.$axios.$post('/register', data)
+        this.$store.commit('setAuth', auth)
+        Cookie.set('api-token', token, { expires: 7 })
         this.redirect()
       } catch (e) {
         data = this.$errorResponse(e)
