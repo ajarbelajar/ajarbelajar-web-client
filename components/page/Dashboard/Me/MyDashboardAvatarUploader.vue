@@ -44,8 +44,8 @@ export default {
         const file = ev.target.files[0]
         const data = new FormData()
         data.append('avatar', file)
-        const user = await this.$axios.$post('/user/avatar', data)
-        this.$store.commit('setAuth', user)
+        const { url } = await this.$axios.$post('/user/avatar', data)
+        this.$store.commit('setAuth', { ...this.$auth, avatar: url })
         this.$toast.success('Foto anda telah diupdate.')
       } catch (e) {
         this.$toast.danger(this.$errorMessage(e))

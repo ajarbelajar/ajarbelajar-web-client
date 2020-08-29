@@ -156,8 +156,14 @@ export default {
         youtube_url: '',
       }
       try {
-        const user = await this.$axios.$put('/user', form)
-        this.$store.commit('setAuth', user)
+        await this.$axios.$put('/user', form)
+        delete form.password
+        delete form.old_password
+        const auth = {
+          ...this.$auth,
+          ...form,
+        }
+        this.$store.commit('setAuth', auth)
         this.$toast.success('Profile anda telah diupdate.')
       } catch (e) {
         const { errors, message } = this.$errorResponse(e)

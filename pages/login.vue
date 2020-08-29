@@ -84,6 +84,7 @@ export default {
       }
       try {
         const { auth, token } = await this.$axios.$post('/login', data)
+        this.$store.commit('setToken', token)
         this.$store.commit('setAuth', auth)
         Cookie.set('api-token', token, { expires: 7 })
         this.redirect()

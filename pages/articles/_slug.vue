@@ -19,21 +19,18 @@
               >
             </div>
             <div class="post-action">
-              <a href="#" class="btn btn-danger btn-sm d-none d-md-inline-block"
-                ><i class="wb-heart"></i> Hapus dari Favorit</a
-              >
-              <a
-                href="#"
-                class="btn btn-danger btn-xs btn-icon d-block d-md-none"
-                ><i class="wb-heart"></i
-              ></a>
+              <app-favorite-toggle
+                v-if="$auth"
+                :pid="article.id"
+                type="Article"
+              />
             </div>
           </div>
           <div class="post-rating">
             <client-only>
               <star-rating
                 class="post-rating-star"
-                :rating="article.rating"
+                :rating="Number(article.rating)"
                 :read-only="true"
                 :increment="0.01"
                 :star-size="14"
@@ -56,11 +53,16 @@
         </article>
         <app-comment
           :url="`/comments/article/${article.id}`"
-          :comments-count="article.comments_count"
-          :comments="comments"
+          :comments-count="article.comments.length"
+          :comments="article.comments"
         />
       </div>
-      <div class="article-watch-card-side"></div>
+      <post-side-bar
+        class="article-watch-card-side"
+        :user="article.user"
+        :minitutor="article.minitutor"
+        :lates="article.lates"
+      />
     </div>
   </div>
 </template>
@@ -73,31 +75,22 @@ export default {
     StarRating,
   },
   async asyncData({ store, error, $axios, params, query, redirect }) {
-    let articles
+    let article
     try {
-      articles = await store.dispatch('public_article/fetch')
-    } catch (e) {
-      return error(e)
-    }
-    const data = {}
-    articles.forEach((article) => {
-      if (article.slug === params.slug) {
-        data.article = article
-      }
-    })
-
-    try {
-      data.comments = await $axios.$get(`comments/article/${data.article.id}`)
+      article = await $axios.$get(`articles/${params.slug}`)
     } catch (e) {
       return error(e)
     }
 
-    return data
+    return { article }
   },
   data() {
     return {
       HeroPlaceholder,
     }
+  },
+  mounted() {
+    this.$axios.$get(`/articles/${this.article.id}/view`).catch((e) => {})
   },
 }
 </script>

@@ -11,70 +11,45 @@
           Artikel
         </span>
         <span v-else class="post-type red">
-          Video
+          Playlist
         </span>
       </div>
     </div>
     <div class="ab-post-list-right">
-      <span class="info-time">{{ post.created_at | moment('d M Y') }}</span>
+      <span class="info-time">
+        {{ post.created_at | moment('dddd, Do MMMM YYYY') }}
+      </span>
       <h3 class="info-title">
-        <a rel="nofollow" href="#">{{ post.title }}</a>
+        <nuxt-link rel="nofollow" :to="postUrl">{{ post.title }}</nuxt-link>
       </h3>
-      <span v-if="post.category" class="category-info">{{
-        post.category.name
-      }}</span>
+      <span v-if="post.category" class="category-info">
+        {{ post.category.name }}
+      </span>
       <div class="more-info">
-        <span
-          ><i class="icon wb-star"></i> {{ post.rating }} Bintang dari
-          {{ post.feedback_count }} Reviewer</span
-        >
-        <span
-          ><i class="icon wb-chat"></i> {{ post.comments_count }} Komentar</span
-        >
-        <span
-          ><i class="icon wb-eye"></i> {{ post.views_count }}x
-          {{ type === 'Article' ? 'Dibaca' : 'Ditonton' }}</span
-        >
-        <span
-          ><i class="icon wb-user"></i> Dari
-          <a href="#">{{ post.user.name }}</a></span
-        >
+        <span>
+          <i class="icon wb-star"></i>
+          {{ post.rating }} Bintang dari {{ post.feedback_count }} Reviewer
+        </span>
+        <span>
+          <i class="icon wb-chat"></i>
+          {{ post.comments_count }} Komentar
+        </span>
+        <span>
+          <i class="icon wb-eye"></i>
+          {{ post.views_count }}x
+          {{ type === 'Article' ? 'Dibaca' : 'Ditonton' }}
+        </span>
+        <span>
+          <i class="icon wb-user"></i>
+          Dari <a href="#">{{ post.user.name }}</a>
+        </span>
       </div>
       <div class="actions mt-10">
-        <div class="row">
-          <div class="col-6">
-            <nuxt-link
-              v-if="type === 'Article'"
-              :to="`/${type.toLowerCase()}s/${post.slug}`"
-              class="btn btn-primary btn-block btn-sm"
-            >
-              <i class="wb-book"></i> Baca Artikel
-            </nuxt-link>
-            <nuxt-link
-              v-else
-              :to="`/${type.toLowerCase()}s/${post.slug}`"
-              class="btn btn-primary btn-block btn-sm"
-            >
-              <i class="wb-play"></i> Tonton Video
-            </nuxt-link>
-          </div>
-          <div class="col-6">
-            <a
-              v-if="$auth"
-              rel="nofollow"
-              href="#"
-              class="btn btn-danger btn-outline btn-block btn-sm"
-              ><i class="icon wb-heart"></i> Hapus Favorit</a
-            >
-            <a
-              v-else
-              rel="nofollow"
-              href="#"
-              class="btn btn-danger btn-outline btn-block btn-sm"
-              ><i class="icon wb-heart"></i> Tambah Favorit</a
-            >
-          </div>
-        </div>
+        <nuxt-link :to="postUrl" class="btn btn-primary btn-sm">
+          <i :class="type === 'Playlist' ? 'wb-play' : 'wb-book'"></i>
+          {{ type === 'Playlist' ? 'Tonton Video' : 'Baca Artikel' }}
+        </nuxt-link>
+        <app-favorite-toggle v-if="$auth" :pid="post.id" :type="type" />
       </div>
     </div>
   </div>
@@ -99,6 +74,11 @@ export default {
     return {
       Placeholder,
     }
+  },
+  computed: {
+    postUrl() {
+      return `/${this.type.toLowerCase()}s/${this.post.slug}`
+    },
   },
 }
 </script>

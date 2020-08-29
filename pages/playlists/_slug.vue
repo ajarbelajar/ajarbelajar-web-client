@@ -44,21 +44,18 @@
               >
             </div>
             <div class="post-action">
-              <a href="#" class="btn btn-danger btn-sm d-none d-md-inline-block"
-                ><i class="wb-heart"></i> Hapus dari Favorit</a
-              >
-              <a
-                href="#"
-                class="btn btn-danger btn-xs btn-icon d-block d-md-none"
-                ><i class="wb-heart"></i
-              ></a>
+              <app-favorite-toggle
+                v-if="$auth"
+                :pid="playlist.id"
+                type="Playlist"
+              />
             </div>
           </div>
           <div class="post-rating">
             <client-only>
               <star-rating
                 class="post-rating-star"
-                :rating="playlist.rating"
+                :rating="Number(playlist.rating)"
                 :read-only="true"
                 :increment="0.01"
                 :star-size="14"
@@ -81,11 +78,16 @@
         </article>
         <app-comment
           :url="`/comments/playlist/${playlist.id}`"
-          :comments-count="playlist.comments_count"
-          :comments="comments"
+          :comments-count="playlist.comments.length"
+          :comments="playlist.comments"
         />
       </div>
-      <div class="playlist-watch-card-side"></div>
+      <post-side-bar
+        class="playlist-watch-card-side"
+        :user="playlist.user"
+        :minitutor="playlist.minitutor"
+        :lates="playlist.lates"
+      />
     </div>
   </div>
 </template>
@@ -97,27 +99,12 @@ export default {
     StarRating,
   },
   async asyncData({ store, error, $axios, params, query, redirect }) {
-    let playlists
-    try {
-      playlists = await store.dispatch('public_playlist/fetch')
-    } catch (e) {
-      return error(e)
-    }
     const data = {}
-    playlists.forEach((playlist) => {
-      if (playlist.slug === params.slug) {
-        data.playlist = playlist
-      }
-    })
-
     try {
-      data.comments = await $axios.$get(`comments/playlist/${data.playlist.id}`)
+      data.playlist = await $axios.$get(`/playlists/${params.slug}`)
     } catch (e) {
       return error(e)
     }
-
-    if (!data.playlist)
-      return error({ statusCode: 404, message: 'Playlist tidak tersedia.' })
 
     if (data.playlist.videos.length === 1) {
       if (query.index) {
@@ -176,6 +163,9 @@ export default {
         this.routerAlive = true
       }, 0)
     },
+  },
+  mounted() {
+    this.$axios.$get(`/playlists/${this.playlist.id}/view`).catch((e) => {})
   },
 }
 </script>

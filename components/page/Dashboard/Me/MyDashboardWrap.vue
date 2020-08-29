@@ -36,9 +36,12 @@
 <script>
 import avatar from '@/assets/img/placeholder/avatar.png'
 export default {
-  data() {
-    return {
-      links: [
+  computed: {
+    avatar() {
+      return avatar
+    },
+    links() {
+      return [
         {
           to: '/dashboard/me/activity',
           name: 'Aktifitas',
@@ -53,20 +56,17 @@ export default {
           to: '/dashboard/me/following',
           name: 'Diikuti',
           icon: 'wb-star',
-          badge: 4,
+          badge: this.$auth.followings.length || '',
         },
         {
           to: '/dashboard/me/favorite',
           name: 'Favorit',
           icon: 'wb-heart',
-          badge: 3,
+          badge:
+            this.$auth.favorites.articles.length +
+              this.$auth.favorites.playlists.length || '',
         },
-      ],
-    }
-  },
-  computed: {
-    avatar() {
-      return avatar
+      ]
     },
   },
 }

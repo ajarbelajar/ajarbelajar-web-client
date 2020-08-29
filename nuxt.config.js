@@ -66,15 +66,15 @@ export default {
     directivePlugins: [],
   },
 
-  build: {
-    vendor: [
-      'axios',
-      'cookieparser',
-      'form-data',
-      'fuse.js',
-      'moment',
-      'moment/locale/id',
-      'vue-moment',
-    ],
-  },
+  // build: {
+  //   vendor: [
+  //     'axios',
+  //     'cookieparser',
+  //     'form-data',
+  //     'fuse.js',
+  //     'moment',
+  //     'moment/locale/id',
+  //     'vue-moment',
+  //   ],
+  // },
 }

@@ -125,8 +125,12 @@ export default {
         expectation: '',
       }
       try {
-        const user = await this.$axios.$put('/user/minitutor', form)
-        this.$store.commit('setAuth', user)
+        await this.$axios.$put('/user/minitutor', form)
+        const minitutor = {
+          ...this.$auth.minitutor,
+          ...form,
+        }
+        this.$store.commit('setAuth', { ...this.$auth, minitutor })
         this.$toast.success('Profile Anda sebagai MiniTutor telah diupdate.')
       } catch (e) {
         const { errors, message } = this.$errorResponse(e)

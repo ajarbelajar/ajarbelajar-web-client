@@ -101,7 +101,7 @@ export default {
   },
   computed: {
     blocks() {
-      return this.editor.blocks || []
+      return this.editor ? this.editor.blocks : []
     },
   },
 }
