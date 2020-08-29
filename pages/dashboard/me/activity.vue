@@ -10,7 +10,7 @@
         <div class="left">
           <v-lazy-image
             :src="activity.hero.thumb"
-            :src-placeholder="activity.hero.blur"
+            :src-placeholder="Placeholder"
             alt="activity.title"
           ></v-lazy-image>
         </div>
@@ -34,6 +34,8 @@
 </template>
 
 <script>
+import Placeholder from '@/assets/img/placeholder/hero-thumb.jpg'
+
 export default {
   middleware: 'auth',
   async asyncData({ $axios, store, error }) {
@@ -43,6 +45,11 @@ export default {
       return { activities }
     } catch (e) {
       return error(e)
+    }
+  },
+  data() {
+    return {
+      Placeholder,
     }
   },
 }
