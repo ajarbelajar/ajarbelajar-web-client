@@ -3,6 +3,10 @@ export default {
 
   target: 'server',
 
+  loading: {
+    color: '#677ae4',
+  },
+
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -51,6 +55,7 @@ export default {
 
   axios: {
     baseURL: process.env.BASE_API_URL || 'http://127.0.0.1:8000/api',
+    progress: false,
   },
 
   styleResources: {
