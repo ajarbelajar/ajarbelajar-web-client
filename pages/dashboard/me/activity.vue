@@ -1,11 +1,98 @@
 <template>
   <my-dashboard-wrap>
-    <h1>dede</h1>
+    <div class="container-fluid mb-2">
+      <nuxt-link
+        v-for="(activity, i) in activities"
+        :key="i"
+        class="activity-card"
+        :to="`/${activity.type.toLowerCase()}s/${activity.slug}`"
+      >
+        <div class="left">
+          <v-lazy-image
+            :src="activity.hero.thumb"
+            :src-placeholder="activity.hero.blur"
+            alt="activity.title"
+          ></v-lazy-image>
+        </div>
+        <div class="right">
+          <div class="info-action">
+            {{ activity.updated_at | moment('from', 'now') }}
+            -
+            {{
+              activity.type === 'Article'
+                ? 'Kamu membaca artikel'
+                : 'Kamu menonton video'
+            }}
+          </div>
+          <h3 class="info-title">
+            {{ activity.title }}
+          </h3>
+        </div>
+      </nuxt-link>
+    </div>
   </my-dashboard-wrap>
 </template>
 
 <script>
 export default {
   middleware: 'auth',
+  async asyncData({ $axios, store, error }) {
+    try {
+      const id = store.state.auth.id
+      const activities = await $axios.$get(`/activities/${id}`)
+      return { activities }
+    } catch (e) {
+      return error(e)
+    }
+  },
 }
 </script>
+
+<style lang="scss">
+.activity-card {
+  display: flex;
+  background-color: $white;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  box-shadow: $box-shadow-sm;
+  transition: $transition-base;
+  border-left: 3px solid $primary;
+  &:hover {
+    text-decoration: none;
+    box-shadow: $box-shadow;
+  }
+
+  .left {
+    padding-right: 15px;
+    img {
+      display: block;
+      width: 100px;
+      border-radius: 2px;
+      @include media-breakpoint-down(md) {
+        width: 70px;
+      }
+    }
+  }
+  .right {
+    margin: auto 0;
+    .info-action {
+      margin: 0;
+      font-size: 11px;
+      color: $danger;
+      @include media-breakpoint-down(md) {
+        font-size: 9px;
+      }
+    }
+    .info-title {
+      margin: 0;
+      line-height: 1.1;
+      font-size: 16px;
+      font-weight: $font-weight-light;
+      @include media-breakpoint-down(md) {
+        font-size: 14px;
+      }
+    }
+  }
+}
+</style>
