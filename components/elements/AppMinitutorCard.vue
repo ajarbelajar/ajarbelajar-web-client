@@ -2,7 +2,7 @@
   <div class="minitutor-card">
     <div class="minitutor-card-top">
       <div class="minitutor-card-user-pic">
-        <nuxt-link :to="`/minitutor/${user.id}`" class="avatar">
+        <nuxt-link :to="`/minitutors/${user.username}`" class="avatar">
           <v-lazy-image
             class="avatar-holder"
             :src="user.avatar"
@@ -15,16 +15,16 @@
       <div class="minitutor-card-content">
         <div class="minitutor-card-content-header">
           <h3 class="minitutor-card-content-title">
-            <nuxt-link :to="`/minitutor/${user.id}`" class="name">{{
+            <nuxt-link :to="`/minitutors/${user.username}`" class="name">{{
               user.name
             }}</nuxt-link>
-            <nuxt-link :to="`/minitutor/${user.id}`" class="username"
+            <nuxt-link :to="`/minitutors/${user.username}`" class="username"
               >@{{ user.username }}</nuxt-link
             >
           </h3>
           <div class="minitutor-card-content-actions">
             <nuxt-link
-              :to="`/minitutor/${user.id}`"
+              :to="`/minitutors/${user.username}`"
               class="btn btn-primary btn-sm"
               >Lihat MiniTutor</nuxt-link
             >

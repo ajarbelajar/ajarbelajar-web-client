@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="container-fluid">
-      <div class="user-page-card">
-        <div class="user-page-card-left">
+      <div class="minitutor-page-card">
+        <div class="minitutor-page-card-left">
           <div class="user-pic">
-            <nuxt-link :to="`/users/${user.username}`" class="avatar">
+            <nuxt-link :to="`/minitutors/${user.username}`" class="avatar">
               <v-lazy-image
                 class="avatar-holder"
                 :src="user.avatar"
@@ -14,14 +14,14 @@
             </nuxt-link>
           </div>
         </div>
-        <div class="user-page-card-center">
+        <div class="minitutor-page-card-center">
           <h2 class="info-name text-truncate">
-            <nuxt-link :to="`/users/${user.username}`">{{
+            <nuxt-link :to="`/minitutors/${user.username}`">{{
               user.name
             }}</nuxt-link>
           </h2>
           <span class="info-username text-truncate">
-            <nuxt-link :to="`/users/${user.username}`">
+            <nuxt-link :to="`/minitutors/${user.username}`">
               @{{ user.name }}
             </nuxt-link>
           </span>
@@ -68,13 +68,8 @@
             </a>
           </div>
         </div>
-        <div class="user-page-card-right">
-          <nuxt-link
-            v-if="user.minitutor"
-            :to="`/minitutor/${user.username}`"
-            class="btn btn-primary btn-sm"
-            >Lihat Minitutor</nuxt-link
-          >
+        <div class="minitutor-page-card-right">
+          <app-follow-toggle :mid="minitutor.id" />
         </div>
       </div>
     </div>
@@ -105,6 +100,10 @@ export default {
       type: Object,
       default: () => ({}),
     },
+    minitutor: {
+      type: Object,
+      default: () => ({}),
+    },
   },
   computed: {
     Avatar() {
@@ -113,21 +112,27 @@ export default {
     links() {
       return [
         {
-          to: `/users/${this.user.username}/activity`,
-          name: 'Aktifitas',
-          icon: 'wb-graph-up',
+          to: `/minitutors/${this.user.username}/info`,
+          name: 'Info',
+          icon: 'wb-info',
         },
         {
-          to: `/users/${this.user.username}/following`,
-          name: 'Diikuti',
-          icon: 'wb-star',
-          badge: this.user.followings_count || '',
+          to: `/minitutors/${this.user.username}/playlists`,
+          name: 'Playlist',
+          icon: 'wb-video',
+          badge: this.minitutor.playlists_count || '',
         },
         {
-          to: `/users/${this.user.username}/favorite`,
-          name: 'Favorit',
-          icon: 'wb-heart',
-          badge: this.user.favorites_count || '',
+          to: `/minitutors/${this.user.username}/articles`,
+          name: 'Artikel',
+          icon: 'wb-order',
+          badge: this.minitutor.articles_count || '',
+        },
+        {
+          to: `/minitutors/${this.user.username}/followers`,
+          name: 'Pengikut',
+          icon: 'wb-users',
+          badge: this.minitutor.followers_count || '',
         },
       ]
     },
@@ -136,7 +141,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.user-page-card {
+.minitutor-page-card {
   display: flex;
   width: 100%;
   margin-bottom: $spacer/2;
@@ -279,7 +284,6 @@ export default {
   a.nav-link {
     font-weight: $font-weight-bold;
     transition: 150ms ease-in-out;
-
     &.active,
     &:hover {
       background-color: $primary;

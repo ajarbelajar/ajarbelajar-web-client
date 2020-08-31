@@ -29,9 +29,14 @@
       <a class="list-group-item" href="#">
         <i class="icon wb-grid-4"></i>Kategori
       </a>
-      <a class="list-group-item" href="#">
+      <nuxt-link
+        class="list-group-item"
+        to="/minitutors"
+        active-class="active"
+        @click.native="$sidebar.display(false)"
+      >
         <i class="icon wb-users"></i>Minitutor
-      </a>
+      </nuxt-link>
     </div>
 
     <div v-if="($auth && !$auth.minitutor) || !$auth" class="list-group">
