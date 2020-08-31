@@ -19,7 +19,12 @@
     <div class="container-fluid">
       <ul class="my-dashboard-nav nav-quick nav-quick-sm row mb-2">
         <li v-for="link in links" :key="link.to" class="nav-item col">
-          <nuxt-link class="nav-link" active-class="active" :to="link.to">
+          <nuxt-link
+            class="nav-link"
+            exact-active-class="active"
+            active-class=""
+            :to="link.to"
+          >
             <i class="icon" :class="link.icon"></i>
             <span class="d-lg-block d-none">{{ link.name }}</span>
             <span v-if="link.badge" class="badge badge-sm badge-dark m-1">{{
