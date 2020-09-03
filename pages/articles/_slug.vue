@@ -51,6 +51,11 @@
             <editorjs-compiler :editor="JSON.parse(article.body)" />
           </div>
         </article>
+        <app-feedback
+          v-if="$auth && !feedback"
+          :url="`/feedback/article/${article.id}`"
+          @close="feedback = true"
+        />
         <app-comment
           :url="`/comments/article/${article.id}`"
           :comments-count="article.comments.length"
@@ -82,7 +87,16 @@ export default {
       return error(e)
     }
 
-    return { article }
+    let feedback = false
+    if (store.state.auth) {
+      try {
+        feedback = await $axios.$get(
+          '/feedback/article/' + article.id + '/show'
+        )
+      } catch (e) {}
+    }
+
+    return { article, feedback }
   },
   data() {
     return {

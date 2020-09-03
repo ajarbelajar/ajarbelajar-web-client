@@ -76,6 +76,11 @@
             <p>{{ playlist.description }}</p>
           </div>
         </article>
+        <app-feedback
+          v-if="$auth && !feedback"
+          :url="`/feedback/playlist/${playlist.id}`"
+          @close="feedback = true"
+        />
         <app-comment
           :url="`/comments/playlist/${playlist.id}`"
           :comments-count="playlist.comments.length"
@@ -104,6 +109,15 @@ export default {
       data.playlist = await $axios.$get(`/playlists/${params.slug}`)
     } catch (e) {
       return error(e)
+    }
+
+    if (store.state.auth) {
+      data.feedback = false
+      try {
+        data.feedback = await $axios.$get(
+          '/feedback/playlist/' + data.playlist.id + '/show'
+        )
+      } catch (e) {}
     }
 
     if (data.playlist.videos.length === 1) {
