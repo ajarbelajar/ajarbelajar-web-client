@@ -69,7 +69,7 @@
           </div>
         </div>
         <div class="minitutor-page-card-right">
-          <app-follow-toggle :mid="minitutor.id" />
+          <app-follow-toggle v-if="$auth" :mid="minitutor.id" />
         </div>
       </div>
     </div>

@@ -26,9 +26,14 @@
       >
         <i class="icon wb-video"></i>Playlist
       </nuxt-link>
-      <a class="list-group-item" href="#">
+      <nuxt-link
+        class="list-group-item"
+        to="/categories"
+        active-class="active"
+        @click.native="$sidebar.display(false)"
+      >
         <i class="icon wb-grid-4"></i>Kategori
-      </a>
+      </nuxt-link>
       <nuxt-link
         class="list-group-item"
         to="/minitutors"
@@ -68,6 +73,14 @@
       >
         <i class="icon wb-dashboard"></i>Dasbor MiniTutor
       </nuxt-link>
+      <a
+        href="#logout"
+        class="list-group-item"
+        @click.prevent="$logout() && $sidebar.display(false)"
+      >
+        <i class="icon wb-trash text-danger"></i>
+        Keluar
+      </a>
     </div>
 
     <div v-if="!$auth" class="list-group">
