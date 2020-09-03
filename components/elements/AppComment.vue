@@ -9,22 +9,27 @@
           class="comment media"
         >
           <div class="pr-20">
-            <a href="#" class="avatar avatar-lg">
+            <nuxt-link
+              :to="`/users/${comment.user.username}/activity`"
+              class="avatar avatar-lg"
+            >
               <v-lazy-image
                 :src="comment.user ? comment.user.avatar : null"
                 :src-placeholder="Avatar"
                 :alt="comment.user ? comment.user.username : null"
               ></v-lazy-image>
-            </a>
+            </nuxt-link>
           </div>
           <div class="media-body">
             <div class="comment-body">
-              <a href="#" class="comment-author text-capitalize"
+              <nuxt-link
+                :to="`/users/${comment.user.username}/activity`"
+                class="comment-author text-capitalize"
                 >{{ comment.user ? comment.user.name : null }}
                 <small v-if="comment.minitutor" class="indigo-600"
                   ><i class="icon wb-check-circle"></i
                 ></small>
-              </a>
+              </nuxt-link>
               <div class="comment-meta">
                 <span class="date">{{
                   comment.created_at | moment('from', 'now')
