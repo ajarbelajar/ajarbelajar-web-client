@@ -47,62 +47,42 @@
 <script>
 import avatarPlaceholder from '@/assets/img/placeholder/avatar.png'
 export default {
-  data() {
-    return {
-      links: [
+  computed: {
+    avatar() {
+      return avatarPlaceholder
+    },
+    links() {
+      return [
         {
           to: '/dashboard/minitutor/edit',
           name: 'Edit Informasi',
           icon: 'wb-user-circle',
         },
         {
-          to: '/dashboard/minitutor/accepted/playlists',
-          name: 'Video Diterima',
-          icon: 'wb-check-circle',
-          badge: 5,
-        },
-        {
-          to: '/dashboard/minitutor/accepted/articles',
-          name: 'Artikel Diterima',
-          icon: 'wb-check-circle',
-          badge: 5,
-        },
-        {
           to: '/dashboard/minitutor/playlists',
           name: 'Playlist',
           icon: 'wb-video',
-          badge: 4,
+          badge: this.$auth.minitutor.playlists_count || '',
         },
         {
           to: '/dashboard/minitutor/articles',
           name: 'Artikel',
           icon: 'wb-list',
-          badge: 5,
+          badge: this.$auth.minitutor.articles_count || '',
         },
         {
           to: '/dashboard/minitutor/comments',
           name: 'Komentar',
           icon: 'wb-chat-group',
-          badge: 3,
+          badge: this.$auth.minitutor.comments_count || '',
         },
         {
-          to: '/dashboard/minitutor/feeback-konstruktif',
+          to: '/dashboard/minitutor/feedback',
           name: 'Feedback konstruktif',
           icon: 'wb-reply',
-          badge: 2,
+          badge: this.$auth.minitutor.feedback_count || '',
         },
-        {
-          to: '/dashboard/minitutor/followers',
-          name: 'Pengikut',
-          icon: 'wb-users',
-          badge: 3,
-        },
-      ],
-    }
-  },
-  computed: {
-    avatar() {
-      return avatarPlaceholder
+      ]
     },
   },
 }
