@@ -1,6 +1,6 @@
 <template>
   <div class="form-search" :class="{ open }">
-    <div class="container-fluid">
+    <div v-click-outside="clickOutside" class="container-fluid">
       <div class="form-search-input" :class="{ focus, empty }">
         <span class="icon">
           <i class="wb-search"></i>
@@ -15,7 +15,6 @@
           class="form-control"
           placeholder="Search"
           @focus="focus = true"
-          @blur="focus = false"
         />
         <span v-if="loading" class="loading">
           <svg
@@ -60,7 +59,11 @@
           </svg>
         </span>
       </div>
-      <div v-if="(focus && !empty)" class="search-result-wrapper">
+      <div
+        v-if="(focus && !empty)"
+        class="search-result-wrapper"
+        @click="focus = true"
+      >
         <div class="container-fluid">
           <div class="search-result">
             <div class="info">
@@ -68,26 +71,26 @@
             </div>
             <div class="result-lists">
               <a
-                v-for="i in 5"
+                v-for="(item, i) in results"
                 :key="i"
-                href="#"
                 class="result-list"
-                @click.prevent="listClick(i)"
+                :href="`/${item.type.toLowerCase()}s/${item.slug}`"
+                @click.prevent="listClick(item)"
               >
                 <div class="result-wrapper">
                   <div class="result-thumb">
-                    <img src="@/assets/img/placeholder/avatar.png" />
+                    <img :src="item.img" />
                   </div>
                   <div class="result-info">
                     <h4 class="result-title">
-                      Creating a Progress Bar with Tailwind
+                      {{ item.title }}
                     </h4>
                     <div class="result-author">
-                      by : <span>Dede ardiansya</span>
+                      by : <span>{{ item.name }}</span>
                     </div>
                   </div>
                   <div class="result-type">
-                    <span>Video</span>
+                    <span>{{ item.type }}</span>
                   </div>
                 </div>
               </a>
@@ -100,6 +103,7 @@
 </template>
 
 <script>
+import Fuse from 'fuse.js'
 export default {
   props: {
     open: {
@@ -111,7 +115,21 @@ export default {
     return {
       input: '',
       focus: false,
-      loading: true,
+      loading: false,
+      data: [],
+      results: [],
+      fuseOption: {
+        keys: [
+          {
+            name: 'title',
+            weight: 0.5,
+          },
+          {
+            name: 'name',
+            weight: 0.4,
+          },
+        ],
+      },
     }
   },
   computed: {
@@ -119,10 +137,43 @@ export default {
       return !this.input
     },
   },
+  watch: {
+    input: {
+      immediate: true,
+      deep: true,
+      async handler(val) {
+        if (val.length <= 0) {
+          this.results = []
+          this.data = []
+          return 0
+        }
+        try {
+          if (!this.data.length) {
+            this.loading = true
+            this.data = await this.$axios.$get('/search')
+            this.loading = false
+          }
+        } catch (e) {
+          console.log(e)
+        }
+        this.search()
+      },
+    },
+  },
   methods: {
-    listClick(i) {
-      this.input = i
-      this.$refs.input.focus()
+    listClick(item) {
+      this.input = item.title
+      this.$router.push(`/${item.type.toLowerCase()}s/${item.slug}`)
+      setTimeout(() => (this.focus = false), 100)
+    },
+    clickOutside() {
+      this.focus = false
+    },
+    search() {
+      const fuse = new Fuse(this.data, this.fuseOption)
+      const results = []
+      fuse.search(this.input).forEach((val) => results.push(val.item))
+      this.results = results
     },
   },
 }

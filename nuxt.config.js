@@ -40,6 +40,7 @@ export default {
     { src: '~/plugins/Moment.js', ssr: true },
     { src: '~/plugins/Editorjs', ssr: false },
     { src: '~/plugins/Editorjs/compiler', ssr: true },
+    { src: '~/plugins/ClickOutside', ssr: false },
   ],
 
   components: true,
