@@ -37,7 +37,6 @@ export default {
       return error(e)
     }
   },
-
   data() {
     return {
       search: '',
@@ -55,7 +54,6 @@ export default {
       },
     }
   },
-
   computed: {
     ...mapGetters({ playlists: 'request_playlist/playlists' }),
     filtered() {
@@ -67,6 +65,9 @@ export default {
       }
       return results
     },
+  },
+  head() {
+    return this.$seo()
   },
 }
 </script>

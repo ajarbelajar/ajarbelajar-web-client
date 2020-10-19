@@ -61,5 +61,8 @@ export default {
       },
     },
   },
+  head() {
+    return this.$seo()
+  },
 }
 </script>

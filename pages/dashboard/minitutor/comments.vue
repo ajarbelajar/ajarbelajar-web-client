@@ -64,6 +64,9 @@ export default {
       Avatar,
     }
   },
+  head() {
+    return this.$seo()
+  },
 }
 </script>
 

@@ -44,10 +44,7 @@
                   <i class="wb-search"></i>
                   <span class="label"></span>
                 </a>
-                <a v-if="$auth" href="#" class="action-toggle">
-                  <i class="wb-bell"></i>
-                  <span class="label"></span>
-                </a>
+                <app-notification-wrap v-if="$auth" />
               </div>
               <div v-if="$auth" class="right-avatar">
                 <span class="avatar">

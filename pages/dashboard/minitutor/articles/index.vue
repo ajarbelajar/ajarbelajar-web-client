@@ -56,7 +56,6 @@ export default {
       },
     }
   },
-
   computed: {
     ...mapGetters({ articles: 'request_article/articles' }),
     filtered() {
@@ -68,6 +67,9 @@ export default {
       }
       return results
     },
+  },
+  head() {
+    return this.$seo()
   },
 }
 </script>

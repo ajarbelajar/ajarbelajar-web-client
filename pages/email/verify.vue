@@ -38,5 +38,8 @@ export default {
       return this.$router.push('/dashboard/me')
     }
   },
+  head() {
+    return this.$seo()
+  },
 }
 </script>

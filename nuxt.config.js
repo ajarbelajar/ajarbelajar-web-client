@@ -17,6 +17,16 @@ export default {
         name: 'description',
         content: process.env.npm_package_description || '',
       },
+      {
+        hid: 'og:title',
+        name: 'og:title',
+        content: process.env.npm_package_name || '',
+      },
+      {
+        hid: 'og:description',
+        name: 'og:description',
+        content: process.env.npm_package_description || '',
+      },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
@@ -27,6 +37,7 @@ export default {
     '@/assets/fonts/roboto/style.css',
     '@/assets/scss/theme.scss',
     'izitoast/dist/css/iziToast.css',
+    'swiper/css/swiper.css',
   ],
 
   plugins: [
@@ -41,6 +52,7 @@ export default {
     { src: '~/plugins/Editorjs', ssr: false },
     { src: '~/plugins/Editorjs/compiler', ssr: true },
     { src: '~/plugins/ClickOutside', ssr: false },
+    { src: '~/plugins/Seo', ssr: true },
   ],
 
   components: true,
@@ -52,6 +64,7 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/style-resources',
     'bootstrap-vue/nuxt',
+    'nuxt-client-init-module',
   ],
 
   axios: {
@@ -66,8 +79,8 @@ export default {
   bootstrapVue: {
     bootstrapCSS: false,
     bootstrapVueCSS: false,
-    components: ['b-pagination-nav'],
-    directives: [],
+    components: ['b-pagination-nav', 'b-sidebar'],
+    directives: ['v-b-toggle'],
     componentPlugins: [],
     directivePlugins: [],
   },

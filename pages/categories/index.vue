@@ -51,5 +51,8 @@ export default {
     })
     this.categories = categories
   },
+  head() {
+    return this.$seo()
+  },
 }
 </script>

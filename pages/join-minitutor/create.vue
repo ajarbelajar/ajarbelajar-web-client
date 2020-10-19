@@ -191,5 +191,8 @@ export default {
       this.loading = false
     },
   },
+  head() {
+    return this.$seo()
+  },
 }
 </script>

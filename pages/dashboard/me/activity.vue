@@ -22,5 +22,8 @@ export default {
       return error(e)
     }
   },
+  head() {
+    return this.$seo()
+  },
 }
 </script>

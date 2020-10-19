@@ -1,31 +1,31 @@
 <template>
   <swiper class="ab-popular-playlist-lg" :options="swiperOptions">
-    <swiper-slide v-for="(item, i) in playlists">
-      <div class="card" style="background-image: url({{ item->heroUrl() }})">
+    <swiper-slide v-for="(playlist, i) in playlists" :key="i">
+      <div
+        class="card"
+        :style="`background-image: url(${playlist.hero.large})`"
+      >
         <div class="card-block">
           <div class="filter">
             <div class="content">
               <div class="vertical-center">
-                @if($popular->category)
-                <span
-                  class="category-info"
-                  >{{ $popular->category->name }}</span
-                >
-                @endif
-                <h3 class="title-info">{{ $popular->title }}</h3>
+                <span v-if="playlist.category" class="category-info">{{
+                  playlist.category.name
+                }}</span>
+                <h3 class="title-info">{{ playlist.title }}</h3>
                 <div class="description-info">
-                  by {{ $popular->user->first_name }} -
-                  {{ $popular->created_at->format('d M Y') }} -
-                  {{ $popular->views_count }}x dilihat
+                  by {{ playlist.user.name }} -
+                  {{ playlist.created_at | moment('dddd, Do MMMM YYYY') }} -
+                  {{ playlist.views_count }}x dilihat
                 </div>
-                <a
+                <nuxt-link
                   rel="nofollow"
-                  href="{{ route('post.show', $popular->slug) }}"
+                  :to="'playlists/' + playlist.slug"
                   class="btn btn-primary btn-round btn-watch btn-inverse"
                 >
                   <i class="icon wb-play" aria-hidden="true"></i>
                   Tonton Video
-                </a>
+                </nuxt-link>
               </div>
             </div>
           </div>
@@ -34,10 +34,10 @@
     </swiper-slide>
     <div slot="pagination" class="swiper-pagination"></div>
     <div slot="button-prev" class="swiper-nav swiper-button-prev">
-      <i class="wb-chevron-left"></i>
+      <!-- <i class="wb-chevron-left"></i> -->
     </div>
     <div slot="button-next" class="swiper-nav swiper-button-next">
-      <i class="wb-chevron-right"></i>
+      <!-- <i class="wb-chevron-right"></i> -->
     </div>
   </swiper>
 </template>
@@ -104,6 +104,9 @@ export default {
     &:hover {
       background-color: $primary;
       color: $white;
+    }
+    &:after {
+      font-size: 1rem;
     }
 
     &.swiper-button-prev {

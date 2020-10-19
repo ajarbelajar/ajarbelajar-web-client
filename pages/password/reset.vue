@@ -101,5 +101,8 @@ export default {
       return this.$router.push('/login')
     },
   },
+  head() {
+    return this.$seo()
+  },
 }
 </script>

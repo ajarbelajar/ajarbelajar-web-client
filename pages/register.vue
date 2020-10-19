@@ -104,6 +104,7 @@ export default {
         this.$store.commit('setToken', token)
         this.$store.commit('setAuth', auth)
         Cookie.set('api-token', token, { expires: 7 })
+        this.$store.dispatch('listenNotification')
         this.redirect()
       } catch (e) {
         data = this.$errorResponse(e)
@@ -122,6 +123,9 @@ export default {
       }
       return this.$router.push('/')
     },
+  },
+  head() {
+    return this.$seo()
   },
 }
 </script>

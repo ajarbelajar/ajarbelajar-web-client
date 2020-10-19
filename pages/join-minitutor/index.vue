@@ -60,6 +60,9 @@ export default {
       return Background
     },
   },
+  head() {
+    return this.$seo()
+  },
 }
 </script>
 
