@@ -181,6 +181,43 @@ export default {
   mounted() {
     this.$axios.$get(`/playlists/${this.playlist.id}/view`).catch((e) => {})
   },
+  head() {
+    return {
+      title: this.playlist.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.playlist.description || '',
+        },
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: this.playlist.title || '',
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: this.playlist.description || '',
+        },
+        {
+          hid: 'og:type',
+          name: 'og:type',
+          content: 'article',
+        },
+        {
+          hid: 'og:url',
+          name: 'og:url',
+          content: `${process.env.baseUrl}/playlists/${this.playlist.slug}`,
+        },
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          content: this.playlist.hero.large,
+        },
+      ],
+    }
+  },
 }
 </script>
 

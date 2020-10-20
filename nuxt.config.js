@@ -3,6 +3,13 @@ export default {
 
   target: 'server',
 
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+    baseApiUrl: process.env.BASE_API_URL || 'http://127.0.0.1:8000/api',
+    pusherKey: process.env.PUSHER_KEY || '',
+    pusherAuthEndpoint: process.env.PUSHER_AUTH_ENDPOINT || '/broadcast',
+  },
+
   loading: {
     color: '#677ae4',
   },

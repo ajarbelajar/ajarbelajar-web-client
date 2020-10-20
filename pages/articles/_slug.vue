@@ -106,6 +106,43 @@ export default {
   mounted() {
     this.$axios.$get(`/articles/${this.article.id}/view`).catch((e) => {})
   },
+  head() {
+    return {
+      title: this.article.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.article.description || '',
+        },
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: this.article.title || '',
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: this.article.description || '',
+        },
+        {
+          hid: 'og:type',
+          name: 'og:type',
+          content: 'article',
+        },
+        {
+          hid: 'og:url',
+          name: 'og:url',
+          content: `${process.env.baseUrl}/articles/${this.article.slug}`,
+        },
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          content: this.article.hero.large,
+        },
+      ],
+    }
+  },
 }
 </script>
 

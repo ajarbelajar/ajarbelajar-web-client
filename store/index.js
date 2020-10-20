@@ -5,13 +5,13 @@ const echo = (token) => {
   require('pusher-js')
   return new Echo({
     broadcaster: 'pusher',
-    authEndpoint: 'http://ajarbelajar.site/api/broadcast',
+    authEndpoint: process.env.baseApiUrl + process.env.pusherAuthEndpoint,
     auth: {
       headers: {
         Authorization: 'Bearer ' + token,
       },
     },
-    key: '9dd48f6db8303f2f8bd6',
+    key: process.env.pusherKey,
     cluster: 'ap1',
     forceTLS: true,
   })
