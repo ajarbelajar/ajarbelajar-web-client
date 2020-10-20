@@ -60,6 +60,7 @@ export default {
     { src: '~/plugins/Editorjs/compiler', ssr: true },
     { src: '~/plugins/ClickOutside', ssr: false },
     { src: '~/plugins/Seo', ssr: true },
+    { src: '~/plugins/InfiniteLoading', ssr: false },
   ],
 
   components: true,
