@@ -4,9 +4,9 @@
       <div class="article-watch-card-content">
         <article>
           <v-lazy-image
-            :src="article.hero.large"
+            :src="article.hero.large || $images.hero.large"
             class="hero"
-            :src-placeholder="HeroPlaceholder"
+            :src-placeholder="$images.hero.large"
           />
           <div class="post-detail">
             <div class="post-info">
@@ -66,45 +66,36 @@
         class="article-watch-card-side"
         :user="article.user"
         :minitutor="article.minitutor"
-        :lates="article.lates"
+        :lates="latesPosts"
       />
     </div>
   </div>
 </template>
 
 <script>
-import HeroPlaceholder from '@/assets/img/placeholder/hero-large.jpg'
 import StarRating from 'vue-star-rating'
 export default {
   components: {
     StarRating,
   },
   async asyncData({ store, error, $axios, params, query, redirect }) {
-    let article
+    let data = {}
     try {
-      article = await $axios.$get(`articles/${params.slug}`)
+      data = await $axios.$get(`articles/${params.slug}`)
     } catch (e) {
       return error(e)
     }
 
-    let feedback = false
+    data.feedback = false
     if (store.state.auth) {
       try {
-        feedback = await $axios.$get(
-          '/feedback/article/' + article.id + '/show'
+        data.feedback = await $axios.$get(
+          `/feedback/article/${data.article.id}/show`
         )
       } catch (e) {}
     }
 
-    return { article, feedback }
-  },
-  data() {
-    return {
-      HeroPlaceholder,
-    }
-  },
-  mounted() {
-    this.$axios.$get(`/articles/${this.article.id}/view`).catch((e) => {})
+    return data
   },
   head() {
     return {

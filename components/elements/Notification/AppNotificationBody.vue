@@ -15,7 +15,7 @@
         </button>
       </div>
     </div>
-    <div v-if="clicked" class="click-loading">
+    <div v-if="loading" class="click-loading">
       <div class="loader-wrap">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +59,7 @@
         </svg>
       </div>
     </div>
-    <div v-if="!loading && notifications.length" class="app-notif__action">
+    <div v-if="notifications.length" class="app-notif__action">
       <button
         class="btn btn-default btn-sm btn-outline btn-block"
         @click="readAll"
@@ -68,59 +68,13 @@
       </button>
     </div>
     <div class="app-notif__body">
-      <div
-        ref="elSideScroll"
-        class="app-notif__body-scroll"
-        :class="{ loading }"
-      >
-        <div v-if="loading" class="app-notif__loading">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="xMidYMid"
-          >
-            <circle
-              cx="50"
-              cy="50"
-              r="40"
-              stroke="#ccd5db"
-              stroke-width="12"
-              fill="none"
-            ></circle>
-            <circle
-              cx="50"
-              cy="50"
-              r="40"
-              stroke="#677ae4"
-              stroke-width="12"
-              stroke-linecap="round"
-              fill="none"
-            >
-              <animateTransform
-                attributeName="transform"
-                type="rotate"
-                repeatCount="indefinite"
-                dur="1s"
-                values="0 50 50;180 50 50;720 50 50"
-                keyTimes="0;0.5;1"
-              ></animateTransform>
-              <animate
-                attributeName="stroke-dasharray"
-                repeatCount="indefinite"
-                dur="1s"
-                values="25.132741228718345 226.1946710584651;170.90264035528475 80.4247719318987;25.132741228718345 226.1946710584651"
-                keyTimes="0;0.5;1"
-              ></animate>
-            </circle>
-          </svg>
-        </div>
-        <ul v-else class="list-group app-notif__list">
+      <div ref="elSideScroll" class="app-notif__body-scroll">
+        <ul class="list-group app-notif__list">
           <app-notification-list
             v-for="notif in notifications"
             :key="notif.id"
             :notification="notif"
-            @loading="handleClick"
+            @update-loading="updateLoading"
             @close="$emit('close')"
           >
           </app-notification-list>
@@ -131,7 +85,7 @@
         </div>
       </div>
     </div>
-    <div v-if="!loading && notifications.length" class="app-notif__foot">
+    <div v-if="notifications.length" class="app-notif__foot">
       <button
         class="btn btn-danger btn-block btn-label btn-sm btn-outline"
         @click="deleteAll"
@@ -142,101 +96,68 @@
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
 const Ps = process.client ? require('perfect-scrollbar').default : undefined
 export default {
+  props: {
+    notifications: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data() {
     return {
       elSideScroll: null,
       elSideScrollStyle: null,
       sidePs: null,
-      loading: true,
-      clicked: false,
+      loading: false,
     }
-  },
-  computed: {
-    ...mapGetters({
-      fetched: 'notification/fetched',
-      notifications: 'notification/notifications',
-    }),
   },
   beforeDestroy() {
     this.destroyScroll()
   },
   mounted() {
-    if (this.fetched) {
-      this.loading = false
-      setTimeout(this.initScroll, 100)
-    } else {
-      this.$store
-        .dispatch('notification/fetch')
-        .then(() => {
-          this.loading = false
-          setTimeout(this.initScroll, 100)
-        })
-        .catch((e) => {
-          this.$emit('close')
-        })
-    }
+    this.elSideScroll = this.$refs.elSideScroll
+    this.elSideScrollStyle = window.getComputedStyle(this.elSideScroll)
+    this.initScroll()
+    window.addEventListener('resize', this.initScroll)
   },
   methods: {
     readAll() {
-      this.clicked = true
+      this.loading = true
       this.$axios
         .$get('notifications/read')
         .then(() => {
           this.$store.commit('notification/readAll')
-          this.$store.commit('setAuth', {
-            ...this.$auth,
-            notification_count: 0,
-          })
-          this.clicked = false
+          this.loading = false
         })
         .catch((err) => {
           this.$toast.danger(this.$errorMessage(err))
-          this.clicked = false
+          this.loading = false
         })
     },
     deleteAll() {
       this.$toast.confirm.danger(
         () => {
-          this.clicked = true
+          this.loading = true
           this.$axios
             .$delete('notifications')
             .then(() => {
               this.$store.commit('notification/set', [])
-              this.$store.commit('setAuth', {
-                ...this.$auth,
-                notification_count: 0,
-              })
-              this.clicked = false
+              this.loading = false
             })
             .catch((err) => {
               this.$toast.danger(this.$errorMessage(err))
-              this.clicked = false
+              this.loading = false
             })
         },
         null,
         { message: 'Anda yakin ingin menghapus semua notifikasi?' }
       )
     },
-    handleClick(bool) {
-      this.clicked = bool
+    updateLoading(bool) {
+      this.loading = bool
     },
     initScroll() {
-      this.elSideScroll = this.$refs.elSideScroll
-      this.elSideScrollStyle = window.getComputedStyle(this.elSideScroll)
-      this.sidebarScroll()
-      window.addEventListener('resize', this.sidebarScroll)
-    },
-    destroyScroll() {
-      if (this.sidePs) {
-        this.sidePs.destroy()
-        this.sidePs = null
-        window.removeEventListener('resize', this.sidebarScroll)
-      }
-    },
-    sidebarScroll() {
       if (this.elSideScrollStyle.getPropertyValue('overflow-y') !== 'auto') {
         if (!this.sidePs) {
           this.sidePs = new Ps(this.elSideScroll)
@@ -246,6 +167,13 @@ export default {
         this.sidePs = null
       }
     },
+    destroyScroll() {
+      if (this.sidePs) {
+        this.sidePs.destroy()
+        this.sidePs = null
+        window.removeEventListener('resize', this.initScroll)
+      }
+    },
   },
 }
 </script>
@@ -253,6 +181,7 @@ export default {
 .action-toggle {
   cursor: pointer;
 }
+
 .click-loading {
   display: block;
   position: absolute;
@@ -272,6 +201,7 @@ export default {
     }
   }
 }
+
 .app-notif {
   position: fixed;
   right: 0;

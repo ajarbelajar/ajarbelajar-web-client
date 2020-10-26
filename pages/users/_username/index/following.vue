@@ -1,29 +1,38 @@
 <template>
-  <my-dashboard-wrap>
+  <div>
     <app-input-search v-model="search" />
-    <div class="container-fluid mb-2">
-      <app-minitutor-card
-        v-for="following in results"
-        :key="following.id"
-        :user="following.user"
-        :minitutor="following.minitutor"
-      />
+    <div v-if="user.followings.length" class="container-fluid mb-2">
+      <div class="row">
+        <div
+          v-for="following in results"
+          :key="following.id"
+          class="col-md-3 pb-3"
+        >
+          <app-minitutor-card-2
+            :user="following.user"
+            :minitutor="following.minitutor"
+          />
+        </div>
+      </div>
     </div>
-  </my-dashboard-wrap>
+    <div v-else class="container-fluid">
+      <div class="py-100 panel panel-body">
+        <h3 class="text-muted text-center">
+          Belum ada MiniTutor yang diikuti.
+        </h3>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 import Fuse from 'fuse.js'
 export default {
-  middleware: 'auth',
-  async asyncData({ $axios, store, error }) {
-    try {
-      const id = store.state.auth.id
-      const followings = await $axios.$get(`/follow/${id}`)
-      return { followings, results: followings }
-    } catch (e) {
-      return error(e)
-    }
+  props: {
+    user: {
+      type: Object,
+      default: () => ({}),
+    },
   },
   data() {
     return {
@@ -41,7 +50,7 @@ export default {
         let results = null
         if (val) {
           const data = []
-          this.followings.forEach((following) => {
+          this.user.followings.forEach((following) => {
             data.push({
               name: following.user.name,
               username: following.user.username,
@@ -50,14 +59,14 @@ export default {
           const fuse = new Fuse(data, this.fuseOption)
           results = []
           fuse.search(this.search).forEach((val) => {
-            this.followings.forEach((following) => {
+            this.user.followings.forEach((following) => {
               if (val.item.username === following.user.username) {
                 results.push(following)
               }
             })
           })
         }
-        this.results = val ? results : this.followings
+        this.results = val ? results : this.user.followings
       },
     },
   },

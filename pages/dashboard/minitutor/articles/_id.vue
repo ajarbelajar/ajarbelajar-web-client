@@ -69,9 +69,9 @@
 <script>
 export default {
   async asyncData({ store, error, params }) {
-    let articles
+    const articles = store.getters('request_article/articles')
     try {
-      articles = await store.dispatch('request_article/fetch')
+      await store.dispatch('category/fetch')
     } catch (e) {
       return error(e)
     }

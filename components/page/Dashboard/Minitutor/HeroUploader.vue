@@ -8,7 +8,7 @@
         <div class="image-wrap">
           <v-lazy-image
             :src="post.hero.thumb"
-            :src-placeholder="post.hero.blur"
+            :src-placeholder="$images.hero.thumb"
           />
         </div>
         <div class="chooser text-center pt-2">
@@ -140,13 +140,6 @@ export default {
   border: 1px dashed $border-color;
   .image-wrap {
     overflow: hidden;
-    .v-lazy-image {
-      filter: blur(10px);
-    }
-    .v-lazy-image-loaded {
-      filter: blur(0);
-    }
-
     img {
       display: block;
       width: 100%;

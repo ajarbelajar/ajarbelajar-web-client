@@ -4,20 +4,30 @@
     <div class="app-profile-dropdown__wrapper">
       <div class="card m-0">
         <div class="card-header card-header-transparent py-30 text-center">
-          <a
+          <nuxt-link
             class="avatar avatar-100 bg-white mb-10 m-xs-0 img-bordered"
-            href="#"
+            to="/dashboard/me/activity"
           >
-            <img :src="$auth.avatar" :alt="$auth.name" />
-          </a>
+            <v-lazy-image
+              :src="$auth.avatar"
+              :src-placeholder="$images.avatar"
+              :alt="$auth.username"
+            />
+          </nuxt-link>
           <div class="font-size-20 text-capitalize">{{ $auth.name }}</div>
           <div class="font-size-14 grey-400 text-lowercase">
             {{ '@' + $auth.username }}
           </div>
         </div>
         <div class="card-body">
-          <a href="#" class="btn btn-inverse btn-block">Dashboard</a>
-          <a href="#" class="btn btn-inverse btn-block">Edit profile</a>
+          <nuxt-link
+            to="/dashboard/me/activity"
+            class="btn btn-inverse btn-block"
+            >Dashboard</nuxt-link
+          >
+          <nuxt-link to="/dashboard/me/edit" class="btn btn-inverse btn-block"
+            >Edit profile</nuxt-link
+          >
         </div>
         <div class="card-footer card-footer-transparent">
           <button

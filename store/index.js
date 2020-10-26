@@ -1,21 +1,4 @@
-import Echo from 'laravel-echo'
 const cookieparser = process.server ? require('cookieparser') : undefined
-
-const echo = (token) => {
-  require('pusher-js')
-  return new Echo({
-    broadcaster: 'pusher',
-    authEndpoint: process.env.baseApiUrl + process.env.pusherAuthEndpoint,
-    auth: {
-      headers: {
-        Authorization: 'Bearer ' + token,
-      },
-    },
-    key: process.env.pusherKey,
-    cluster: 'ap1',
-    forceTLS: true,
-  })
-}
 
 export const state = () => {
   return {
@@ -41,24 +24,18 @@ export const actions = {
     commit('setAuth', auth)
     commit('setToken', token)
 
-    await dispatch('category/fetch')
+    if (auth) {
+      commit('notification/set', auth.notifications)
+      if (auth.minitutor) {
+        commit('request_playlist/set', auth.minitutor.request_playlists)
+        commit('request_article/set', auth.minitutor.request_articles)
+      }
+    }
+
     await dispatch('seo/fetch')
   },
   nuxtClientInit({ dispatch }) {
-    dispatch('listenNotification')
-  },
-  listenNotification({ state, commit }) {
-    if (state.token) {
-      echo(state.token)
-        .private('App.User.' + state.auth.id)
-        .notification((notif) => {
-          commit('setAuth', {
-            ...state.auth,
-            notification_count: state.auth.notification_count + 1,
-          })
-          commit('notification/push', notif)
-        })
-    }
+    dispatch('notification/listen')
   },
 }
 

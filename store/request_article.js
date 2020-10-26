@@ -1,31 +1,12 @@
 export const state = () => {
   return {
     articles: [],
-    fetched: false,
   }
 }
 
 export const getters = {
   articles(state) {
     return state.articles
-  },
-}
-
-export const actions = {
-  fetch({ commit, state }) {
-    return new Promise((resolve, reject) => {
-      if (!state.fetched) {
-        this.$axios
-          .$get('/minitutor/request-articles')
-          .then((articles) => {
-            commit('set', articles)
-            resolve(articles)
-          })
-          .catch(reject)
-      } else {
-        resolve(state.articles)
-      }
-    })
   },
 }
 

@@ -3,8 +3,8 @@
     <v-lazy-image
       class="animate__infinite"
       :class="{ 'animate__heartBeat animate__animated': loading }"
-      :src="$auth.avatar"
-      :src-placeholder="avatar"
+      :src="$auth.avatar || $images.avatar"
+      :src-placeholder="$images.avatar"
       :alt="$auth.username"
     ></v-lazy-image>
     <button
@@ -19,7 +19,6 @@
 </template>
 
 <script>
-import avatarPlaceholder from '@/assets/img/placeholder/avatar.png'
 import FormData from 'form-data'
 
 export default {
@@ -27,11 +26,6 @@ export default {
     return {
       loading: false,
     }
-  },
-  computed: {
-    avatar() {
-      return avatarPlaceholder
-    },
   },
   methods: {
     handleClick(e) {

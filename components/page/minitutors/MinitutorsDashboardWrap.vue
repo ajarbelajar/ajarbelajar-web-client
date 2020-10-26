@@ -120,19 +120,19 @@ export default {
           to: `/minitutors/${this.user.username}/playlists`,
           name: 'Playlist',
           icon: 'wb-video',
-          badge: this.minitutor.playlists_count || '',
+          badge: this.minitutor.playlists.length || '',
         },
         {
           to: `/minitutors/${this.user.username}/articles`,
           name: 'Artikel',
           icon: 'wb-order',
-          badge: this.minitutor.articles_count || '',
+          badge: this.minitutor.articles.length || '',
         },
         {
           to: `/minitutors/${this.user.username}/followers`,
           name: 'Pengikut',
           icon: 'wb-users',
-          badge: this.minitutor.followers_count || '',
+          badge: this.minitutor.followers.length || '',
         },
       ]
     },

@@ -5,8 +5,8 @@
         <div v-sticky class="ab-profile-card-side" sticky-offset="{ top: 60 }">
           <div class="avatar">
             <v-lazy-image
-              :src="$auth.avatar"
-              :src-placeholder="avatar"
+              :src="$auth.avatar || $images.avatar"
+              :src-placeholder="$images.avatar"
               :alt="$auth.username"
             ></v-lazy-image>
             <span class="point">{{ $auth.points }} Poin</span>
@@ -45,12 +45,13 @@
 </template>
 
 <script>
-import avatarPlaceholder from '@/assets/img/placeholder/avatar.png'
+import { mapGetters } from 'vuex'
 export default {
   computed: {
-    avatar() {
-      return avatarPlaceholder
-    },
+    ...mapGetters({
+      playlists: 'request_playlist/playlists',
+      articles: 'request_article/articles',
+    }),
     links() {
       return [
         {
@@ -62,25 +63,25 @@ export default {
           to: '/dashboard/minitutor/playlists',
           name: 'Playlist',
           icon: 'wb-video',
-          badge: this.$auth.minitutor.playlists_count || '',
+          badge: this.playlists.length || '',
         },
         {
           to: '/dashboard/minitutor/articles',
           name: 'Artikel',
           icon: 'wb-list',
-          badge: this.$auth.minitutor.articles_count || '',
+          badge: this.articles.length || '',
         },
         {
           to: '/dashboard/minitutor/comments',
           name: 'Komentar',
           icon: 'wb-chat-group',
-          badge: this.$auth.minitutor.comments_count || '',
+          badge: this.$auth.minitutor.comments.length || '',
         },
         {
           to: '/dashboard/minitutor/feedback',
           name: 'Feedback konstruktif',
           icon: 'wb-reply',
-          badge: this.$auth.minitutor.feedback_count || '',
+          badge: this.$auth.minitutor.feedback.length || '',
         },
       ]
     },

@@ -91,7 +91,7 @@
         class="playlist-watch-card-side"
         :user="playlist.user"
         :minitutor="playlist.minitutor"
-        :lates="playlist.lates"
+        :lates="latesPosts"
       />
     </div>
   </div>
@@ -104,18 +104,18 @@ export default {
     StarRating,
   },
   async asyncData({ store, error, $axios, params, query, redirect }) {
-    const data = {}
+    let data = {}
     try {
-      data.playlist = await $axios.$get(`/playlists/${params.slug}`)
+      data = await $axios.$get(`playlists/${params.slug}`)
     } catch (e) {
       return error(e)
     }
 
+    data.feedback = false
     if (store.state.auth) {
-      data.feedback = false
       try {
         data.feedback = await $axios.$get(
-          '/feedback/playlist/' + data.playlist.id + '/show'
+          `/feedback/playlist/${data.playlist.id}/show`
         )
       } catch (e) {}
     }
@@ -177,9 +177,6 @@ export default {
         this.routerAlive = true
       }, 0)
     },
-  },
-  mounted() {
-    this.$axios.$get(`/playlists/${this.playlist.id}/view`).catch((e) => {})
   },
   head() {
     return {

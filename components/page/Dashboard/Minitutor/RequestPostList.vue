@@ -4,8 +4,8 @@
       <div class="request-post-list-left">
         <div class="request-post-list-thumb">
           <v-lazy-image
-            :src="post.hero.thumb"
-            :src-placeholder="post.hero.blur"
+            :src="post.hero.thumb || $images.hero.thumb"
+            :src-placeholder="$images.hero.thumb"
             :alt="post.title"
           ></v-lazy-image>
           <span v-if="post.requested_at" class="post-status">
@@ -143,13 +143,6 @@ export default {
   box-shadow: $box-shadow-sm;
   margin-bottom: $spacer / 2;
   border-bottom: 4px solid $primary;
-
-  .v-lazy-image {
-    filter: blur(10px);
-  }
-  .v-lazy-image-loaded {
-    filter: blur(0);
-  }
 
   &.requested {
     border-color: $danger;

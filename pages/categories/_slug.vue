@@ -1,35 +1,30 @@
 <template>
-  <div class="container-fluid mb-2">
-    <app-post-list
-      v-for="(post, i) in posts"
-      :key="i"
-      :post="post"
-      :type="post.type"
-    />
+  <div class="container-fluid">
+    <div class="row">
+      <div
+        v-for="item in data"
+        :key="item.id"
+        class="col-lg-3 col-md-4 col-sm-6 pb-3"
+      >
+        <app-post-list-2 :post="item" :type="item.type" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  async asyncData({ params, store, $axios, error }) {
-    let category = null
-
-    store.state.category.categories.forEach((item) => {
-      if (item.slug === params.slug) {
-        category = item
-      }
-    })
-
-    if (!category) return error({ statusCode: 404 })
-
-    let posts = []
+  async asyncData({ params, $axios, error }) {
     try {
-      posts = await $axios.$get(`/categories/${category.id}`)
+      return await $axios.$get(`/categories/${params.slug}`)
     } catch (e) {
       return error(e)
     }
-
-    return { posts }
+  },
+  head() {
+    return {
+      title: 'Kategori ' + this.name,
+    }
   },
 }
 </script>

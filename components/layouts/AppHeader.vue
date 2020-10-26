@@ -44,11 +44,15 @@
                   <i class="wb-search"></i>
                   <span class="label"></span>
                 </a>
-                <app-notification-wrap v-if="$auth" />
+                <app-header-notification v-if="$auth" />
               </div>
               <div v-if="$auth" class="right-avatar">
                 <span class="avatar">
-                  <img :src="$auth.avatar" :alt="$auth.name" />
+                  <v-lazy-image
+                    :src="$auth.avatar"
+                    :src-placeholder="$images.avatar"
+                    :alt="$auth.username"
+                  />
                 </span>
                 <app-header-profile-dropdown
                   class="app-header-profile-dropdown"

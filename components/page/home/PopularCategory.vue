@@ -12,6 +12,11 @@
         </nuxt-link>
       </div>
     </div>
+    <div class="text-center py-2">
+      <nuxt-link class="btn btn-primary font-weight-bold" to="/categories"
+        >Tampilkan lebih banyak</nuxt-link
+      >
+    </div>
   </div>
 </template>
 <script>

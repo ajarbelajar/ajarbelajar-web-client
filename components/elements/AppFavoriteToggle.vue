@@ -7,7 +7,7 @@
     @click.prevent="handleClick"
   >
     <i class="icon wb-heart"></i>
-    <span>{{ text }}</span>
+    <span v-if="!noText">{{ text }}</span>
   </button>
 </template>
 
@@ -22,6 +22,10 @@ export default {
       type: Number,
       required: true,
       default: 0,
+    },
+    noText: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {

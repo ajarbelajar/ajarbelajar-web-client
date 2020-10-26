@@ -1,31 +1,12 @@
 export const state = () => {
   return {
     playlists: [],
-    fetched: false,
   }
 }
 
 export const getters = {
   playlists(state) {
     return state.playlists
-  },
-}
-
-export const actions = {
-  fetch({ commit, state }) {
-    return new Promise((resolve, reject) => {
-      if (!state.fetched) {
-        this.$axios
-          .$get('/minitutor/request-playlists')
-          .then((playlists) => {
-            commit('set', playlists)
-            resolve(playlists)
-          })
-          .catch(reject)
-      } else {
-        resolve(state.playlists)
-      }
-    })
   },
 }
 
@@ -51,7 +32,9 @@ export const mutations = {
         playlists.push(playlist)
       }
     })
-    state.playlists = playlists
+    state.playlists = playlists.sort((a, b) => {
+      return new Date(b.updated_at * 1000) - new Date(a.updated_at * 1000)
+    })
   },
   remove(state, id) {
     const playlists = []

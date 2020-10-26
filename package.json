@@ -1,6 +1,7 @@
 {
-  "name": "AjarBelajar",
+  "name": "ajar-belajar",
   "version": "1.0.0",
+  "description": "AjarBelajar diisi oleh konten dari MiniTutor dengan berbagai macam latar belakang. Ada banyak bidang ilmu dan topik bahasan yang bisa disimak.",
   "private": true,
   "scripts": {
     "dev": "nuxt",

@@ -100,9 +100,9 @@ export default {
     draggable,
   },
   async asyncData({ store, error, params }) {
-    let playlists
+    const playlists = store.getters('request_playlist/playlists')
     try {
-      playlists = await store.dispatch('request_playlist/fetch')
+      await store.dispatch('category/fetch')
     } catch (e) {
       return error(e)
     }

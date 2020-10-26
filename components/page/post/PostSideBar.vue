@@ -6,8 +6,8 @@
           <nuxt-link :to="`/minitutor/${user.username}`" class="avatar">
             <v-lazy-image
               class="avatar-holder"
-              :src="user.avatar"
-              :src-placeholder="avatar"
+              :src="user.avatar || $images.avatar"
+              :src-placeholder="$images.avatar"
               :alt="user.username"
             />
             <span class="minitutor-point">{{ user.points }} Poin</span>
@@ -97,7 +97,6 @@
 </template>
 
 <script>
-import Avatar from '@/assets/img/placeholder/avatar.png'
 export default {
   props: {
     user: {
@@ -117,11 +116,6 @@ export default {
     return {
       latesSorted: [],
     }
-  },
-  computed: {
-    avatar() {
-      return Avatar
-    },
   },
   created() {
     const arr = []

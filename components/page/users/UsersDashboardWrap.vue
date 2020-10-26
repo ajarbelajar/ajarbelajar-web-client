@@ -71,7 +71,7 @@
         <div class="user-page-card-right">
           <nuxt-link
             v-if="user.minitutor"
-            :to="`/minitutor/${user.username}`"
+            :to="`/minitutors/${user.username}`"
             class="btn btn-primary btn-sm"
             >Lihat Minitutor</nuxt-link
           >

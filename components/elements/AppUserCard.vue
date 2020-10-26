@@ -4,19 +4,19 @@
       <nuxt-link :to="`/users/${user.username}/activity`" class="avatar">
         <v-lazy-image
           class="avatar-holder"
-          :src="user.avatar"
-          :src-placeholder="Avatar"
+          :src="user.avatar || $images.avatar"
+          :src-placeholder="$images.avatar"
           :alt="user.username"
         ></v-lazy-image>
       </nuxt-link>
     </div>
     <div class="info">
-      <h4 class="info-name text-truncate">
+      <h4 class="info-name">
         <nuxt-link :to="`/users/${user.username}/activity`">
           {{ user.name }}
         </nuxt-link>
       </h4>
-      <span class="info-username text-truncate">
+      <span class="info-username">
         <nuxt-link :to="`/users/${user.username}/activity`">
           @{{ user.username }}
         </nuxt-link>
@@ -64,7 +64,7 @@
         <i class="icon socicon-youtube"></i>
       </a>
     </div>
-    <div class="actions">
+    <div class="actions mt-auto">
       <nuxt-link
         :to="`/users/${user.username}/activity`"
         class="btn btn-primary btn-sm px-30"
@@ -76,7 +76,6 @@
 </template>
 
 <script>
-import Avatar from '@/assets/img/placeholder/avatar.png'
 export default {
   props: {
     user: {
@@ -84,24 +83,20 @@ export default {
       default: () => ({}),
     },
   },
-  data() {
-    return {
-      Avatar,
-    }
-  },
 }
 </script>
 
 <style lang="scss">
 .user-card-sm {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
   background-color: $white;
   padding: 15px;
-  margin-bottom: 15px;
   border-radius: 4px;
   border-bottom: 4px solid $primary;
   text-align: center;
-  width: 100%;
 
   .user-pic {
     padding: 15px;

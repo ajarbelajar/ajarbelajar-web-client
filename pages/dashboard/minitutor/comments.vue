@@ -15,8 +15,8 @@
               >
                 <v-lazy-image
                   class="avatar-holder"
-                  :src="comment.user.avatar"
-                  :src-placeholder="Avatar"
+                  :src="comment.user.avatar || $images.avatar"
+                  :src-placeholder="$images.avatar"
                   :alt="comment.user.username"
                 />
               </nuxt-link>
@@ -38,31 +38,23 @@
         </div>
       </div>
     </div>
-    <div v-else class="py-100 panel panel-body">
-      <h3 class="text-muted text-center">
-        Belum ada komentar pada artikel atau playlist anda.
-      </h3>
+    <div v-else class="container-fluid">
+      <div class="py-100 panel panel-body">
+        <h3 class="text-muted text-center">
+          Belum ada komentar pada artikel atau playlist anda.
+        </h3>
+      </div>
     </div>
   </minitutor-dashboard-wrap>
 </template>
 
 <script>
-import Avatar from '@/assets/img/placeholder/avatar.png'
 export default {
   middleware: ['auth', 'activeMinitutor'],
-  async asyncData({ $axios, store, error }) {
-    try {
-      return {
-        comments: await $axios.$get('/minitutor/comments'),
-      }
-    } catch (e) {
-      error(e)
-    }
-  },
-  data() {
-    return {
-      Avatar,
-    }
+  computed: {
+    comments() {
+      return this.$auth.minitutor.comments
+    },
   },
   head() {
     return this.$seo()

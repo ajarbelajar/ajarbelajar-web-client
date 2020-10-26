@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     handleClick(id) {
-      this.$emit('loading', true)
+      this.$emit('update-loading', true)
       this.$axios
         .$get('notifications/read/' + id)
         .then((data) => {
@@ -43,18 +43,12 @@ export default {
               this.$router.push('/dashboard/minitutor/feedback')
               break
           }
-          if (!this.notification.read_at) {
-            this.$store.commit('setAuth', {
-              ...this.$auth,
-              notification_count: this.$auth.notification_count - 1,
-            })
-          }
           this.$store.commit('notification/read', id)
           this.$emit('close')
         })
         .catch((err) => {
           this.$toast.danger(this.$errorMessage(err))
-          this.$emit('loading', false)
+          this.$emit('update-loading', false)
         })
     },
   },

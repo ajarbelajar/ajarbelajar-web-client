@@ -1,7 +1,8 @@
+import Echo from 'laravel-echo'
+
 export const state = () => {
   return {
     notifications: [],
-    fetched: false,
   }
 }
 
@@ -9,38 +10,52 @@ export const getters = {
   notifications(state) {
     return state.notifications
   },
-  fetched(state) {
-    return state.fetched
+  unreadNotifications(state) {
+    return state.notifications.filter((notification) => {
+      return !!notification.read_at
+    })
   },
 }
 
 export const actions = {
-  fetch({ commit }) {
-    return this.$axios.$get('/notifications').then((notifications) => {
-      commit('set', notifications)
-      return notifications
-    })
+  listen({ commit, rootState }) {
+    if (rootState.token) {
+      require('pusher-js')
+      return new Echo({
+        broadcaster: 'pusher',
+        authEndpoint: process.env.baseApiUrl + process.env.pusherAuthEndpoint,
+        auth: {
+          headers: {
+            Authorization: 'Bearer ' + rootState.token,
+          },
+        },
+        key: process.env.pusherKey,
+        cluster: 'ap1',
+        forceTLS: true,
+      })
+        .private('App.User.' + rootState.auth.id)
+        .notification((notification) => {
+          commit('push', notification)
+        })
+    }
   },
 }
 
 export const mutations = {
   set(state, notifications) {
     state.notifications = notifications
-    state.fetched = true
   },
   push(state, notification) {
-    if (state.fetched) {
-      state.notifications = [
-        {
-          id: notification.id,
-          type: notification.type,
-          data: notification,
-          created_at: Math.floor(Date.now() / 1000),
-          read_at: null,
-        },
-        ...state.notifications,
-      ]
-    }
+    state.notifications = [
+      {
+        id: notification.id,
+        type: notification.type,
+        data: notification,
+        created_at: Math.floor(Date.now() / 1000),
+        read_at: null,
+      },
+      ...state.notifications,
+    ]
   },
   read(state, id) {
     const notifications = []

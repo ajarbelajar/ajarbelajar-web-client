@@ -30,13 +30,6 @@ import Fuse from 'fuse.js'
 
 export default {
   middleware: ['auth', 'activeMinitutor'],
-  async asyncData({ store, error }) {
-    try {
-      await store.dispatch('request_playlist/fetch')
-    } catch (e) {
-      return error(e)
-    }
-  },
   data() {
     return {
       search: '',

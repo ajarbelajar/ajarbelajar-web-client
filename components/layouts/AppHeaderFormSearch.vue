@@ -79,7 +79,11 @@
               >
                 <div class="result-wrapper">
                   <div class="result-thumb">
-                    <img :src="item.img" />
+                    <v-lazy-image
+                      :src="item.img || $images.hero.small"
+                      :src-placeholder="$images.hero.small"
+                      :alt="item.title"
+                    />
                   </div>
                   <div class="result-info">
                     <h4 class="result-title">
@@ -150,7 +154,7 @@ export default {
         try {
           if (!this.data.length) {
             this.loading = true
-            this.data = await this.$axios.$get('/search')
+            this.data = (await this.$axios.$get('/search')).data
             this.loading = false
           }
         } catch (e) {

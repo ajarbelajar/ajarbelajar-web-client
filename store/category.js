@@ -1,6 +1,7 @@
 export const state = () => {
   return {
     categories: [],
+    fetched: false,
   }
 }
 
@@ -11,9 +12,12 @@ export const getters = {
 }
 
 export const actions = {
-  fetch({ commit }) {
+  fetch({ commit, state }) {
+    if (state.fetched) {
+      return true
+    }
     return this.$axios.$get('/categories').then((categories) => {
-      commit('set', categories)
+      commit('set', categories.data)
     })
   },
 }
@@ -21,6 +25,7 @@ export const actions = {
 export const mutations = {
   set(state, categories) {
     state.categories = categories
+    state.fetched = true
   },
   push(state, category) {
     state.categories = [...state.categories, category]

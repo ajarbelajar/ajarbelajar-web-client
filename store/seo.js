@@ -12,8 +12,8 @@ export const getters = {
 
 export const actions = {
   fetch({ commit }) {
-    return this.$axios.$get('/seos').then((seos) => {
-      commit('set', seos)
+    return this.$axios.$get('/seos').then(({ data }) => {
+      commit('set', data)
     })
   },
 }

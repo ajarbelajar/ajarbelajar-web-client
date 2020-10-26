@@ -2,33 +2,18 @@
   <div class="new-articles">
     <h3 class="new-articles-title">Artikel Terbaru</h3>
     <div class="row">
-      <div v-for="(article, i) in articles" :key="i" class="col-lg-3">
-        <nuxt-link
-          class="new-articles-card"
-          rel="nofollow"
-          :to="`/articles/${article.slug}`"
-        >
-          <div class="overlay-icon-play">
-            <i class="wb-play"></i>
-          </div>
-          <v-lazy-image
-            :src="article.hero.thumb"
-            :src-placeholder="Placeholder"
-            :alt="article.title"
-            class="img-fluid"
-          ></v-lazy-image>
-          <v-lazy-image
-            class="new-articles-card-avatar"
-            :src="article.user.avatar"
-            :src-placeholder="Avatar"
-            :alt="article.user.username"
-          ></v-lazy-image>
-          <span v-if="article.category" class="info-category">{{
-            article.category.name
-          }}</span>
-          <h4 class="info-title text-truncate">{{ article.title }}</h4>
-        </nuxt-link>
+      <div
+        v-for="(article, i) in articles"
+        :key="i"
+        class="col-lg-3 col-md-4 col-sm-2 pb-3"
+      >
+        <app-post-list-2 :post="article" type="Article" />
       </div>
+    </div>
+    <div class="text-center py-2">
+      <nuxt-link class="btn btn-primary font-weight-bold" to="/articles"
+        >Tampilkan lebih banyak</nuxt-link
+      >
     </div>
   </div>
 </template>

@@ -1,13 +1,14 @@
 <template>
   <nuxt-link
+    v-if="activity.post.type"
     class="activity-card"
-    :to="`/${activity.type.toLowerCase()}s/${activity.slug}`"
+    :to="`/${activity.post.type.toLowerCase()}s/${activity.post.slug}`"
   >
     <div class="left">
       <v-lazy-image
-        :src="activity.hero.thumb"
-        :src-placeholder="Placeholder"
-        :alt="activity.title"
+        :src="activity.post.hero.thumb || $images.hero.thumb"
+        :src-placeholder="$images.hero.thumb"
+        :alt="activity.post.title"
       ></v-lazy-image>
     </div>
     <div class="right">
@@ -15,31 +16,25 @@
         {{ activity.updated_at | moment('from', 'now') }}
         -
         {{
-          activity.type === 'Article'
+          activity.post.type === 'Article'
             ? 'Kamu membaca artikel'
             : 'Kamu menonton video'
         }}
       </div>
       <h3 class="info-title">
-        {{ activity.title }}
+        {{ activity.post.title }}
       </h3>
     </div>
   </nuxt-link>
 </template>
 
 <script>
-import Placeholder from '@/assets/img/placeholder/hero-thumb.jpg'
 export default {
   props: {
     activity: {
       type: Object,
       default: () => ({}),
     },
-  },
-  data() {
-    return {
-      Placeholder,
-    }
   },
 }
 </script>

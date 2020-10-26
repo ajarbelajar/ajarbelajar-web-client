@@ -3,7 +3,9 @@
     <swiper-slide v-for="(playlist, i) in playlists" :key="i">
       <div
         class="card"
-        :style="`background-image: url(${playlist.hero.large})`"
+        :style="`background-image: url(${
+          playlist.hero.large || $images.hero.large
+        })`"
       >
         <div class="card-block">
           <div class="filter">
@@ -16,7 +18,7 @@
                 <div class="description-info">
                   by {{ playlist.user.name }} -
                   {{ playlist.created_at | moment('dddd, Do MMMM YYYY') }} -
-                  {{ playlist.views_count }}x dilihat
+                  {{ playlist.view_count }}x dilihat
                 </div>
                 <nuxt-link
                   rel="nofollow"

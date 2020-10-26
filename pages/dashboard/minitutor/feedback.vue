@@ -7,10 +7,12 @@
         :feedback="val"
       />
     </div>
-    <div v-else class="py-100 panel panel-body">
-      <h3 class="text-muted text-center">
-        Belum ada Feedback pada artikel atau playlist anda.
-      </h3>
+    <div v-else class="container-fluid">
+      <div class="py-100 panel panel-body">
+        <h3 class="text-muted text-center">
+          Belum ada Feedback pada artikel atau playlist anda.
+        </h3>
+      </div>
     </div>
   </minitutor-dashboard-wrap>
 </template>
@@ -18,14 +20,10 @@
 <script>
 export default {
   middleware: ['auth', 'activeMinitutor'],
-  async asyncData({ $axios, store, error }) {
-    try {
-      return {
-        feedback: await $axios.$get('/minitutor/feedback'),
-      }
-    } catch (e) {
-      error(e)
-    }
+  computed: {
+    feedback() {
+      return this.$auth.minitutor.feedback
+    },
   },
   head() {
     return this.$seo()

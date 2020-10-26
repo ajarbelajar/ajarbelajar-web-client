@@ -48,6 +48,7 @@ export default {
   ],
 
   plugins: [
+    { src: '~/plugins/Image', ssr: true },
     { src: '~/plugins/Axios.js', ssr: true },
     { src: '~/plugins/Auth.js', ssr: true },
     { src: '~/plugins/ApiErrorResponse.js', ssr: true },
@@ -71,7 +72,6 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/style-resources',
-    'bootstrap-vue/nuxt',
     'nuxt-client-init-module',
   ],
 
@@ -83,25 +83,4 @@ export default {
   styleResources: {
     scss: ['@/assets/scss/_vars.scss'],
   },
-
-  bootstrapVue: {
-    bootstrapCSS: false,
-    bootstrapVueCSS: false,
-    components: ['b-pagination-nav', 'b-sidebar'],
-    directives: ['v-b-toggle'],
-    componentPlugins: [],
-    directivePlugins: [],
-  },
-
-  // build: {
-  //   vendor: [
-  //     'axios',
-  //     'cookieparser',
-  //     'form-data',
-  //     'fuse.js',
-  //     'moment',
-  //     'moment/locale/id',
-  //     'vue-moment',
-  //   ],
-  // },
 }
