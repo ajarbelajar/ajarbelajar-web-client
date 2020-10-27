@@ -5,14 +5,14 @@
       <div
         v-for="(article, i) in articles"
         :key="i"
-        class="col-lg-3 col-md-4 col-sm-2 pb-3"
+        class="col-lg-3 col-md-4 col-sm-6 pb-3"
       >
         <app-post-list-2 :post="article" type="Article" />
       </div>
     </div>
     <div class="text-center py-2">
       <nuxt-link class="btn btn-primary font-weight-bold" to="/articles"
-        >Tampilkan lebih banyak</nuxt-link
+        >Muat lebih banyak artikel</nuxt-link
       >
     </div>
   </div>

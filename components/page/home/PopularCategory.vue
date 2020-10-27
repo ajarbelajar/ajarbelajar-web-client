@@ -1,8 +1,11 @@
 <template>
   <div class="popular-categories">
-    <h3 class="popular-categories-title">Kategori populer</h3>
     <div class="row">
-      <div v-for="(category, i) in categories" :key="i" class="col-lg-3">
+      <div
+        v-for="(category, i) in categories"
+        :key="i"
+        class="col-lg-3 col-md-4 col-sm-6"
+      >
         <nuxt-link
           class="popular-categories-card"
           rel="nofollow"
@@ -14,7 +17,7 @@
     </div>
     <div class="text-center py-2">
       <nuxt-link class="btn btn-primary font-weight-bold" to="/categories"
-        >Tampilkan lebih banyak</nuxt-link
+        >Muat lebih banyak kategori</nuxt-link
       >
     </div>
   </div>

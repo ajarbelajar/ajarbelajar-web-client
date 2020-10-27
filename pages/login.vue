@@ -99,7 +99,7 @@ export default {
       if (this.$route.query.next) {
         return this.$router.push(this.$route.query.next)
       }
-      return this.$router.push('/')
+      return this.$router.push('/home')
     },
   },
   head() {

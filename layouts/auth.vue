@@ -1,13 +1,13 @@
 <template>
   <div class="auth-layout">
     <header class="py-3 d-flex bg-white shadow-sm">
-      <a href="/" class="d-block m-auto">
+      <nuxt-link to="/home" class="d-block m-auto">
         <img
           src="@/assets/img/logo/logo.svg"
           height="40"
           alt="Logo Ajarbelajar"
         />
-      </a>
+      </nuxt-link>
     </header>
     <main class="container-fluid">
       <div class="row">

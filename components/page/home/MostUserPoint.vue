@@ -7,7 +7,11 @@
       </div>
     </div>
     <div class="row">
-      <div v-for="(user, i) in users" :key="i" class="col-lg-3">
+      <div
+        v-for="(user, i) in users"
+        :key="i"
+        class="col-lg-3 col-md-4 col-sm-6"
+      >
         <nuxt-link
           class="most-user-point-card"
           :to="`/users/${user.username}/activity`"

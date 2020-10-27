@@ -3,7 +3,7 @@
     <div class="list-group">
       <nuxt-link
         class="list-group-item"
-        to="/"
+        to="/home"
         active-class=""
         exact-active-class="active"
         @click.native="$sidebar.display(false)"

@@ -75,7 +75,7 @@
       <app-follow-toggle :mid="minitutor.id" class="btn-xs" />
     </div>
 
-    <div class="minitutor-card-counter">
+    <div class="minitutor-card-counter mt-auto">
       <div class="column">
         <span class="number">{{ minitutor.followers_count }}</span>
         <span class="name">Pengikut</span>

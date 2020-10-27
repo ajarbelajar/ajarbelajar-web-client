@@ -1,72 +1,66 @@
 <template>
   <div class="app-header">
     <div class="app-header-root">
-      <div class="app-header-wrapper">
-        <div class="left">
-          <div class="container-fluid">
-            <div class="left-wrapper">
-              <nuxt-link to="/home" class="brand">
-                <img
-                  class="logo-text"
-                  src="@/assets/img/logo/logo-text.svg"
-                  alt="Logo ajarbelajar"
-                />
-                <img
-                  class="logo-only"
-                  src="@/assets/img/logo/logo.svg"
-                  alt="Logo ajarbelajar"
-                />
-              </nuxt-link>
+      <div class="container">
+        <div class="app-header-wrapper">
+          <div class="left">
+            <div class="container-fluid pl-0">
+              <div class="left-wrapper">
+                <nuxt-link to="/home" class="brand">
+                  <img
+                    class="logo-text"
+                    src="@/assets/img/logo/logo-text.svg"
+                    alt="Logo ajarbelajar"
+                  />
+                  <img
+                    class="logo-only"
+                    src="@/assets/img/logo/logo.svg"
+                    alt="Logo ajarbelajar"
+                  />
+                </nuxt-link>
+              </div>
             </div>
           </div>
-        </div>
-        <app-header-form-search
-          :open="searchOpen"
-          @close-form="searchOpen = false"
-        />
-        <div class="right" :class="{ auth: $auth }">
-          <div class="container-fluid">
-            <div class="right-wrapper">
-              <div class="right-actions">
-                <a
-                  href="#"
-                  class="action-toggle d-block d-lg-none"
-                  @click.prevent="$sidebar.display(true)"
-                >
-                  <i class="wb-menu"></i>
-                  <span class="label"></span>
-                </a>
-                <a
-                  href="#"
-                  class="action-toggle d-block d-lg-none"
-                  @click.prevent="searchOpen = true"
-                >
-                  <i class="wb-search"></i>
-                  <span class="label"></span>
-                </a>
-                <app-header-notification v-if="$auth" />
-              </div>
-              <div v-if="$auth" class="right-avatar">
-                <span class="avatar">
-                  <v-lazy-image
-                    :src="$auth.avatar"
-                    :src-placeholder="$images.avatar"
-                    :alt="$auth.username"
+          <app-header-form-search
+            :open="searchOpen"
+            @close-form="searchOpen = false"
+          />
+          <div class="right" :class="{ auth: $auth }">
+            <div class="container-fluid pr-0">
+              <div class="right-wrapper">
+                <div class="right-actions">
+                  <a
+                    href="#"
+                    class="action-toggle d-block d-lg-none"
+                    @click.prevent="searchOpen = true"
+                  >
+                    <i class="wb-search"></i>
+                    <span class="label"></span>
+                  </a>
+                  <app-header-notification v-if="$auth" />
+                </div>
+                <div v-if="$auth" class="right-avatar">
+                  <span class="avatar">
+                    <v-lazy-image
+                      :src="$auth.avatar"
+                      :src-placeholder="$images.avatar"
+                      :alt="$auth.username"
+                    />
+                  </span>
+                  <app-header-profile-dropdown
+                    class="app-header-profile-dropdown"
                   />
-                </span>
-                <app-header-profile-dropdown
-                  class="app-header-profile-dropdown"
-                />
-              </div>
-              <div v-else class="right-auth-buttons">
-                <nuxt-link
-                  to="/login"
-                  class="btn btn-outline btn-default mr-10 d-none d-md-block"
-                  >Masuk</nuxt-link
-                >
-                <nuxt-link to="/register" class="btn btn-primary"
-                  >Daftar</nuxt-link
-                >
+                </div>
+                <div v-else class="right-auth-buttons">
+                  <nuxt-link
+                    to="/login"
+                    class="btn btn-outline btn-default mr-10 d-none d-md-block"
+                    >Masuk</nuxt-link
+                  >
+                  <nuxt-link to="/register" class="btn btn-primary"
+                    >Daftar</nuxt-link
+                  >
+                </div>
               </div>
             </div>
           </div>

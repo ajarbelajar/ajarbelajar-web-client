@@ -3,7 +3,7 @@
     <div class="creator-card">
       <div class="creator-card-body">
         <div class="user-pic">
-          <nuxt-link :to="`/minitutor/${user.username}`" class="avatar">
+          <nuxt-link :to="`/minitutors/${user.username}`" class="avatar">
             <v-lazy-image
               class="avatar-holder"
               :src="user.avatar || $images.avatar"
