@@ -1,7 +1,7 @@
 <template>
   <div>
     <section
-      class="welcome-header"
+      class="welcome-header m-0"
       :style="`background-image: url('${$images.background}')`"
     >
       <div class="container">
@@ -22,6 +22,79 @@
         </div>
       </div>
     </section>
+
+    <div class="user-post-count py-30">
+      <div class="container">
+        <h1 class="user-post-count-title">
+          Beragam, dan akan terus bertumbuh!
+        </h1>
+        <p class="user-post-count-description">
+          AjarBelajar diisi oleh konten dari MiniTutor dengan berbagai macam
+          latar belakang. Ada banyak bidang ilmu dan topik bahasan yang bisa
+          disimak, dan akan terus bertambah.
+        </p>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="card p-30 flex-row justify-content-between">
+              <div class="white">
+                <i
+                  class="icon icon-circle icon-2x wb-user-circle bg-red-600"
+                ></i>
+              </div>
+              <div class="counter counter-md counter text-right">
+                <div class="counter-number-group">
+                  <span class="counter-number">618</span>
+                  <span class="counter-number-related text-capitalize"
+                    >Pengguna</span
+                  >
+                </div>
+                <div class="counter-label text-capitalize font-size-16">
+                  Terdaftar
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card p-30 flex-row justify-content-between">
+              <div class="white">
+                <i class="icon icon-circle icon-2x wb-users bg-indigo-600"></i>
+              </div>
+              <div class="counter counter-md counter text-right">
+                <div class="counter-number-group">
+                  <span class="counter-number">70</span>
+                  <span class="counter-number-related text-capitalize"
+                    >MiniTutor</span
+                  >
+                </div>
+                <div class="counter-label text-capitalize font-size-16">
+                  Berkontribusi
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card p-30 flex-row justify-content-between">
+              <div class="white">
+                <i
+                  class="icon icon-circle icon-2x wb-clipboard bg-green-600"
+                ></i>
+              </div>
+              <div class="counter counter-md counter text-right">
+                <div class="counter-number-group">
+                  <span class="counter-number">203</span>
+                  <span class="counter-number-related text-capitalize"
+                    >Postingan</span
+                  >
+                </div>
+                <div class="counter-label text-capitalize font-size-16">
+                  Terbit
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="welcome-section-1">
       <div class="container">
@@ -84,7 +157,7 @@
                 </h3>
                 <p class="section-paragraph lead mb-4">
                   Dengan pengajar berkualitas dari lulusan universitas terbaik
-                  didunia, belajar apapun untuk memuaskan hasrat ingin tahumu.
+                  di dunia. Belajar apapun untuk memuaskan hasrat ingin tahumu.
                 </p>
                 <nuxt-link to="/home" class="btn btn-wide btn-primary"
                   >Aku mau belajar online!</nuxt-link
@@ -107,7 +180,7 @@
                 </h3>
                 <p class="section-paragraph lead mb-4">
                   Buat kelas online dengan mudah, dengan fitur marketing dan
-                  pembayaran yang terintegrasi yuk mengajar dengan passion!.
+                  pembayaran yang terintegrasi. Yuk mengajar dengan passion!.
                 </p>
                 <nuxt-link to="/register" class="btn btn-wide btn-primary"
                   >Aku mau mengajar online!</nuxt-link
@@ -126,7 +199,7 @@
             <div class="col-md-8 pb-4">
               <div class="my-auto px-md-4">
                 <h3 class="section-title display-3 text-primary">
-                  Diskusi dengan para <i>lifelog lerner</i>.
+                  Diskusi dengan para <i>lifelong learner</i>.
                 </h3>
                 <p class="section-paragraph lead mb-4">
                   Bergabung dengan para pembelajar seumur hidup -- dapatkan
