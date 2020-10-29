@@ -149,51 +149,22 @@
       <div class="container">
         <div class="testimonial testimonial-reverse">
           <ul class="testimonial-ul row">
-            <li class="testimonial-item col-md-4">
+            <li
+              v-for="(item, i) in testimoni"
+              :key="i"
+              class="testimonial-item col-md-4"
+            >
               <div class="testimonial-content">
-                <p class="text-dark">
-                  Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor
-                  neque adipiscing diam, a cursus ipsum ante quis turpis.
-                </p>
+                <!-- eslint-disable-next-line vue/no-v-html -->
+                <p class="text-dark" v-html="item.message"></p>
               </div>
               <div class="testimonial-image">
                 <span class="avatar" href="javascript:void(0)">
-                  <img src="https://via.placeholder.com/120" alt="image" />
+                  <img :src="item.avatar" :alt="item.name" />
                 </span>
               </div>
-              <span class="testimonial-author">June Lane</span>
-              <span class="testimonial-company">Web Designer</span>
-            </li>
-            <li class="testimonial-item col-md-4">
-              <div class="testimonial-content">
-                <p class="text-dark">
-                  Suspendisse in justo eu magna luctus suscipit. Sed lectus.
-                  Integer euismod lacus luctus magna.
-                </p>
-              </div>
-              <div class="testimonial-image">
-                <span class="avatar" href="javascript:void(0)">
-                  <img src="https://via.placeholder.com/120" alt="image" />
-                </span>
-              </div>
-              <span class="testimonial-author">Edward Fletcher</span>
-              <span class="testimonial-company">Videographer</span>
-            </li>
-            <li class="testimonial-item col-md-4">
-              <div class="testimonial-content">
-                <p class="text-dark">
-                  Nulla quis sem at nibh elementum imperdiet. Duis sagittis
-                  ipsum. Praesent mauris. Fusce nec tellus sed augue semper
-                  porta.
-                </p>
-              </div>
-              <div class="testimonial-image">
-                <span class="avatar" href="javascript:void(0)">
-                  <img src="https://via.placeholder.com/120" alt="image" />
-                </span>
-              </div>
-              <span class="testimonial-author">Crystal Bates</span>
-              <span class="testimonial-company">Wordpress Ninja</span>
+              <span class="testimonial-author">{{ item.name }}</span>
+              <span class="testimonial-company">MiniTutor Ajarbelajar</span>
             </li>
           </ul>
         </div>
@@ -215,6 +186,30 @@
 <script>
 export default {
   layout: 'welcome',
+  computed: {
+    testimoni() {
+      return [
+        {
+          name: 'Hanna Christina Uranus',
+          avatar: '/mt_hanna.jpeg',
+          message:
+            'AjarBelajar banyak ngasih kesempatan baru, khususnya biar makin percaya diri dengan bidang keilmuan. Selain itu, bisa dengan mudah sharing dan kolaborasi dengan MiniTutor dari keilmuan lain. Komunitas ini juga sangat suportif, dinamis dan beragam isinya, jadi sangat mengembangkan dirisecara pribadi dan profesional.',
+        },
+        {
+          name: 'Fajar Ryan Akhra',
+          avatar: '/mt_ryan.jpeg',
+          message:
+            'AjarBelajar menjadi tempat untuk aku belajar dari perspektif ilmu lain sekaligus menjadi tempat sharing ilmu - ilmu yang aku simpan sendiri. ',
+        },
+        {
+          name: 'Annisa Ellen Brillyani',
+          avatar: '/mt_ellen.jpeg',
+          message:
+            'Di AjarBelajar bisa dapet ilmu ilmu baru dari berbagai macam bidang yang bener-bener ngebuka jendela pengetahuan banget dan itu gratis tanpa ada biaya apapun. <br />Selain Itu juga adanya AjarBelajar, aku sebagai minitutor bisa dengan bebas untuk berbagi  bidang yang sedang aku tekuni dan bisa bermanfaat buat ornag lain.',
+        },
+      ]
+    },
+  },
   head() {
     return this.$seo()
   },

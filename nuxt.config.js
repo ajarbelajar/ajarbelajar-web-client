@@ -8,6 +8,7 @@ export default {
     baseApiUrl: process.env.BASE_API_URL || 'http://127.0.0.1:8000/api',
     pusherKey: process.env.PUSHER_KEY || '',
     pusherAuthEndpoint: process.env.PUSHER_AUTH_ENDPOINT || '/broadcast',
+    analytics_tracking_id: process.env.ANALYTICS_TRACKING_ID || 'UA-XXXXXXXX-X',
   },
 
   loading: {
@@ -62,6 +63,7 @@ export default {
     { src: '~/plugins/ClickOutside', ssr: false },
     { src: '~/plugins/Seo', ssr: true },
     { src: '~/plugins/InfiniteLoading', ssr: false },
+    { src: '~/plugins/ga', ssr: false },
   ],
 
   components: true,
