@@ -192,6 +192,8 @@ export default {
   @include media-breakpoint-down(md) {
     position: fixed;
     display: none;
+    right: 0;
+    left: 0;
     &.open {
       display: block;
     }

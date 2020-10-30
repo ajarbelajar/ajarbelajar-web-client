@@ -9,6 +9,7 @@ import Background from '~/assets/img/background/hero.jpg'
 import svg1 from '~/assets/img/svg/1.svg'
 import svg2 from '~/assets/img/svg/2.svg'
 import svg3 from '~/assets/img/svg/3.svg'
+import curve from '~/assets/img/svg/curve.svg'
 
 export default function (contex, inject) {
   inject('images', {
@@ -28,6 +29,7 @@ export default function (contex, inject) {
       svg1,
       svg2,
       svg3,
+      curve,
     },
   })
 }
