@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="article-watch-card">
       <div class="article-watch-card-content">
-        <article>
+        <article v-if="$auth">
           <v-lazy-image
             :src="article.hero.large || $images.hero.large"
             class="hero"
@@ -51,6 +51,7 @@
             <editorjs-compiler :editor="JSON.parse(article.body)" />
           </div>
         </article>
+        <post-auth-required v-else :post="article" />
         <app-feedback
           v-if="$auth && !feedback"
           :url="`/feedback/article/${article.id}`"

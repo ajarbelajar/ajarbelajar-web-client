@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div
       class="join-minitutor-card mb-2"
-      :style="`background-image: url(${background})`"
+      :style="`background-image: url(${$images.background})`"
     >
       <div class="join-minitutor-card_filter">
         <div class="join-minitutor-card_content">
@@ -44,7 +44,6 @@
 </template>
 
 <script>
-import Background from '@/assets/img/background/people-team.jpg'
 export default {
   middleware: 'authNext',
   async asyncData({ $axios }) {
@@ -54,11 +53,6 @@ export default {
       allowCreate = res.allowCreate
     } catch (e) {}
     return { allowCreate }
-  },
-  computed: {
-    background() {
-      return Background
-    },
   },
   head() {
     return this.$seo()

@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="playlist-watch-card">
       <div class="playlist-watch-card-content">
-        <article>
+        <article v-if="$auth">
           <div v-if="routerAlive" class="hero">
             <app-video-simple
               :options="{
@@ -76,6 +76,7 @@
             <p>{{ playlist.description }}</p>
           </div>
         </article>
+        <post-auth-required v-else :post="playlist" />
         <app-feedback
           v-if="$auth && !feedback"
           :url="`/feedback/playlist/${playlist.id}`"
