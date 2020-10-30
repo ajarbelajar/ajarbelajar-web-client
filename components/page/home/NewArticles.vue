@@ -7,7 +7,7 @@
         :key="i"
         class="col-lg-3 col-md-4 col-sm-6 pb-3"
       >
-        <app-post-list-2 :post="article" type="Article" />
+        <app-post-list :post="article" type="Article" />
       </div>
     </div>
     <div class="text-center py-2">

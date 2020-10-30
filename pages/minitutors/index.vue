@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div v-for="(result, i) in data" :key="i" class="col-md-3 pb-3">
-        <app-minitutor-card-2
+        <app-minitutor-card
           :user="result.user"
           :minitutor="result.minitutor"
         />

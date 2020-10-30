@@ -1,61 +1,58 @@
 <template>
-  <div class="ab-post-list">
-    <div class="ab-post-list-left">
-      <div class="ab-post-list-thumb">
-        <v-lazy-image
-          :src="post.hero.thumb"
-          :src-placeholder="Placeholder"
-          :alt="post.hero.original_name"
-        ></v-lazy-image>
-        <span v-if="type === 'Article'" class="post-type">
-          Artikel
-        </span>
-        <span v-else class="post-type red">
-          Playlist
-        </span>
-      </div>
+  <div class="app-post-card">
+    <div class="card-thumb">
+      <nuxt-link
+        v-if="post.category"
+        :to="`/categories/${post.category.slug}`"
+        class="category-badge"
+        >{{ post.category.name }}</nuxt-link
+      >
+      <v-lazy-image
+        class="user-avatar"
+        :src="post.user.avatar || $images.avatar"
+        :src-placeholder="$images.avatar"
+        :alt="post.user.username"
+      ></v-lazy-image>
+      <v-lazy-image
+        :src="post.hero.thumb || $images.hero.thumb"
+        :src-placeholder="$images.hero.thumb"
+        :alt="post.title"
+        class="img-fluid thumb-img"
+      ></v-lazy-image>
     </div>
-    <div class="ab-post-list-right">
-      <span class="info-time">
+    <div class="card-content">
+      <span class="time-info">
         {{ post.created_at | moment('dddd, Do MMMM YYYY') }}
       </span>
-      <h3 class="info-title">
-        <nuxt-link rel="nofollow" :to="postUrl">{{ post.title }}</nuxt-link>
-      </h3>
-      <span v-if="post.category" class="category-info">
-        {{ post.category.name }}
+      <h4 class="post-title">{{ post.title }}</h4>
+      <span class="author-info"
+        >Dari <span>{{ post.user.name }}</span></span
+      >
+    </div>
+    <div class="post-type">
+      <span v-if="type === 'Article'">
+        Artikel
       </span>
-      <div class="more-info">
-        <span>
-          <i class="icon wb-star"></i>
-          {{ post.rating }} Bintang dari {{ post.feedback_count }} Reviewer
-        </span>
-        <span>
-          <i class="icon wb-chat"></i>
-          {{ post.comments_count }} Komentar
-        </span>
-        <span>
-          <i class="icon wb-eye"></i>
-          {{ post.views_count }}x
-          {{ type === 'Article' ? 'Dibaca' : 'Ditonton' }}
-        </span>
-        <span>
-          <i class="icon wb-user"></i>
-          Dari <a href="#">{{ post.user.name }}</a>
-        </span>
-      </div>
-      <div class="actions mt-10">
-        <nuxt-link :to="postUrl" class="btn btn-primary btn-sm">
-          <i :class="type === 'Playlist' ? 'wb-play' : 'wb-book'"></i>
-          {{ type === 'Playlist' ? 'Tonton Video' : 'Baca Artikel' }}
-        </nuxt-link>
-        <app-favorite-toggle v-if="$auth" :pid="post.id" :type="type" />
-      </div>
+      <span v-else>
+        Playlist
+      </span>
+      <span><i class="icon wb-eye"></i> {{ post.view_count }}</span>
+      <span><i class="icon wb-chat"></i> {{ post.comments_count }}</span>
+      <span
+        ><i class="icon wb-star"></i> {{ post.rating }} /
+        {{ post.feedback_count }}</span
+      >
+    </div>
+    <div class="card-post-actions">
+      <nuxt-link :to="postUrl" class="btn btn-primary btn-sm btn-block">
+        <i :class="type === 'Playlist' ? 'wb-play' : 'wb-book'"></i>
+        {{ type === 'Playlist' ? 'Tonton Video' : 'Baca Artikel' }}
+      </nuxt-link>
     </div>
   </div>
 </template>
+
 <script>
-import Placeholder from '@/assets/img/placeholder/hero-thumb.jpg'
 export default {
   props: {
     post: {
@@ -70,11 +67,6 @@ export default {
       default: 'Playlist',
     },
   },
-  data() {
-    return {
-      Placeholder,
-    }
-  },
   computed: {
     postUrl() {
       return `/${this.type.toLowerCase()}s/${this.post.slug}`
@@ -82,120 +74,101 @@ export default {
   },
 }
 </script>
-
 <style lang="scss">
-.ab-post-list {
+.app-post-card {
   display: flex;
+  flex-direction: column;
+  height: 100%;
   background-color: $white;
+  position: relative;
   border-radius: 4px;
-  overflow: hidden;
   box-shadow: $box-shadow-sm;
-  margin-bottom: 15px;
-  border-bottom: 4px solid $primary;
-  @include media-breakpoint-down(md) {
-    flex-direction: column;
-  }
 
-  &-left {
-    display: block;
-    padding: 20px;
-    @include media-breakpoint-down(md) {
-      padding: 0;
-    }
-  }
-  &-thumb {
-    width: 340px;
+  .card-thumb {
     position: relative;
-    img {
-      display: block;
-      width: 100%;
-      border-radius: 3px;
-    }
-    .post-type {
-      display: block;
+    padding: 5px;
+
+    .category-badge {
       position: absolute;
-      top: 6px;
-      left: 6px;
+      top: 8px;
+      left: 8px;
+      display: inline-block;
       line-height: 18px;
-      padding: 0 6px;
-      background-color: $white;
-      color: $primary;
       font-size: 10px;
+      background-color: $primary;
       font-weight: $font-weight-bold;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      box-shadow: $box-shadow;
       border-radius: 2px;
-      &.red {
-        color: $danger;
-      }
+      color: $white;
+      padding: 0 6px;
+      box-shadow: $box-shadow;
+      text-transform: uppercase;
     }
-    @include media-breakpoint-down(md) {
-      width: 100%;
-      img {
-        border-radius: 0;
-      }
+
+    .user-avatar {
+      position: absolute;
+      z-index: 3;
+      display: block;
+      width: 40px;
+      height: 40px;
+      border: 2px solid $white;
+      border-radius: 50%;
+      right: 8px;
+      bottom: -8px;
+      box-shadow: $box-shadow;
+    }
+
+    .thumb-img {
+      box-shadow: $box-shadow-sm;
     }
   }
+  .card-content {
+    padding: 5px;
 
-  &-right {
-    padding: 20px;
-    padding-left: 0;
-    width: 100%;
-    @include media-breakpoint-down(md) {
-      padding: 10px;
+    .post-title {
+      display: block;
+      margin: 0;
+      font-size: 14px;
+      font-weight: $font-weight-bold;
+      color: $dark;
     }
-
-    .info-time {
+    .time-info {
       display: block;
       font-size: 10px;
       font-weight: $font-weight-bold;
       color: $gray-600;
       margin-bottom: 5px;
     }
-
-    .info-title {
+    .author-info {
       display: block;
-      margin: 0;
-      font-size: 18px;
-      font-weight: $font-weight-normal;
-      letter-spacing: 1px;
-      margin-bottom: 10px;
-      a {
-        color: $gray-500;
-        &:hover {
-          text-decoration: none;
-          color: $primary;
-        }
-      }
-    }
-
-    .category-info {
-      display: inline-block;
-      line-height: 20px;
-      padding: 0 6px;
-      background-color: $primary;
-      color: $white;
       font-size: 12px;
-      font-weight: $font-weight-light;
-      text-transform: uppercase;
-      box-shadow: $box-shadow;
-      border-radius: 4px;
-      margin-bottom: 10px;
-    }
-
-    .more-info {
+      color: $gray-500;
+      font-weight: $font-weight-bold;
+      margin-top: 5px;
       span {
-        display: block;
-        color: $gray-600;
-        font-size: 14px;
-        i {
-          display: inline-block;
-          width: 15px;
-          color: $gray-400;
-        }
+        color: $dark;
       }
     }
+  }
+
+  .post-type {
+    padding: 5px;
+    margin-top: auto;
+    span {
+      display: inline-block;
+      font-size: 10px;
+      line-height: 16px;
+      padding: 0 2px;
+      background-color: $gray-100;
+      border: 1px solid $gray-200;
+      border-radius: 1px;
+      color: $gray-400;
+      font-weight: $font-weight-bold;
+    }
+  }
+
+  .card-post-actions {
+    background-color: $gray-100;
+    padding: 5px;
   }
 }
 </style>

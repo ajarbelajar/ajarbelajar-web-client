@@ -8,7 +8,7 @@
           :key="item.id"
           class="col-lg-3 col-md-4 col-sm-6 pb-3"
         >
-          <app-post-list-2 :post="item.post" :type="item.post.type" />
+          <app-post-list :post="item.post" :type="item.post.type" />
         </div>
       </div>
     </div>

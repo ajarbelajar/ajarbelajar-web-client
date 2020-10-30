@@ -8,7 +8,7 @@
           :key="following.id"
           class="col-md-3 pb-3"
         >
-          <app-minitutor-card-2
+          <app-minitutor-card
             :user="following.user"
             :minitutor="following.minitutor"
           />
