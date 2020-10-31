@@ -4,7 +4,7 @@
       <div class="card card-body mb-20 py-30">
         <div class="row no-gutters">
           <div class="col-md-5 mb-20 mb-lg-0">
-            <img :src="$images.svg.svg1" />
+            <img src="/images/1.svg" alt="animation vector" />
           </div>
           <div class="col-lg-5 col-md-7 d-flex">
             <div class="card-wrapper my-auto">
@@ -15,6 +15,7 @@
               </p>
               <nuxt-link
                 to="/home"
+                rel="nofollow"
                 class="btn btn-primary px-30 font-weight-bold text-uppercase"
                 >Mulai Belajar Online!</nuxt-link
               >
@@ -25,7 +26,7 @@
       <div class="card card-body mb-20 py-30">
         <div class="row no-gutters">
           <div class="col-md-5 mb-20 mb-lg-0 order-md-2">
-            <img :src="$images.svg.svg2" />
+            <img src="/images/2.svg" alt="animation vector" />
           </div>
           <div class="col-lg-5 col-md-7 d-flex ml-auto">
             <div class="card-wrapper my-auto">
@@ -36,6 +37,7 @@
               </p>
               <nuxt-link
                 to="/register"
+                rel="nofollow"
                 class="btn btn-primary px-30 font-weight-bold text-uppercase"
                 >Aku mau mengajar online!</nuxt-link
               >
@@ -46,7 +48,7 @@
       <div class="card card-body mb-20 py-30">
         <div class="row no-gutters">
           <div class="col-md-5 mb-20 mb-lg-0">
-            <img :src="$images.svg.svg3" />
+            <img src="/images/3.svg" alt="animation vector" />
           </div>
           <div class="col-lg-5 col-md-7 d-flex">
             <div class="card-wrapper my-auto">
@@ -57,6 +59,7 @@
               </p>
               <nuxt-link
                 to="/home"
+                rel="nofollow"
                 class="btn btn-primary px-30 font-weight-bold text-uppercase"
                 >Mulai Belajar Online!</nuxt-link
               >

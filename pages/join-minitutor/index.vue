@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div
       class="join-minitutor-card mb-2"
-      :style="`background-image: url(${$images.background})`"
+      style="background-image: url(/images/team-work.jpg);"
     >
       <div class="join-minitutor-card_filter">
         <div class="join-minitutor-card_content">

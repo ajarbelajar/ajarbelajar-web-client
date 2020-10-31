@@ -2,7 +2,7 @@
   <div class="landing-navbar" :class="{ appear }">
     <div class="container">
       <div class="landing-navbar-wrapper">
-        <nuxt-link to="/home" class="navbar-brand">
+        <nuxt-link to="/home" class="navbar-brand" title="Home">
           <img src="@/assets/img/logo/logo.svg" alt="Logo Ajarbelajar" />
         </nuxt-link>
         <button
@@ -13,13 +13,15 @@
         </button>
         <div class="nav-wrapper" :class="{ 'close-menu': close }">
           <div class="nav nav-left mr-lg-auto pl-lg-30">
-            <nuxt-link to="/playlists">PLAYLIST</nuxt-link>
-            <nuxt-link to="/articles">ARTIKEL</nuxt-link>
-            <nuxt-link to="/categories">KATEGORI</nuxt-link>
+            <nuxt-link rel="nofollow" to="/playlists">PLAYLIST</nuxt-link>
+            <nuxt-link rel="nofollow" to="/articles">ARTIKEL</nuxt-link>
+            <nuxt-link rel="nofollow" to="/categories">KATEGORI</nuxt-link>
           </div>
           <div class="nav nav-right">
-            <nuxt-link to="/login">MASUK</nuxt-link>
-            <nuxt-link to="/register" class="nav-btn">BUAT AKUN BARU</nuxt-link>
+            <nuxt-link rel="nofollow" to="/login">MASUK</nuxt-link>
+            <nuxt-link rel="nofollow" to="/register" class="nav-btn"
+              >BUAT AKUN BARU</nuxt-link
+            >
           </div>
         </div>
       </div>

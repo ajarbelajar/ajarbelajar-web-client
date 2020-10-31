@@ -8,7 +8,7 @@
         >
       </div>
     </div>
-    <img ref="image" :src="$images.background" />
+    <img ref="image" src="/images/team-work.jpg" alt="team work" />
   </div>
 </template>
 <script>

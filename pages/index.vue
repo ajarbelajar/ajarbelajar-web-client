@@ -14,6 +14,7 @@
 <script>
 export default {
   layout: 'blank',
+  middleware: 'guest',
   computed: {
     testimonials() {
       return [

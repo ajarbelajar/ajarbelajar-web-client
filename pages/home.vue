@@ -14,13 +14,7 @@
 export default {
   async asyncData({ $axios, error }) {
     try {
-      return {
-        popularPlaylists: (await $axios.$get('playlists/popular')).data,
-        popularCategories: (await $axios.$get('categories/popular')).data,
-        mostUserPoints: (await $axios.$get('users/most-points')).data,
-        newPlaylists: (await $axios.$get('playlists/news')).data,
-        newArticles: (await $axios.$get('articles/news')).data,
-      }
+      return await $axios.$get('/nuxt/home')
     } catch (e) {
       error(e)
     }

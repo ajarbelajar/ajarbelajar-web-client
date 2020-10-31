@@ -11,20 +11,24 @@
               Kami adalah nonprofit dengan misi untuk membuat edukasi online
               yang lebih berkualitas.
             </p>
-            <nuxt-link class="btn btn-primary btn-custom" to="/home"
+            <nuxt-link
+              class="btn btn-primary btn-custom"
+              rel="nofollow"
+              to="/home"
               >MULAI BELAJAR</nuxt-link
             >
             <nuxt-link
               class="btn btn-primary"
               to="/register?next=/join-minitutor"
+              rel="nofollow"
               >MULAI MENGAJAR</nuxt-link
             >
           </div>
         </div>
       </div>
     </div>
-    <img ref="image" :src="$images.background" />
-    <img :src="$images.svg.curve" class="curve" />
+    <img ref="image" src="/images/team-work.jpg" alt="team work" />
+    <img src="/images/curve.svg" class="curve" alt="curve white" />
   </div>
 </template>
 

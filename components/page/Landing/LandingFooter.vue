@@ -5,16 +5,21 @@
         <div class="row">
           <div class="mx-auto col-lg-6 col-md-10">
             <div class="footer-nav">
-              <a href="#">Tentang AjarBelajar</a>
-              <a href="#">Tentang Konten dan Feedback Konstruktif</a>
-              <a href="#">F.A.Q</a>
+              <a href="#" rel="nofollow">Tentang AjarBelajar</a>
+              <a href="#" rel="nofollow"
+                >Tentang Konten dan Feedback Konstruktif</a
+              >
+              <a href="#" rel="nofollow">F.A.Q</a>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="mx-auto col-lg-6 col-md-10 mb-20">
             <h3 class="mt-0 mb-20">Donasi kamu akan sangat membantu!</h3>
-            <a href="#" class="btn btn-primary px-30 font-weight-bold"
+            <a
+              href="#"
+              rel="nofollow"
+              class="btn btn-primary px-30 font-weight-bold"
               >DONASI</a
             >
           </div>

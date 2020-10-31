@@ -15,12 +15,12 @@
         </div>
         <div class="user-info">
           <h4 class="info-name text-truncate">
-            <nuxt-link :to="`/minitutor/${user.username}`">{{
+            <nuxt-link :to="`/minitutors/${user.username}`">{{
               user.name
             }}</nuxt-link>
           </h4>
           <span class="info-username"
-            ><nuxt-link :to="`/minitutor/${user.username}`"
+            ><nuxt-link :to="`/minitutors/${user.username}`"
               >@{{ user.username }}</nuxt-link
             ></span
           >

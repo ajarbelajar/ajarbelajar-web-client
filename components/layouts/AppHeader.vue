@@ -8,12 +8,12 @@
               <nuxt-link to="/home" class="brand">
                 <img
                   class="logo-text"
-                  src="@/assets/img/logo/logo-text.svg"
+                  src="/logo/logo-text.svg"
                   alt="Logo ajarbelajar"
                 />
                 <img
                   class="logo-only"
-                  src="@/assets/img/logo/logo.svg"
+                  src="/logo/logo.svg"
                   alt="Logo ajarbelajar"
                 />
               </nuxt-link>
@@ -28,22 +28,20 @@
           <div class="container-fluid">
             <div class="right-wrapper">
               <div class="right-actions">
-                <a
-                  href="#"
+                <span
                   class="action-toggle d-block d-lg-none"
                   @click.prevent="$sidebar.display(true)"
                 >
                   <i class="wb-menu"></i>
                   <span class="label"></span>
-                </a>
-                <a
-                  href="#"
+                </span>
+                <span
                   class="action-toggle d-block d-lg-none"
                   @click.prevent="searchOpen = true"
                 >
                   <i class="wb-search"></i>
                   <span class="label"></span>
-                </a>
+                </span>
                 <app-header-notification v-if="$auth" />
               </div>
               <div v-if="$auth" class="right-avatar">
