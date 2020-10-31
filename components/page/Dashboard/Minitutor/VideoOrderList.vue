@@ -5,7 +5,7 @@
       <div class="thumb my-auto">
         <img :src="playlist.hero.small" />
       </div>
-      <div class="title my-auto">
+      <div class="title my-auto text-truncate">
         <strong>{{ video.index }}. </strong>{{ video.original_name }}
       </div>
       <div class="actions ml-auto my-auto">
@@ -27,7 +27,7 @@
       </div>
     </div>
     <div v-if="open" class="player-wrapper">
-      <app-video-simple :options="playerOptions" />
+      <video :src="video.url" autoplay controls class="img-fluid" />
       <div class="p-2 bg-light">
         <button
           class="btn btn-danger btn-block"
@@ -59,15 +59,6 @@ export default {
       open: false,
       loading: false,
     }
-  },
-  computed: {
-    playerOptions() {
-      return {
-        autoplay: false,
-        sources: [{ src: this.video.url }],
-        poster: this.playlist.hero.large,
-      }
-    },
   },
   methods: {
     handleDelete() {

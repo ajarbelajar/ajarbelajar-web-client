@@ -3,15 +3,7 @@
     <div class="playlist-watch-card">
       <div class="playlist-watch-card-content">
         <article v-if="$auth">
-          <div v-if="routerAlive" class="hero">
-            <app-video-simple
-              :options="{
-                autoplay: true,
-                sources: [{ src: video.url }],
-              }"
-            />
-          </div>
-          <img v-else :src="playlist.hero.large" class="hero" />
+          <video :src="video.url" autoplay controls class="hero"></video>
           <div v-if="playlist.videos.length > 1" class="row p-2 bg-light">
             <div
               v-for="(item, i) in playlist.videos"

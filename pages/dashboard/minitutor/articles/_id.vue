@@ -69,7 +69,7 @@
 <script>
 export default {
   async asyncData({ store, error, params }) {
-    const articles = store.getters('request_article/articles')
+    const articles = store.getters['request_article/articles']
     try {
       await store.dispatch('category/fetch')
     } catch (e) {
