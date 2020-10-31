@@ -32,7 +32,6 @@
     "@nuxtjs/sitemap": "^2.4.0",
     "@tarekraafat/autocomplete.js": "^7.2.0",
     "animate.css": "^4.1.0",
-    "bootstrap-vue": "^2.16.0",
     "cookieparser": "^0.1.0",
     "form-data": "^3.0.0",
     "fuse.js": "^6.4.1",
