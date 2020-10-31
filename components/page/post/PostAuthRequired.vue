@@ -56,11 +56,7 @@
 </template>
 
 <script>
-import StarRating from 'vue-star-rating'
 export default {
-  components: {
-    StarRating,
-  },
   props: {
     post: {
       type: Object,

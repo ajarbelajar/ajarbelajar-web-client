@@ -74,11 +74,7 @@
 </template>
 
 <script>
-import StarRating from 'vue-star-rating'
 export default {
-  components: {
-    StarRating,
-  },
   async asyncData({ store, error, $axios, params, query, redirect }) {
     let data = {}
     try {

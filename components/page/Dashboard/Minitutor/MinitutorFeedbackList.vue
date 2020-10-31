@@ -95,12 +95,8 @@
 </template>
 
 <script>
-import StarRating from 'vue-star-rating'
 import Avatar from '@/assets/img/placeholder/avatar.png'
 export default {
-  components: {
-    StarRating,
-  },
   props: {
     feedback: {
       type: Object,

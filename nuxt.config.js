@@ -3,7 +3,7 @@ import axios from 'axios'
 const baseApiUrl = process.env.BASE_API_URL || 'http://127.0.0.1:8000/api'
 
 export default {
-  mode: 'universal',
+  // mode: 'universal',
 
   target: 'server',
 
@@ -68,6 +68,7 @@ export default {
     { src: '~/plugins/Seo', ssr: true },
     { src: '~/plugins/InfiniteLoading', ssr: false },
     { src: '~/plugins/ga', ssr: false },
+    { src: '~/plugins/StarRating', ssr: false },
   ],
 
   components: true,
