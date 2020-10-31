@@ -1,9 +1,15 @@
 <template>
-  <div class="container-fluid">
+  <div v-if="playlist" class="container-fluid">
     <div class="playlist-watch-card">
       <div class="playlist-watch-card-content">
         <article v-if="$auth">
-          <video :src="video.url" autoplay controls class="hero"></video>
+          <video
+            v-if="video"
+            :src="video.url"
+            autoplay
+            controls
+            class="hero"
+          ></video>
           <div v-if="playlist.videos.length > 1" class="row p-2 bg-light">
             <div
               v-for="(item, i) in playlist.videos"
@@ -113,63 +119,56 @@ export default {
       } catch (e) {}
     }
 
-    if (data.playlist.videos.length === 1) {
-      if (query.index) {
-        return redirect(`/playlists/${params.slug}`)
-      }
-      data.currentIndex = data.playlist.videos[0].index
-      return data
-    }
-
-    if (!query.index && data.playlist.videos.length > 1) {
-      return redirect(
-        `/playlists/${params.slug}?index=${data.playlist.videos[0].index}`
-      )
-    }
-
-    data.playlist.videos.forEach((val) => {
-      if (val.index === Number(query.index))
-        data.currentIndex = Number(query.index)
-    })
-
-    if (!data.currentIndex) {
-      return error({ statusCode: 404, message: 'Video tidak tersedia.' })
-    }
-
+    data.currentIndex = query.index ? Number(query.index) : null
     return data
-  },
-  data() {
-    return {
-      routerAlive: true,
-    }
   },
   computed: {
     video() {
       let video = {}
-      this.playlist.videos.forEach((val) => {
-        if (val.index === this.currentIndex) video = val
-      })
+      if (this.playlist) {
+        this.playlist.videos.forEach((val) => {
+          if (val.index === this.currentIndex) video = val
+        })
+      }
       return video
     },
   },
   watch: {
-    $route(val, old) {
-      let exists
-      this.playlist.videos.forEach((video) => {
-        if (video.index === Number(val.query.index)) exists = true
-      })
-
-      if (exists) {
-        this.currentIndex = Number(val.query.index)
-      } else {
-        this.currentIndex = this.playlists.videos[0].index
+    $route(val) {
+      if (this.playlist) {
+        const exists = this.playlist.videos.filter((video) => {
+          return video.index === Number(val.query.index)
+        })
+        if (exists.length) {
+          this.currentIndex = Number(val.query.index)
+        } else {
+          this.currentIndex = this.playlist.videos[0].index
+        }
       }
-
-      this.routerAlive = false
-      setTimeout(() => {
-        this.routerAlive = true
-      }, 0)
     },
+  },
+  created() {
+    if (this.playlist.videos.length === 1) {
+      if (this.currentIndex) {
+        return this.$router.push(`/playlists/${this.$route.params.slug}`)
+      }
+      this.currentIndex = this.playlist.videos[0].index
+      return true
+    }
+    if (!this.currentIndex && this.playlist.videos.length > 1) {
+      return this.$router.push(
+        `/playlists/${this.$route.params.slug}?index=${this.playlist.videos[0].index}`
+      )
+    }
+    let index
+    this.playlist.videos.forEach((val) => {
+      if (val.index === Number(this.currentIndex))
+        index = Number(this.currentIndex)
+    })
+    if (!index) {
+      return this.$router.push('/404')
+    }
+    this.currentIndex = index
   },
   head() {
     return {
