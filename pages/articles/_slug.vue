@@ -11,11 +11,12 @@
           <div class="post-detail">
             <div class="post-info">
               <span class="info"
-                >Diposting pada {{ article.created_at | moment('d M Y') }}</span
+                >Diposting pada
+                {{ article.created_at | moment('dddd, Do MMMM YYYY') }}</span
               >
               <span class="v-divider">|</span>
               <span class="info"
-                ><i class="wb-eye"></i> {{ article.views_count }}</span
+                ><i class="wb-eye"></i> {{ article.view_count }}</span
               >
             </div>
             <div class="post-action">

@@ -34,11 +34,11 @@
             <div class="post-info">
               <span class="info"
                 >Diposting pada
-                {{ playlist.created_at | moment('d M Y') }}</span
+                {{ playlist.created_at | moment('dddd, Do MMMM YYYY') }}</span
               >
               <span class="v-divider">|</span>
               <span class="info"
-                ><i class="wb-eye"></i> {{ playlist.views_count }}</span
+                ><i class="wb-eye"></i> {{ playlist.view_count }}</span
               >
             </div>
             <div class="post-action">

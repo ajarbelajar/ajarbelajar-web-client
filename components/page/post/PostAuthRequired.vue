@@ -8,12 +8,10 @@
     <div class="post-detail">
       <div class="post-info">
         <span class="info">
-          Diposting pada {{ post.created_at | moment('d M Y') }}
+          Diposting pada {{ post.created_at | moment('dddd, Do MMMM YYYY') }}
         </span>
         <span class="v-divider">|</span>
-        <span class="info">
-          <i class="wb-eye"></i> {{ post.views_count }}
-        </span>
+        <span class="info"> <i class="wb-eye"></i> {{ post.view_count }} </span>
       </div>
       <div class="post-action">
         <app-favorite-toggle v-if="$auth" :pid="post.id" type="Article" />

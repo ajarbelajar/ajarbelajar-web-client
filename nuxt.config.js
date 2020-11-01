@@ -3,8 +3,6 @@ import axios from 'axios'
 const baseApiUrl = process.env.BASE_API_URL || 'http://127.0.0.1:8000/api'
 
 export default {
-  // mode: 'universal',
-
   target: 'server',
 
   env: {
