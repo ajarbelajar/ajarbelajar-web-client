@@ -5,11 +5,13 @@
         <div class="row">
           <div class="mx-auto col-lg-6 col-md-10">
             <div class="footer-nav">
-              <a href="#" rel="nofollow">Tentang AjarBelajar</a>
-              <a href="#" rel="nofollow"
-                >Tentang Konten dan Feedback Konstruktif</a
+              <nuxt-link to="/about" rel="nofollow"
+                >Tentang AjarBelajar</nuxt-link
               >
-              <a href="#" rel="nofollow">F.A.Q</a>
+              <nuxt-link to="/constructive-feedback" rel="nofollow"
+                >Tentang Feedback Konstruktif</nuxt-link
+              >
+              <nuxt-link to="/faq" rel="nofollow">F . A . Q</nuxt-link>
             </div>
           </div>
         </div>
@@ -38,22 +40,33 @@
           </div>
 
           <div class="copyright">
-            © 2020 All Right Reserved AjarBelajar -By DedeArd
+            © 2020 All Right Reserved AjarBelajar - By
+            <a href="#">Tim AjarBelajar</a>
           </div>
 
           <div class="socials ml-md-auto">
-            <a href="#" class="btn btn-dark btn-sm btn-icon ml-1"
+            <a
+              href="https://www.instagram.com/ajarbelajar"
+              aria-label="instagram"
+              rel="noreferrer"
+              target="_blank"
+              class="btn btn-dark btn-sm btn-icon ml-1"
               ><i class="socicon-instagram"></i
             ></a>
-            <a href="#" class="btn btn-dark btn-sm btn-icon ml-1"
+            <a
+              href="https://www.youtube.com/channel/UC_RqkZkVSmRIKNnj_5QPv5Q"
+              aria-label="youtube"
+              rel="noreferrer"
+              target="_blank"
+              class="btn btn-dark btn-sm btn-icon ml-1"
               ><i class="socicon-youtube"></i
             ></a>
-            <a href="#" class="btn btn-dark btn-sm btn-icon ml-1"
+            <!-- <a href="#" class="btn btn-dark btn-sm btn-icon ml-1"
               ><i class="socicon-facebook"></i
             ></a>
             <a href="#" class="btn btn-dark btn-sm btn-icon ml-1"
               ><i class="socicon-twitter"></i
-            ></a>
+            ></a> -->
           </div>
         </div>
       </div>

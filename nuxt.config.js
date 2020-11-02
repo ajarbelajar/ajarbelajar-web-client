@@ -1,13 +1,13 @@
 import axios from 'axios'
 
-const baseApiUrl = process.env.BASE_API_URL || 'http://127.0.0.1:8000/api'
+const baseApiUrl = process.env.BASE_API_URL || 'https://admin.dedeard.my.id/api'
 
 export default {
   target: 'server',
 
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
-    baseApiUrl: process.env.BASE_API_URL || 'http://127.0.0.1:8000/api',
+    baseUrl: process.env.BASE_URL || 'https://web.dedeard.my.id',
+    baseApiUrl: process.env.BASE_API_URL || 'https://admin.dedeard.my.id/api',
     pusherKey: process.env.PUSHER_KEY || '',
     pusherAuthEndpoint: process.env.PUSHER_AUTH_ENDPOINT || '/broadcast',
     analytics_tracking_id: process.env.ANALYTICS_TRACKING_ID || 'UA-XXXXXXXX-X',
@@ -83,7 +83,7 @@ export default {
   ],
 
   axios: {
-    baseURL: process.env.BASE_API_URL || 'http://127.0.0.1:8000/api',
+    baseURL: process.env.BASE_API_URL || 'https://admin.dedeard.my.id/api',
     progress: false,
   },
 
@@ -103,7 +103,7 @@ export default {
   ],
 
   sitemap: {
-    hostname: process.env.BASE_URL || 'http://localhost:3000',
+    hostname: process.env.BASE_URL || 'https://web.dedeard.my.id',
     path: '/sitemap.xml',
     sitemaps: [
       {

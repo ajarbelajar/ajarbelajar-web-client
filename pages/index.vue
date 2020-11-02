@@ -40,9 +40,9 @@ export default {
     },
     counters() {
       return {
-        article: 20,
-        playlist: 120,
-        user: 618,
+        article: 22,
+        playlist: 181,
+        user: 608,
         minitutor: 70,
       }
     },

@@ -18,15 +18,17 @@
               <div class="row">
                 <div class="col-lg-6 py-30">
                   <nav class="app-footer__nav">
-                    <a href="#">Tentang Minitutor</a>
-                    <a href="#">Tentang Konten dan Feedback Konstruktif</a>
+                    <nuxt-link to="/about">Tentang Minitutor</nuxt-link>
+                    <nuxt-link to="/constructive-feedback">
+                      Tentang Feedback Konstruktif
+                    </nuxt-link>
+                    <nuxt-link to="/faq">F . A . Q</nuxt-link>
                   </nav>
                 </div>
                 <div class="col-lg-6 py-30">
                   <nav class="app-footer__nav">
-                    <a href="#">Tentang Kami</a>
-                    <a href="#">Visi & Misi</a>
-                    <a href="#">F.A.Q</a>
+                    <!-- <a href="#">Tentang Kami</a>
+                    <a href="#">Visi & Misi</a> -->
                   </nav>
                 </div>
               </div>
@@ -62,7 +64,8 @@
     <div class="app-footer__bottom py-4 bg-light border-top">
       <div class="container">
         <div class="text-gray-700 text-center font-weight-bold small mb-2">
-          <i class="fa fa-copyright"></i> 2020 Ajar Belajar. All Right Reserve
+          © 2020 All Right Reserved AjarBelajar - By
+          <a href="#">Tim AjarBelajar</a>
         </div>
         <div class="text-gray-600 small text-center">
           <!-- Built by <a href="#">Dedeardh</a> -->
