@@ -69,7 +69,7 @@ export default {
     { src: '~/plugins/StarRating', ssr: false },
   ],
 
-  components: true,
+  components: [{ path: '~/components', pathPrefix: false }],
 
   buildModules: ['@nuxtjs/eslint-module'],
 
