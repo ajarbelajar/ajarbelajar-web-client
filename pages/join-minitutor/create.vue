@@ -2,9 +2,7 @@
   <div class="container-fluid">
     <div class="panel">
       <div class="panel-body bg-light py-4">
-        <h2 class="text-center">
-          Input Sesuai Data Diri Anda.
-        </h2>
+        <h2 class="text-center">Input Sesuai Data Diri Anda.</h2>
         <p class="text-center">
           Nama, Alamat Email, Media Sosial dan Foto secara otomatis ikut dalam
           formulir Anda sesuai dengan profil akun Anda.

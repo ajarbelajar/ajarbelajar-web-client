@@ -30,12 +30,8 @@
       >
     </div>
     <div class="post-type">
-      <span v-if="type === 'Article'">
-        Artikel
-      </span>
-      <span v-else>
-        Playlist
-      </span>
+      <span v-if="type === 'Article'"> Artikel </span>
+      <span v-else> Playlist </span>
       <span><i class="icon wb-eye"></i> {{ post.view_count }}</span>
       <span><i class="icon wb-chat"></i> {{ post.comments_count }}</span>
       <span

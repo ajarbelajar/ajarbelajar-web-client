@@ -4,9 +4,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10">
-            <h1>
-              Mengajar ataupun belajar, semuanya menjadi lebih mudah.
-            </h1>
+            <h1>Mengajar ataupun belajar, semuanya menjadi lebih mudah.</h1>
             <p class="mb-30">
               Kami adalah nonprofit dengan misi untuk membuat edukasi online
               yang lebih berkualitas.

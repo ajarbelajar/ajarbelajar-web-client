@@ -60,7 +60,7 @@
         </span>
       </div>
       <div
-        v-if="(focus && !empty)"
+        v-if="focus && !empty"
         class="search-result-wrapper"
         @click="focus = true"
       >

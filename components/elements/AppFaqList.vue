@@ -7,7 +7,7 @@
     <div class="panel-heading">
       <h4
         class="panel-title font-size-16"
-        style="padding-right: 60px;"
+        style="padding-right: 60px"
         @click="open = !open"
       >
         {{ faq.q }}
