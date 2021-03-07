@@ -13,6 +13,24 @@
           placeholder="Alamat Email"
           :error="errors.email"
         />
+        <div class="form-group">
+          <div class="checkbox-custom checkbox-primary">
+            <input
+              id="email_notification"
+              v-model="form.email_notification"
+              type="checkbox"
+            />
+            <label for="email_notification"
+              >Dapatkan notifikasi melalui email?</label
+            >
+          </div>
+          <div
+            v-if="!!errors.email_notification"
+            class="invalid-feedback d-block"
+          >
+            <strong>{{ errors.email_notification }}</strong>
+          </div>
+        </div>
         <hr class="my-4" />
         <h5 class="h4">Ubah Password</h5>
         <p>Kosongkan jika tidak ingin diubah.</p>
@@ -104,6 +122,7 @@ export default {
         instagram_url: '',
         twitter_url: '',
         youtube_url: '',
+        email_notification: false,
       },
       errors: {
         username: '',
@@ -117,6 +136,7 @@ export default {
         instagram_url: '',
         twitter_url: '',
         youtube_url: '',
+        email_notification: '',
       },
       loading: false,
     }
@@ -134,6 +154,7 @@ export default {
       instagram_url: this.$auth.instagram_url || '',
       twitter_url: this.$auth.twitter_url || '',
       youtube_url: this.$auth.youtube_url || '',
+      email_notification: !!this.$auth.email_notification,
     }
   },
 
@@ -152,6 +173,7 @@ export default {
         instagram_url: '',
         twitter_url: '',
         youtube_url: '',
+        email_notification: '',
       }
       try {
         await this.$axios.$put('/user', form)
