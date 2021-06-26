@@ -1,13 +1,13 @@
 import axios from 'axios'
 
-const baseApiUrl = process.env.BASE_API_URL || 'https://admin.dedeard.my.id/api'
+const baseApiUrl = process.env.BASE_API_URL || 'https://admin.ajarbelajar.com/api'
 
 export default {
   target: 'server',
 
   env: {
-    baseUrl: process.env.BASE_URL || 'https://web.dedeard.my.id',
-    baseApiUrl: process.env.BASE_API_URL || 'https://admin.dedeard.my.id/api',
+    baseUrl: process.env.BASE_URL || 'https://www.ajarbelajar.com',
+    baseApiUrl: process.env.BASE_API_URL || 'https://admin.ajarbelajar.com/api',
     pusherKey: process.env.PUSHER_KEY || '',
     pusherAuthEndpoint: process.env.PUSHER_AUTH_ENDPOINT || '/broadcast',
     analytics_tracking_id: process.env.ANALYTICS_TRACKING_ID || 'UA-XXXXXXXX-X',
