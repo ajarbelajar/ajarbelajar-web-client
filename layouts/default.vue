@@ -1,27 +1,74 @@
 <template>
-  <div class="app-layout">
-    <app-header></app-header>
-    <app-sidebar></app-sidebar>
-    <div class="content-wrap">
-      <Nuxt />
-    </div>
-    <app-footer />
+  <div>
+    <nav
+      class="navbar header has-shadow is-primary"
+      role="navigation"
+      aria-label="main navigation"
+    >
+      <div class="navbar-brand">
+        <a
+          class="navbar-item"
+          href="/"
+        >
+          <img
+            src="~assets/buefy.png"
+            alt="Buefy"
+            height="28"
+          >
+        </a>
+
+        <div class="navbar-burger">
+          <span />
+          <span />
+          <span />
+        </div>
+      </div>
+    </nav>
+
+    <section class="main-content columns">
+      <aside class="column is-2 section">
+        <p class="menu-label is-hidden-touch">
+          General
+        </p>
+        <ul class="menu-list">
+          <li
+            v-for="(item, key) of items"
+            :key="key"
+          >
+            <NuxtLink
+              :to="item.to"
+              exact-active-class="is-active"
+            >
+              <b-icon :icon="item.icon" /> {{ item.title }}
+            </NuxtLink>
+          </li>
+        </ul>
+      </aside>
+
+      <div class="container column is-10">
+        <Nuxt />
+      </div>
+    </section>
   </div>
 </template>
 
-<style lang="scss">
-.app-layout {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  width: 100%;
-  padding-top: 60px + remToPx($spacer/2);
-  padding-left: 240px;
-  background-color: $gray-100;
-
-  @include media-breakpoint-down(md) {
-    transition: padding-left 400ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
-    padding-left: 0;
+<script>
+export default {
+  data () {
+    return {
+      items: [
+        {
+          title: 'Home',
+          icon: 'home',
+          to: { name: 'index' }
+        },
+        {
+          title: 'Inspire',
+          icon: 'lightbulb',
+          to: { name: 'inspire' }
+        }
+      ]
+    }
   }
 }
-</style>
+</script>
