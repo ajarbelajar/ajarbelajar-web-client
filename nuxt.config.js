@@ -1,5 +1,4 @@
 export default {
-  // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'ab-nuxt-v2',
     meta: [
@@ -13,44 +12,46 @@ export default {
     ]
   },
 
-  // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '@fontsource/roboto',
+    '~/assets/scss/app.scss'
   ],
 
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    { src: '~/plugins/Axios.js', ssr: true },
+    { src: '~/plugins/ApiErrorResponse.js', ssr: true }
   ],
 
-  // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
   ],
 
-  // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/buefy
-    'nuxt-buefy',
-    // https://go.nuxtjs.dev/axios
+    ['nuxt-buefy', { css: false, materialDesignIcons: true }],
     '@nuxtjs/axios',
-    // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    '@nuxtjs/style-resources',
+    '@nuxtjs/toast'
   ],
 
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseURL: process.env.BASE_API_URL || 'http://localhost/api',
+    progress: false,
+  },
 
-  // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
       lang: 'en'
     }
   },
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
+  styleResources: {
+    sass: ['@/assets/scss/vars.scss'],
+    scss: ['@/assets/scss/vars.scss'],
+  },
+
   build: {
   }
 }
