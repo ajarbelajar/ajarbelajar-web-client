@@ -21,7 +21,14 @@
   </div>
 </template>
 <script>
-const Cookie = process.client ? require('js-cookie') : undefined
+
+const initialError = {
+  identity: '',
+  email: '',
+  username: '',
+  password: '',
+  message: ''
+}
 
 export default {
   name: 'LoginPage',
@@ -33,31 +40,16 @@ export default {
         identity: '',
         password: '',
       },
-      errors: {
-        identity: '',
-        email: '',
-        username: '',
-        password: '',
-        message: '',
-      },
+      errors: initialError,
       loading: false,
     }
   },
   methods: {
     async submit(data) {
       this.loading = true
-      this.errors = {
-        identity: '',
-        email: '',
-        username: '',
-        password: '',
-        message: '',
-      }
+      this.errors = initialError
       try {
-        const { auth, token } = await this.$axios.$post('auth/login', data)
-        this.$store.commit('setToken', token)
-        this.$store.commit('setAuth', auth)
-        Cookie.set('api-token', token, { expires: 7 })
+        await this.$store.dispatch('auth/login', data)
         this.redirect()
       } catch (e) {
         data = this.$errorResponse(e)

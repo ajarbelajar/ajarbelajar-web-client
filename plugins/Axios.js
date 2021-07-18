@@ -1,7 +1,7 @@
 export default function ({ $axios, store }) {
   $axios.onRequest(({ headers }) => {
-    if (store.state.auth) {
-      const token = store.state.token
+    if (store.getters.auth) {
+      const token = store.getters.auth.token
       headers.common.Authorization = 'Bearer ' + token
     }
   })

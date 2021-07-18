@@ -1,6 +1,6 @@
 export default function ({ store, error }) {
-  const auth = store.state.auth
-  const check = auth && auth.minitutor && auth.minitutor.active
+  const minitutor = store.getters.minitutor
+  const check = minitutor && minitutor.active
   if (check) {
     return error(403)
   }

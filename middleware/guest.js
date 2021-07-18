@@ -1,6 +1,5 @@
 export default function ({ store, redirect }) {
-  console.log("guest", store.state)
-  if (store.state.auth) {
+  if (store.getters.auth) {
     return redirect('/home')
   }
 }

@@ -1,43 +1,39 @@
-import Vue from 'vue'
 
-const errorResponse = (e) => {
-  let errors
-  let message
+export default function (ctx, inject) {
+  const errorResponse = (e) => {
+    let errors
+    let message
 
-  if (e.response && e.response.data) {
-    if (e.response.data.errors) {
-      errors = {}
-      for (const i in e.response.data.errors) {
-        errors[i] = e.response.data.errors[i][0]
+    if (e.response && e.response.data) {
+      if (e.response.data.errors) {
+        errors = {}
+        for (const i in e.response.data.errors) {
+          errors[i] = e.response.data.errors[i][0]
+        }
+      } else if (e.response.data.message) {
+        message = e.response.data.message
       }
-    } else if (e.response.data.message) {
-      message = e.response.data.message
     }
+
+    if (!errors) errors = {}
+    if (!message) message = ''
+
+    return { errors, message }
+  }
+  const errorMessage = (e) => {
+    let message
+
+    if (e.response && e.response.data && e.response.data.message) {
+      message = e.response.data.message
+    } else if (e.response && e.response.message) {
+      message = e.response.message
+    } else {
+      message = e.message
+    }
+
+    return message
   }
 
-  if (!errors) errors = {}
-  if (!message) message = ''
-
-  return { errors, message }
-}
-const errorMessage = (e) => {
-  let message
-
-  if (e.response && e.response.data && e.response.data.message) {
-    message = e.response.data.message
-  } else if (e.response && e.response.message) {
-    message = e.response.message
-  } else {
-    message = e.message
-  }
-
-  return message
-}
-
-Vue.prototype.$errorMessage = errorMessage
-Vue.prototype.$errorResponse = errorResponse
-
-export default function ({ app }) {
-  app.$errorResponse = errorResponse
-  app.$errorMessage = errorMessage
+  inject('errorResponse', errorResponse)
+  inject('errorMessage', errorMessage)
 }

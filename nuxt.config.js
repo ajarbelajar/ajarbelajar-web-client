@@ -1,4 +1,11 @@
 export default {
+
+  publicRuntimeConfig: {
+    algoliaAppId: process.env.ALGOLIA_APP_ID,
+    algoliaApiKey: process.env.ALGOLIA_API_KEY,
+    algoliaIndexName: process.env.ALGOLIA_INDEX_NAME,
+  },
+
   head: {
     title: 'ab-nuxt-v2',
     meta: [
@@ -12,6 +19,8 @@ export default {
     ]
   },
 
+  serverMiddleware: [],
+
   css: [
     '@fontsource/roboto',
     '~/assets/scss/app.scss'
@@ -19,7 +28,9 @@ export default {
 
   plugins: [
     { src: '~/plugins/Axios.js', ssr: true },
-    { src: '~/plugins/ApiErrorResponse.js', ssr: true }
+    { src: '~/plugins/ApiErrorResponse.js', ssr: true },
+    { src: '~/plugins/ScreenSize.js', ssr: true },
+    { src: '~/plugins/Image.js', ssr: true }
   ],
 
   components: true,
@@ -29,12 +40,14 @@ export default {
   ],
 
   modules: [
-    ['nuxt-buefy', { css: false, materialDesignIcons: true }],
+    'nuxt-buefy',
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/style-resources',
     '@nuxtjs/toast'
   ],
+
+  buefy: { css: false, materialDesignIcons: true },
 
   axios: {
     baseURL: process.env.BASE_API_URL || 'http://localhost/api',
