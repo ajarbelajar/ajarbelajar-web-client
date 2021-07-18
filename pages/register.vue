@@ -1,36 +1,33 @@
 <template>
-  <div class="pt-5">
-    <h1 class="title has-text-centered is-uppercase">Buat akun baru</h1>
-    <div v-if="!!errors.message" class="notification is-danger has-text-centered">
-      {{ errors.message }}
+  <form @submit.prevent="submit(form)">
+    <h1 class="mt-14 mb-8 text-4xl font-light text-center text-gray-700">
+      Buat akun baru
+    </h1>
+    <t-alert v-if="!!errors.message" class="mb-5" variant="error" show>{{ errors.message }}</t-alert>
+    <auth-input v-model="form.name" placeholder="Nama" name="name" :error="errors.name"/>
+    <auth-input v-model="form.username" placeholder="Username" name="username" :error="errors.username"/>
+    <auth-input v-model="form.email" placeholder="Email" name="email" :error="errors.email"/>
+    <auth-input v-model="form.password" placeholder="Password" password name="password" :error="errors.password" />
+    <div class="py-3 text-center">
+      <auth-button :loading="loading" class="hover:bg-primary-700 btn-action bg-primary-600 block w-6/12 font-bold tracking-widest text-white uppercase">Daftar</auth-button>
     </div>
-    <form @submit.prevent="submit(form)">
-      <b-field label="Nama" label-position="inside" :type="errors.name && 'is-danger'" :message="errors.name">
-        <b-input v-model="form.name" name="name" />
-      </b-field>
-      <b-field label="Username" label-position="inside" :type="errors.username && 'is-danger'" :message="errors.username">
-        <b-input v-model="form.username" name="username" />
-      </b-field>
-      <b-field label="Email" label-position="inside" :type="errors.email && 'is-danger'" :message="errors.email">
-        <b-input v-model="form.email" name="email" />
-      </b-field>
-      <b-field label="Password" label-position="inside" :type="errors.password && 'is-danger'" :message="errors.password">
-        <b-input v-model="form.password" type="password" password-reveal name="password" />
-      </b-field>
-      <b-field>
-        <b-button native-type="submit" class="is-uppercase" type="is-primary" :loading="loading" expanded>Daftar</b-button>
-      </b-field>
-    </form>
-  </div>
+  </form>
 </template>
+
 <script>
-const Cookie = process.client ? require('js-cookie') : undefined
+const initialError = {
+  name: '',
+  username: '',
+  email: '',
+  password: '',
+  message: '',
+}
 
 export default {
   name: 'RegisterPage',
   layout: 'auth',
-  middleware: 'guest',
-  data() {
+    middleware: 'guest',
+    data() {
     return {
       form: {
         name: '',
@@ -38,32 +35,16 @@ export default {
         email: '',
         password: '',
       },
-      errors: {
-        name: '',
-        username: '',
-        email: '',
-        password: '',
-        message: '',
-      },
+      errors: initialError,
       loading: false,
     }
   },
   methods: {
     async submit(data) {
       this.loading = true
-      this.errors = {
-        name: '',
-        username: '',
-        email: '',
-        password: '',
-        message: '',
-      }
+      this.errors = initialError
       try {
-        const { auth, token } = await this.$axios.$post('auth/register', data)
-        this.$store.commit('setToken', token)
-        this.$store.commit('setAuth', auth)
-        Cookie.set('api-token', token, { expires: 7 })
-        // this.$store.dispatch('notification/listen')
+        await this.$store.dispatch('auth/register', data)
         this.redirect()
       } catch (e) {
         data = this.$errorResponse(e)
@@ -80,3 +61,9 @@ export default {
   },
 }
 </script>
+
+<style lang="css" scoped>
+  .btn-action:disabled {
+    @apply bg-primary-600 cursor-wait;
+  }
+</style>

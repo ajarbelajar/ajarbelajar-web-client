@@ -11,10 +11,13 @@ module.exports = {
   extends: [
     '@nuxtjs',
     'plugin:nuxt/recommended',
-    'prettier'
+    'prettier',
+    "plugin:tailwind/recommended"
   ],
   plugins: [
   ],
   // add your custom rules here
-  rules: {}
+  rules: {
+    "vue/no-v-html": "off"
+  }
 }

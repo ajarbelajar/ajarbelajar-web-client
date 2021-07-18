@@ -22,14 +22,17 @@ export default {
   serverMiddleware: [],
 
   css: [
-    '@fontsource/roboto',
-    '~/assets/scss/app.scss'
+    '~/assets/fonts/feather/style.css',
+    'izitoast/dist/css/iziToast.css',
   ],
 
   plugins: [
+    { src: '~/plugins/Tailwind.js', ssr: true },
+    { src: '~/plugins/Toast.js', ssr: false },
     { src: '~/plugins/Axios.js', ssr: true },
     { src: '~/plugins/ApiErrorResponse.js', ssr: true },
     { src: '~/plugins/ScreenSize.js', ssr: true },
+    { src: '~/plugins/Sidebar.js', ssr: true },
     { src: '~/plugins/Image.js', ssr: true }
   ],
 
@@ -37,17 +40,13 @@ export default {
 
   buildModules: [
     '@nuxtjs/eslint-module',
+    '@nuxtjs/tailwindcss',
   ],
 
   modules: [
-    'nuxt-buefy',
     '@nuxtjs/axios',
-    '@nuxtjs/pwa',
-    '@nuxtjs/style-resources',
-    '@nuxtjs/toast'
+    '@nuxtjs/pwa'
   ],
-
-  buefy: { css: false, materialDesignIcons: true },
 
   axios: {
     baseURL: process.env.BASE_API_URL || 'http://localhost/api',
@@ -58,11 +57,6 @@ export default {
     manifest: {
       lang: 'en'
     }
-  },
-
-  styleResources: {
-    sass: ['@/assets/scss/vars.scss'],
-    scss: ['@/assets/scss/vars.scss'],
   },
 
   build: {

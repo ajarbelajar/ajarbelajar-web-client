@@ -1,4 +1,3 @@
-
 export default function (ctx, inject) {
   const errorResponse = (e) => {
     let errors

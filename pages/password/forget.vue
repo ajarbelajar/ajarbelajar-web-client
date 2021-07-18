@@ -1,51 +1,48 @@
 <template>
-  <div class="pt-5">
-    <h1 class="title has-text-centered is-uppercase">Lupa Password</h1>
-    <div v-if="!!success" class="notification is-primary has-text-centered">
-      {{ success }}
+  <form @submit.prevent="submit(form)">
+    <h1 class="mt-14 mb-8 text-4xl font-light text-center text-gray-700">
+      Lupa Password
+    </h1>
+    <t-alert v-if="!!errors.message" class="mb-5" variant="error" show>{{ errors.message }}</t-alert>
+    <t-alert v-if="!!success" class="mb-5" show>{{ success }}</t-alert>
+    <auth-input v-model="form.email" placeholder="Email" name="email" :error="errors.email"/>
+    <div class="py-3 text-center">
+      <auth-button :loading="loading" class="hover:bg-primary-700 btn-action bg-primary-600 block w-6/12 font-bold tracking-widest text-white uppercase">
+        Kirim
+      </auth-button>
     </div>
-    <div v-if="!!errors.message" class="notification is-danger has-text-centered">
-      {{ errors.message }}
+    <div class="text-center">
+      <nuxt-link to="/login" class="hover:text-primary-700 text-primary-600 font-semibold">Masuk</nuxt-link>
     </div>
-    <form @submit.prevent="submit(form)">
-      <b-field label="Alamat Email" label-position="inside" :type="errors.email && 'is-danger'" :message="errors.email">
-        <b-input v-model="form.email" name="email" />
-      </b-field>
-      <b-field>
-        <b-button native-type="submit" class="is-uppercase" type="is-primary" :loading="loading" expanded>Kirim tautan pengaturan ulang password</b-button>
-      </b-field>
-    </form>
-  </div>
+  </form>
 </template>
+
 <script>
+const initialError = {
+  email: '',
+  message: '',
+}
 
 export default {
   name: 'ForgetPasswordPage',
   layout: 'auth',
-  middleware: 'guest',
+    middleware: 'guest',
     data() {
     return {
       form: {
         email: '',
       },
+      errors: initialError,
       success: '',
-      errors: {
-        email: '',
-        message: '',
-      },
       loading: false,
     }
   },
   methods: {
     async submit(data) {
       this.loading = true
-      this.success = ''
-      this.errors = {
-        email: '',
-        message: '',
-      }
+      this.errors = initialError
       try {
-        await this.$axios.$post('auth/password', data)
+        await this.$store.dispatch('auth/forgetPassword', data)
         this.success = 'Kami telah mengirim Email yang berisi tautan untuk mereset Password Anda!'
       } catch (e) {
         data = this.$errorResponse(e)
@@ -56,3 +53,9 @@ export default {
   },
 }
 </script>
+
+<style lang="css" scoped>
+  .btn-action:disabled {
+    @apply bg-primary-600 cursor-wait;
+  }
+</style>

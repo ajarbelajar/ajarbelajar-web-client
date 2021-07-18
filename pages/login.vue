@@ -1,27 +1,21 @@
 <template>
-  <div class="pt-5">
-    <h1 class="title has-text-centered is-uppercase">Masuk ke akun anda</h1>
-    <div v-if="!!errors.message" class="notification is-danger has-text-centered">
-      {{ errors.message }}
+  <form @submit.prevent="submit(form)">
+    <h1 class="mt-14 mb-8 text-4xl font-light text-center text-gray-700">
+      Masuk ke akun anda
+    </h1>
+    <t-alert v-if="!!errors.message" class="mb-5" variant="error" show>{{ errors.message }}</t-alert>
+    <auth-input v-model="form.identity" placeholder="Email atau Username" name="identity" :error="errors.identity || errors.email || errors.username"/>
+    <auth-input v-model="form.password" placeholder="Password" password name="password" :error="errors.password" />
+    <div class="py-3 text-center">
+      <auth-button :loading="loading" class="hover:bg-primary-700 btn-action bg-primary-600 block w-6/12 font-bold tracking-widest text-white uppercase">Masuk</auth-button>
     </div>
-    <form @submit.prevent="submit(form)">
-      <b-field label="Email atau Username" label-position="inside" :type="(errors.identity || errors.email || errors.username) && 'is-danger'" :message="errors.identity || errors.email || errors.username">
-        <b-input v-model="form.identity" name="identity" />
-      </b-field>
-      <b-field label="Password" class="mb-1" label-position="inside" :type="errors.password && 'is-danger'" :message="errors.password">
-        <b-input v-model="form.password" type="password" password-reveal name="password" />
-      </b-field>
-      <div class="has-text-right">
-        <nuxt-link to="/password/forget">Lupa password?</nuxt-link>
-      </div>
-      <b-field class="mt-3">
-        <b-button native-type="submit" class="is-uppercase" type="is-primary" :loading="loading" expanded>Masuk</b-button>
-      </b-field>
-    </form>
-  </div>
+    <div class="text-center">
+      <nuxt-link to="/password/forget" class="hover:text-primary-700 text-primary-600 font-semibold">Lupa Password?</nuxt-link>
+    </div>
+  </form>
 </template>
-<script>
 
+<script>
 const initialError = {
   identity: '',
   email: '',
@@ -33,7 +27,7 @@ const initialError = {
 export default {
   name: 'LoginPage',
   layout: 'auth',
-  middleware: 'guest',
+    middleware: 'guest',
     data() {
     return {
       form: {
@@ -66,3 +60,9 @@ export default {
   },
 }
 </script>
+
+<style lang="css" scoped>
+  .btn-action:disabled {
+    @apply bg-primary-600 cursor-wait;
+  }
+</style>

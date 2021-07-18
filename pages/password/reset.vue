@@ -1,33 +1,34 @@
 <template>
-  <div class="pt-5">
-    <h1 class="title has-text-centered is-uppercase">Atur ulang password</h1>
-    <div v-if="errors.token || errors.message" class="notification is-danger has-text-centered">
-      {{ errors.token || errors.message}}
+  <form @submit.prevent="submit(form)">
+    <h1 class="mt-14 mb-8 text-4xl font-light text-center text-gray-700">
+      Masuk ke akun anda
+    </h1>
+    <t-alert v-if="!!errors.message" class="mb-5" variant="error" show>{{ errors.message }}</t-alert>
+    <auth-input v-model="form.email" placeholder="Email" name="email" :error="errors.email"/>
+    <auth-input v-model="form.password" placeholder="Password baru" password name="password" :error="errors.password" />
+    <div class="py-3 text-center">
+      <auth-button :loading="loading" class="hover:bg-primary-700 btn-action bg-primary-600 block w-6/12 font-bold tracking-widest text-white uppercase">Simpan</auth-button>
     </div>
-    <form @submit.prevent="submit(form)">
-      <b-field label="Email" label-position="inside" :type="errors.email && 'is-danger'" :message="errors.email">
-        <b-input v-model="form.email" name="identity" />
-      </b-field>
-      <b-field label="Password baru" label-position="inside" :type="errors.password && 'is-danger'" :message="errors.password">
-        <b-input v-model="form.password" type="password" password-reveal name="password" />
-      </b-field>
-      <b-field>
-        <b-button native-type="submit" class="is-uppercase" type="is-primary" :loading="loading" expanded>Ubah password</b-button>
-      </b-field>
-    </form>
-  </div>
+  </form>
 </template>
 
 <script>
+const initialError = {
+  token: '',
+  email: '',
+  password: '',
+  message: '',
+}
+
 export default {
-  name: 'ResetPasswordPage',
+  name: 'LoginPage',
   layout: 'auth',
   middleware: 'guest',
-  async asyncData({ query, $axios, error, app }) {
+  async asyncData({ query, app, store, error }) {
     const token = query.token || ''
     const email = query.email || ''
     try {
-      await $axios.$get(`auth/password?token=${token}&email=${email}`)
+      await store.dispatch(`auth/checkResetPasswordToken`, { token, email })
     } catch (e) {
       let message = e.message
       if (e.response && e.response.data && e.response.data.message) {
@@ -41,26 +42,16 @@ export default {
         email,
         password: '',
       },
-      errors: {
-        token: '',
-        email: '',
-        password: '',
-        message: '',
-      },
+      errors: initialError,
       loading: false,
     }
   },
   methods: {
     async submit(data) {
       this.loading = true
-      this.errors = {
-        token: '',
-        email: '',
-        password: '',
-        message: '',
-      }
+      this.errors = initialError
       try {
-        await this.$axios.$put('auth/password', data)
+        await this.$store.dispatch('auth/resetPassword', data)
         this.redirect()
       } catch (e) {
         data = this.$errorResponse(e)
@@ -77,3 +68,9 @@ export default {
   },
 }
 </script>
+
+<style lang="css" scoped>
+  .btn-action:disabled {
+    @apply bg-primary-600 cursor-wait;
+  }
+</style>
