@@ -44,8 +44,8 @@
                       <v-img class="block w-full h-full rounded-full" :src="auth.avatar" :src-placeholder="$images.avatar" />
                     </figure>
                   </div>
-                  <h3 class="text-md capitalized truncate text-center w-full font-semibold">{{ auth.name }}</h3>
-                  <p class="truncate text-center w-full text-sm text-gray-500">@{{ auth.username }}</p>
+                  <h3 class="text-md capitalized truncate w-full font-semibold text-center">{{ auth.name }}</h3>
+                  <p class="truncate w-full text-sm text-center text-gray-500">@{{ auth.username }}</p>
                   <div class="pt-3">
                     <a href="#" class="btn-light flex justify-center items-center p-0 mb-3 w-full h-9 text-sm font-semibold rounded-full">Dasbor Saya</a>
                     <a href="#" class="btn-light flex justify-center items-center p-0 mb-3 w-full h-9 text-sm font-semibold rounded-full">Edit Profil</a>

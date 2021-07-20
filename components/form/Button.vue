@@ -1,5 +1,5 @@
 <template>
-  <component :is="tag" v-bind="$attrs" :class="loading && 'opacity-75'" :disabled="loading" class="btn-action hover:bg-primary-700 btn-action bg-primary-600 text-white inline-flex justify-center items-center py-0 px-4 h-10 text-sm font-medium leading-none text-center rounded cursor-pointer select-none rounded-lg" @click="$emit('click')">
+  <component :is="tag" v-bind="$attrs" :class="loading && 'opacity-75'" :disabled="loading" class="hover:bg-primary-700 btn-action btn-action bg-primary-600 inline-flex justify-center items-center py-0 px-4 h-10 text-sm font-medium leading-none text-center text-white rounded rounded-lg cursor-pointer select-none" @click="$emit('click')">
     <svg-spinner v-if="loading" light class="w-6 h-6"/>
     <slot v-else>Button</slot>
   </component>

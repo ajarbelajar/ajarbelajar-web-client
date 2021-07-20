@@ -59,6 +59,13 @@ export const actions = {
   checkResetPasswordToken(_, params) {
     return this.$axios.$get('auth/password', { params })
   },
+
+  updateMinitutorProfile({ commit, state }, payload) {
+    return this.$axios.$put('minitutor/profile', payload).then((minitutor) => {
+      const newState = { ...state.auth, minitutor }
+      commit('setAuth', newState)
+    })
+  },
 }
 
 export const mutations = {

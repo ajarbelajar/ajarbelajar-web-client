@@ -1,18 +1,18 @@
 <template>
   <div class="sidebar flex overflow-y-auto flex-col flex-1 p-3">
-    <div class="flex flex-col w-full bg-opacity-25 rounded-lg border group hover:bg-gray-100">
-      <div class="flex p-3 w-full items-center">
+    <div class="group flex flex-col w-full bg-opacity-25 rounded-lg border hover:bg-gray-100">
+      <div class="flex items-center p-3 w-full">
         <div class="pr-2">
-          <figure class="block m-auto w-12 p-1 border rounded-full h-12 group-hover:bg-gray-200">
+          <figure class="group-hover:bg-gray-200 block p-1 m-auto w-12 h-12 rounded-full border">
             <v-img class="block w-full h-full rounded-full" :src="auth.avatar" :src-placeholder="$images.avatar" />
           </figure>
         </div>
         <div class="flex-1">
-          <h3 class="capitalized truncate font-semibold leading-none mb-1 group-hover:text-primary-600">{{ auth.name }}</h3>
-          <p class="truncate text-sm text-gray-400  leading-none">@{{ auth.username }}</p>
+          <h3 class="group-hover:text-primary-600 capitalized truncate mb-1 font-semibold leading-none">{{ auth.name }}</h3>
+          <p class="truncate text-sm leading-none text-gray-400">@{{ auth.username }}</p>
         </div>
       </div>
-      <div class="border-t px-3 py-2 text-center text-xs leading-none font-bold text-primary-600">
+      <div class="text-primary-600 py-2 px-3 text-xs font-bold leading-none text-center border-t">
           {{ auth.points }} POINT
       </div>
     </div>
