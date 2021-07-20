@@ -4,12 +4,12 @@
       Buat akun baru
     </h1>
     <t-alert v-if="!!errors.message" class="mb-5" variant="error" show>{{ errors.message }}</t-alert>
-    <auth-input v-model="form.name" placeholder="Nama" name="name" :error="errors.name"/>
-    <auth-input v-model="form.username" placeholder="Username" name="username" :error="errors.username"/>
-    <auth-input v-model="form.email" placeholder="Email" name="email" :error="errors.email"/>
-    <auth-input v-model="form.password" placeholder="Password" password name="password" :error="errors.password" />
+    <form-input v-model="form.name" placeholder="Nama" name="name" :error="errors.name"/>
+    <form-input v-model="form.username" placeholder="Username" name="username" :error="errors.username"/>
+    <form-input v-model="form.email" placeholder="Email" name="email" :error="errors.email"/>
+    <form-input v-model="form.password" placeholder="Password" password name="password" :error="errors.password" />
     <div class="py-3 text-center">
-      <auth-button :loading="loading" class="hover:bg-primary-700 btn-action bg-primary-600 block w-6/12 font-bold tracking-widest text-white uppercase">Daftar</auth-button>
+      <form-button :loading="loading" class="block w-6/12 uppercase">Daftar</form-button>
     </div>
   </form>
 </template>
@@ -61,9 +61,3 @@ export default {
   },
 }
 </script>
-
-<style lang="css" scoped>
-  .btn-action:disabled {
-    @apply bg-primary-600 cursor-wait;
-  }
-</style>

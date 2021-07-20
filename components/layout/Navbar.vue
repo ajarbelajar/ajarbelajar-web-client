@@ -1,13 +1,13 @@
 <template>
   <div :class="scrollY > 5 ? 'border-b' : 'lg:border-b-0'" class="flex fixed top-0 right-0 left-0 z-40 items-center w-full h-16 bg-white border-b">
-    <layout-navbar-search-modal v-if="openSearchModal" @close="openSearchModal = false" />
+    <layout-search-modal v-if="openSearchModal" @close="openSearchModal = false" />
     <div class="flex-1 lg:container">
       <div class="flex">
         <div class="flex lg:w-60">
-          <div class="flex items-center p-3">
+          <nuxt-link to="/" class="flex items-center p-3">
             <svg-brand no-text class="block h-7 lg:hidden" />
             <svg-brand class="hidden h-7 lg:block" />
-          </div>
+          </nuxt-link>
         </div>
 
         <div class="flex flex-1 justify-end md:justify-start">
@@ -29,7 +29,7 @@
           <div v-if="auth" class="flex p-3 md:ml-auto">
             <button class="btn-light flex relative justify-center items-center p-0 w-9 h-9 text-sm font-semibold rounded-full">
               <i class="ft ft-bell"></i>
-              <span class="min-w-4 block absolute top-0 right-0 px-1 h-4 text-xs leading-4 text-center text-white bg-red-600 rounded-full">3</span>
+              <span v-if="unreadNotificationCount" class="min-w-4 block absolute top-0 right-0 px-1 h-4 text-xs leading-4 text-center text-white bg-red-600 rounded-full">{{ unreadNotificationCount }}</span>
             </button>
 
             <div class="avatar-toggle-wrapper relative ml-3 w-9 h-9">
@@ -44,14 +44,12 @@
                       <v-img class="block w-full h-full rounded-full" :src="auth.avatar" :src-placeholder="$images.avatar" />
                     </figure>
                   </div>
-                  <div class="text-center">
-                    <h3 class="text-md capitalized truncate font-semibold">{{ auth.name }}</h3>
-                    <p class="truncate text-sm text-gray-500">@{{ auth.username }}</p>
-                  </div>
+                  <h3 class="text-md capitalized truncate text-center w-full font-semibold">{{ auth.name }}</h3>
+                  <p class="truncate text-center w-full text-sm text-gray-500">@{{ auth.username }}</p>
                   <div class="pt-3">
                     <a href="#" class="btn-light flex justify-center items-center p-0 mb-3 w-full h-9 text-sm font-semibold rounded-full">Dasbor Saya</a>
                     <a href="#" class="btn-light flex justify-center items-center p-0 mb-3 w-full h-9 text-sm font-semibold rounded-full">Edit Profil</a>
-                    <button class="btn-light btn-error flex items-center py-0 px-4 h-9 text-sm font-semibold rounded-full">Keluar</button>
+                    <button class="btn-light btn-error flex items-center py-0 px-4 h-9 text-sm font-semibold rounded-full" @click="logout">Keluar</button>
                   </div>
                 </div>
               </div>
@@ -75,6 +73,9 @@ export default {
   computed: {
     auth() {
       return this.$store.getters.auth
+    },
+    unreadNotificationCount() {
+      return this.$store.getters['auth/unreadNotification'].length
     }
   },
   mounted() {
@@ -87,8 +88,23 @@ export default {
   methods: {
     onWindowsScroll() {
       this.scrollY = window.scrollY
+    },
+    logout(e) {
+      e.preventDefault();
+      this.$toast.confirm.danger(
+        async () => {
+          try {
+            await this.$store.dispatch('auth/logout')
+            window.location.reload()
+          } catch (e) {
+            this.$toast.danger('Logout gagal!')
+          }
+        },
+        null,
+        { message: 'Anda yakin ingin keluar?' }
+      )
     }
-  }
+  },
 }
 </script>
 

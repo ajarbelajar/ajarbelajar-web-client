@@ -5,11 +5,11 @@
     </h1>
     <t-alert v-if="!!errors.message" class="mb-5" variant="error" show>{{ errors.message }}</t-alert>
     <t-alert v-if="!!success" class="mb-5" show>{{ success }}</t-alert>
-    <auth-input v-model="form.email" placeholder="Email" name="email" :error="errors.email"/>
+    <form-input v-model="form.email" placeholder="Email" name="email" :error="errors.email"/>
     <div class="py-3 text-center">
-      <auth-button :loading="loading" class="hover:bg-primary-700 btn-action bg-primary-600 block w-6/12 font-bold tracking-widest text-white uppercase">
+      <form-button :loading="loading" class="block w-6/12 uppercase">
         Kirim
-      </auth-button>
+      </form-button>
     </div>
     <div class="text-center">
       <nuxt-link to="/login" class="hover:text-primary-700 text-primary-600 font-semibold">Masuk</nuxt-link>
@@ -53,9 +53,3 @@ export default {
   },
 }
 </script>
-
-<style lang="css" scoped>
-  .btn-action:disabled {
-    @apply bg-primary-600 cursor-wait;
-  }
-</style>

@@ -4,10 +4,10 @@
       Masuk ke akun anda
     </h1>
     <t-alert v-if="!!errors.message" class="mb-5" variant="error" show>{{ errors.message }}</t-alert>
-    <auth-input v-model="form.identity" placeholder="Email atau Username" name="identity" :error="errors.identity || errors.email || errors.username"/>
-    <auth-input v-model="form.password" placeholder="Password" password name="password" :error="errors.password" />
+    <form-input v-model="form.identity" placeholder="Email atau Username" name="identity" :error="errors.identity || errors.email || errors.username"/>
+    <form-input v-model="form.password" placeholder="Password" password name="password" :error="errors.password" />
     <div class="py-3 text-center">
-      <auth-button :loading="loading" class="hover:bg-primary-700 btn-action bg-primary-600 block w-6/12 font-bold tracking-widest text-white uppercase">Masuk</auth-button>
+      <form-button :loading="loading" class="block w-6/12 uppercase">Masuk</form-button>
     </div>
     <div class="text-center">
       <nuxt-link to="/password/forget" class="hover:text-primary-700 text-primary-600 font-semibold">Lupa Password?</nuxt-link>
@@ -60,9 +60,3 @@ export default {
   },
 }
 </script>
-
-<style lang="css" scoped>
-  .btn-action:disabled {
-    @apply bg-primary-600 cursor-wait;
-  }
-</style>

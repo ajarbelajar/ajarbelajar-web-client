@@ -4,10 +4,10 @@
       Masuk ke akun anda
     </h1>
     <t-alert v-if="!!errors.message" class="mb-5" variant="error" show>{{ errors.message }}</t-alert>
-    <auth-input v-model="form.email" placeholder="Email" name="email" :error="errors.email"/>
-    <auth-input v-model="form.password" placeholder="Password baru" password name="password" :error="errors.password" />
+    <form-input v-model="form.email" placeholder="Email" name="email" :error="errors.email"/>
+    <form-input v-model="form.password" placeholder="Password baru" password name="password" :error="errors.password" />
     <div class="py-3 text-center">
-      <auth-button :loading="loading" class="hover:bg-primary-700 btn-action bg-primary-600 block w-6/12 font-bold tracking-widest text-white uppercase">Simpan</auth-button>
+      <form-button :loading="loading" class="block w-6/12 uppercase">Simpan</form-button>
     </div>
   </form>
 </template>
@@ -68,9 +68,3 @@ export default {
   },
 }
 </script>
-
-<style lang="css" scoped>
-  .btn-action:disabled {
-    @apply bg-primary-600 cursor-wait;
-  }
-</style>
