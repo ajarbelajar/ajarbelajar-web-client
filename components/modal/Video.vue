@@ -14,7 +14,6 @@
 <script>
 import vClickOutside from 'v-click-outside'
 import videojs from 'video.js'
-import 'video.js/dist/video-js.css'
 
 export default {
   name: 'VideoModal',

@@ -52,6 +52,15 @@ export default {
       ];
 
       if(this.auth) {
+
+        if(!this.auth.minitutor) {
+          urls.push({
+            text: 'Jadi MiniTutor',
+            to: '/join-minitutor',
+            icon: '🎭',
+          })
+        }
+
         urls.push({
           text: 'Dasbor kamu',
           to: '/dashboard/me',

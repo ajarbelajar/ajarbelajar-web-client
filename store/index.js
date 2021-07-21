@@ -25,7 +25,7 @@ export const actions = {
       if (req.headers.cookie) {
         const parsed = cookieparser.parse(req.headers.cookie)
         const auth = await dispatch('auth/check', parsed['api-token'])
-        if (auth.notifications) {
+        if (auth && auth.notifications) {
           commit('notification/set', auth.notifications)
         }
       }
