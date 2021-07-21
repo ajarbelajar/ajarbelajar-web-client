@@ -59,6 +59,15 @@ export default {
       form: initialData
     }
   },
+  created() {
+    const mt = this.$store.getters.auth.minitutor
+    this.form = {
+      last_education: mt.last_education,
+      university: mt.university,
+      city_and_country_of_study: mt.city_and_country_of_study,
+      majors: mt.majors,
+    }
+  },
   methods: {
     async submit(data) {
       this.loading = true
@@ -75,15 +84,6 @@ export default {
         }
       }
       this.loading = false
-    }
-  },
-  created() {
-    const mt = this.$store.getters.auth.minitutor
-    this.form = {
-      last_education: mt.last_education,
-      university: mt.university,
-      city_and_country_of_study: mt.city_and_country_of_study,
-      majors: mt.majors,
     }
   }
 }

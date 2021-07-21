@@ -1,6 +1,8 @@
 <template>
   <div :class="scrollY > 5 ? 'border-b' : 'lg:border-b-0'" class="flex fixed top-0 right-0 left-0 z-40 items-center w-full h-16 bg-white border-b">
-    <layout-search-modal v-if="openSearchModal" @close="openSearchModal = false" />
+    <FadeTransition>
+      <modal-search v-if="openSearchModal" @close="openSearchModal = false" />
+    </FadeTransition>
     <div class="flex-1 lg:container">
       <div class="flex">
         <div class="flex lg:w-60">
@@ -62,8 +64,12 @@
 </template>
 
 <script>
+import { FadeTransition } from 'vue2-transitions'
 export default {
   name: 'Navbar',
+  components: {
+    FadeTransition
+  },
   data() {
     return {
       openSearchModal: false,

@@ -1,0 +1,56 @@
+<template>
+  <div>
+    <FadeTransition>
+      <modal-create-post v-if="openModalCreate" type="Article" @close="openModalCreate = false" />
+    </FadeTransition>
+    <div class="p-3 mb-3 rounded-lg border lg:p-5">
+      <div class="flex items-center pb-3 md:pb-0">
+        <div class="flex-1">
+          <h3 class="mb-2 text-xl font-semibold leading-none">Artikel</h3>
+        </div>
+        <div>
+          <button class="hover:bg-primary-600 bg-primary-500 flex justify-center items-center px-4 h-9 text-sm font-semibold leading-none text-white rounded-full" @click="openModalCreate = true">
+            <span class="block pr-2">
+              <i class="ft ft-plus-circle"></i>
+            </span>
+            <span class="block">Buat Artikel</span>
+          </button>
+        </div>
+      </div>
+      <p class="mb-2 text-sm text-gray-500">Ini adalah daftar Artikel kamu yang belum di publikasikan.</p>
+      <p class="text-sm text-gray-500">Artikel yang di tandai dengan warna <span class="bg-primary-600 inline-block p-1"> </span> adalah Artikel yang telah anda publikasikan dan akan segerah ditinjau.</p>
+    </div>
+    <block-request-post-list v-for="post in posts" :key="post.id" :post="post" type="Article" @destroyed="onDestroyed" />
+  </div>
+</template>
+
+<script>
+import { FadeTransition } from 'vue2-transitions'
+export default {
+  name: 'MinitutorArticles',
+  components: {
+    FadeTransition
+  },
+  async asyncData({ error, $axios }) {
+    try {
+      const posts = await $axios.$get('minitutor/request-articles')
+      return {
+        posts
+      }
+    } catch(e) {
+      error(e)
+    }
+  },
+  data() {
+    return {
+      openModalCreate: false
+    }
+  },
+  methods: {
+    onDestroyed(id) {
+      const temp = [...this.posts]
+      this.posts = temp.filter(el => el.id !== id)
+    }
+  }
+}
+</script>

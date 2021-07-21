@@ -23,20 +23,20 @@ module.exports = {
       yellow: colors.yellow,
       primary: colors.indigo,
     },
-    fill: theme => ({
-      'brand': theme('colors.primary.600'),
+    fill: (theme) => ({
+      brand: theme('colors.primary.600'),
       'brand-dark': theme('colors.gray.700'),
       'brand-light': theme('colors.gray.100'),
     }),
-    stroke: theme => ({
-      'brand': theme('colors.primary.600'),
+    stroke: (theme) => ({
+      brand: theme('colors.primary.600'),
       'brand-dark': theme('colors.gray.700'),
       'brand-light': theme('colors.gray.100'),
     }),
     extend: {
       transitionProperty: {
-        'spacing': 'margin, padding',
-      }
+        spacing: 'margin, padding',
+      },
     },
   },
   variants: {
@@ -45,5 +45,5 @@ module.exports = {
       cursor: ['disabled'],
     },
   },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 }
