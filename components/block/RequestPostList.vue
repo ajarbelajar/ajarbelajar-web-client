@@ -11,8 +11,8 @@
         <p class="mb-3 text-xs">Dibuat pada {{ post.created_at | moment('dddd, Do MMMM YYYY') }}</p>
 
         <div class="flex">
-          <nuxt-link :to="`articles/${post.id}`"  class="hover:bg-primary-600 bg-primary-500 flex justify-center items-center py-2 w-24 text-sm font-semibold leading-none text-white rounded-full">Edit</nuxt-link>
-          <button type="button" :disabled="loading" class="disabled:opacity-60 flex justify-center items-center py-2 ml-3 w-24 text-sm font-semibold leading-none text-red-600 bg-red-100 rounded-full hover:bg-red-200" @click.prevent="handleDelete">{{loading ? 'Menghapus...' : 'Hapus' }}</button>
+          <nuxt-link :to="`${type.toLowerCase()}s/${post.id}`"  class="hover:bg-primary-600 bg-primary-100 text-primary-600 flex justify-center items-center py-2 w-24 text-sm font-semibold leading-none rounded-full hover:text-white">Edit</nuxt-link>
+          <button type="button" :disabled="loading" class="disabled:opacity-60 flex justify-center items-center py-2 ml-3 w-24 text-sm font-semibold leading-none text-white bg-red-600 rounded-full hover:bg-red-700" @click.prevent="handleDelete">{{loading ? 'Menghapus...' : 'Hapus' }}</button>
         </div>
       </div>
     </div>

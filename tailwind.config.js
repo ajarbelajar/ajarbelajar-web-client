@@ -25,11 +25,14 @@ module.exports = {
     },
     fill: (theme) => ({
       brand: theme('colors.primary.600'),
+      red: theme('colors.red.600'),
       'brand-dark': theme('colors.gray.700'),
       'brand-light': theme('colors.gray.100'),
     }),
     stroke: (theme) => ({
+      current: 'currentColor',
       brand: theme('colors.primary.600'),
+      red: theme('colors.red.600'),
       'brand-dark': theme('colors.gray.700'),
       'brand-light': theme('colors.gray.100'),
     }),
@@ -43,6 +46,7 @@ module.exports = {
     extend: {
       opacity: ['disabled'],
       cursor: ['disabled'],
+      borderWidth: ['first'],
     },
   },
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
