@@ -1,14 +1,14 @@
 <template>
   <div class="sidebar flex overflow-y-auto flex-col flex-1 p-3">
-    <div class="group flex flex-col w-full bg-opacity-25 rounded-lg border hover:bg-gray-100">
+    <div class="flex flex-col w-full bg-opacity-25 rounded-lg border">
       <div class="flex items-center p-3 w-full">
         <div class="pr-2">
-          <figure class="group-hover:bg-gray-200 block p-1 m-auto w-12 h-12 rounded-full border">
+          <figure class="block p-1 m-auto w-12 h-12 rounded-full border">
             <v-img class="block w-full h-full rounded-full" :src="auth.avatar" :src-placeholder="$images.avatar" />
           </figure>
         </div>
         <div class="flex-1">
-          <h3 class="group-hover:text-primary-600 capitalized truncate mb-1 font-semibold leading-none">{{ auth.name }}</h3>
+          <h3 class="capitalized truncate mb-1 font-semibold leading-none">{{ auth.name }}</h3>
           <p class="truncate text-sm leading-none text-gray-400">@{{ auth.username }}</p>
         </div>
       </div>

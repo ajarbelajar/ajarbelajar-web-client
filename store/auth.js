@@ -5,15 +5,6 @@ export const state = () => ({
   token: null,
 })
 
-export const getters = {
-  unreadNotification(state) {
-    if (state.auth) {
-      return state.auth.notifications.filter((el) => !el.read_at)
-    }
-    return []
-  },
-}
-
 export const actions = {
   check({ commit }, token) {
     if (token) {
@@ -26,6 +17,7 @@ export const actions = {
         .then((res) => {
           commit('setAuth', res.auth)
           commit('setToken', token)
+          return res.auth
         })
     }
   },

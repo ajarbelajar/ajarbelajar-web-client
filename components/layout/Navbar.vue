@@ -81,7 +81,7 @@ export default {
       return this.$store.getters.auth
     },
     unreadNotificationCount() {
-      return this.$store.getters['auth/unreadNotification'].length
+      return this.$store.getters.unreadNotifications.length
     }
   },
   mounted() {

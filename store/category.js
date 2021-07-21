@@ -4,12 +4,6 @@ export const state = () => {
   }
 }
 
-export const getters = {
-  categories(state) {
-    return state.categories
-  },
-}
-
 export const actions = {
   fetch({ commit }) {
     return this.$axios.$get('/categories').then((categories) => {

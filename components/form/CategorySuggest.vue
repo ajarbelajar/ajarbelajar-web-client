@@ -38,7 +38,7 @@ export default {
   },
   computed: {
     categories() {
-      return this.$store.getters['category/categories'].map(el => el.name)
+      return this.$store.getters.categories.map(el => el.name)
     }
   },
   methods: {

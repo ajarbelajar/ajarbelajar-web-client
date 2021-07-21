@@ -1,5 +1,7 @@
 export default {
   publicRuntimeConfig: {
+    baseApiUrl: process.env.BASE_API_URL,
+    pusherKey: process.env.PUSHER_KEY,
     algoliaAppId: process.env.ALGOLIA_APP_ID,
     algoliaApiKey: process.env.ALGOLIA_API_KEY,
     algoliaIndexName: process.env.ALGOLIA_INDEX_NAME,
@@ -36,7 +38,7 @@ export default {
 
   buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/tailwindcss'],
 
-  modules: ['@nuxtjs/axios', '@nuxtjs/pwa'],
+  modules: ['@nuxtjs/axios', '@nuxtjs/pwa', 'nuxt-client-init-module'],
 
   axios: {
     baseURL: process.env.BASE_API_URL || 'http://localhost/api',
