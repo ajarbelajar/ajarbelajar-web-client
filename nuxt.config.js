@@ -37,6 +37,7 @@ export default {
     { src: '~/plugins/Sidebar.js', ssr: true },
     { src: '~/plugins/Image.js', ssr: true },
     { src: '~/plugins/InfiniteLoading', ssr: false },
+    { src: '~/plugins/StarRating', ssr: false },
   ],
 
   components: true,

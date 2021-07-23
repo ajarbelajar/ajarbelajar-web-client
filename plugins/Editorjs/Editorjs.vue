@@ -7,15 +7,15 @@ import EditorJS from '@editorjs/editorjs'
 import Image from '@editorjs/image'
 import Header from '@editorjs/header'
 import List from '@editorjs/list'
-import Checklist from '@editorjs/checklist'
+// import Checklist from '@editorjs/checklist'
 import Quote from '@editorjs/quote'
-import Warning from '@editorjs/warning'
+// import Warning from '@editorjs/warning'
 import Marker from '@editorjs/marker'
 import CodeTool from '@editorjs/code'
 import Delimiter from '@editorjs/delimiter'
 import InlineCode from '@editorjs/inline-code'
 import LinkTool from '@editorjs/link'
-import Embed from '@editorjs/embed'
+// import Embed from '@editorjs/embed'
 import Table from 'editorjs-table'
 import FormData from 'form-data'
 
@@ -72,10 +72,10 @@ export default {
           inlineToolbar: true,
           shortcut: 'CMD+SHIFT+L',
         },
-        checklist: {
-          class: Checklist,
-          inlineToolbar: true,
-        },
+        // checklist: {
+        //   class: Checklist,
+        //   inlineToolbar: true,
+        // },
         quote: {
           class: Quote,
           inlineToolbar: true,
@@ -85,7 +85,7 @@ export default {
           },
           shortcut: 'CMD+SHIFT+O',
         },
-        warning: Warning,
+        // warning: Warning,
         marker: {
           class: Marker,
           shortcut: 'CMD+SHIFT+M',
@@ -100,7 +100,7 @@ export default {
           shortcut: 'CMD+SHIFT+C',
         },
         linkTool: LinkTool,
-        embed: Embed,
+        // embed: Embed,
         table: {
           class: Table,
           inlineToolbar: true,
