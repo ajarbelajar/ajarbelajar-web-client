@@ -36,6 +36,7 @@ export default {
     { src: '~/plugins/ScreenSize.js', ssr: true },
     { src: '~/plugins/Sidebar.js', ssr: true },
     { src: '~/plugins/Image.js', ssr: true },
+    { src: '~/plugins/InfiniteLoading', ssr: false },
   ],
 
   components: true,

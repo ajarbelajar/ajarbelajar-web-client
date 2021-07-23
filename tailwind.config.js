@@ -40,6 +40,9 @@ module.exports = {
       transitionProperty: {
         spacing: 'margin, padding',
       },
+      fontSize: {
+        '2xs': '0.625rem',
+      },
     },
   },
   variants: {

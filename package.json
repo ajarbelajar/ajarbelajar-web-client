@@ -42,6 +42,7 @@
     "v-click-outside": "^3.1.2",
     "v-lazy-image": "^1.4.0",
     "video.js": "^7.13.3",
+    "vue-infinite-loading": "^2.4.5",
     "vue-moment": "^4.1.0",
     "vue-simple-suggest": "^1.11.1",
     "vue-tailwind": "^2.4.1",
