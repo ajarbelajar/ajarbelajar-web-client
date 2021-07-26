@@ -4,7 +4,7 @@
       <div class="md:col-span-2">
         <div class="mb-3 w-full rounded-lg border">
           <article v-if="auth">
-            <video :src="video.video" disablePictureInPicture controlsList="nodownload" :poster="video.hero.large || $images.hero.large" autoplay class="overflow-hidden block w-full rounded-lg shadow" controls></video>
+            <video :src="video.video" disablePictureInPicture controlsList="nodownload" :poster="video.hero.large || $images.hero.large" autoplay class="block overflow-hidden w-full rounded-lg shadow" controls></video>
             <div></div>
             <div class="flex justify-between items-center p-3 bg-gray-100 border-b">
               <div class="flex items-center text-sm text-gray-700">

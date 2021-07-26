@@ -62,7 +62,6 @@ export default {
         }
         this.$store.commit('auth/setAuth', { ...this.$store.getters.auth, favorites })
       } catch (e) {
-        console.log(e)
         this.$toast.danger(this.$errorMessage(e))
       }
       this.loading = false
