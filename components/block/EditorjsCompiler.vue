@@ -51,6 +51,7 @@
           :alt="block.data.caption"
           :src="block.data.file.url"
           :src-placeholder="block.data.file.url + '.dot.jpeg'"
+          class="w-full block"
         >
         </v-img>
         <figcaption

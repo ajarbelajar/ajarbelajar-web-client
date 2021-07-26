@@ -32,13 +32,13 @@
       </div>
     </div>
 
-    <div v-if="latesSorted.length" class="rounded-lg border">
+    <div v-if="lates.length" class="rounded-lg border">
       <div class="py-4 px-3 border-b">
         <h4 class="text-sm font-semibold leading-none">Lainnya dari {{ user.name }}</h4>
       </div>
       <div>
         <nuxt-link
-          v-for="(item, i) in latesSorted"
+          v-for="(item, i) in lates"
           :key="i"
           :to="`/${item.type.toLowerCase()}s/${item.slug}`"
           class="first:border-t-0 block py-2 px-3 text-sm border-t hover:bg-gray-100"
@@ -66,23 +66,6 @@ export default {
       type: Array,
       default: () => [],
     },
-  },
-  data() {
-    return {
-      latesSorted: [],
-    }
-  },
-  created() {
-    const arr = []
-    this.lates.forEach((item) => {
-      if (this.$route.params.slug !== item.slug) {
-        arr.push(item)
-      }
-    })
-
-    this.latesSorted = arr.sort((a, b) => {
-      return new Date(b.created_at) - new Date(a.created_at)
-    })
-  },
+  }
 }
 </script>

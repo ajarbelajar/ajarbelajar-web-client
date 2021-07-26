@@ -15,7 +15,7 @@
                 <span class="block mx-2 w-px h-3 bg-gray-600"></span>
                 <span class="block"><i class="ft ft-eye"></i> {{ article.view_count }}</span>
               </div>
-              <block-favorite-toggle v-if="auth" :pid="article.id" type="Article" />
+              <block-favorite-toggle v-if="auth" :pid="article.id" />
             </div>
             <div class="flex items-center p-3">
               <client-only>
@@ -46,12 +46,12 @@
           <block-feedback
             v-if="auth && !feedback"
             class="p-3 bg-gray-100 border-t"
-            :url="`/feedback/article/${article.id}`"
+            :url="`/feedback/${article.id}`"
             @close="feedback = true"
           />
           <block-comment
             class="p-3 border-t"
-            :url="`/comments/article/${article.id}`"
+            :url="`/comments/${article.id}`"
             :comments-count="article.comments.length"
             :comments="article.comments"
           />
@@ -79,7 +79,7 @@ export default {
     data.feedback = false
     if (store.getters.auth) {
       try {
-        data.feedback = await $axios.$get(`/feedback/article/${data.article.id}`)
+        data.feedback = await $axios.$get(`/feedback/${data.article.id}`)
       } catch (e) {
       }
     }

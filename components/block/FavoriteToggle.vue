@@ -14,10 +14,6 @@
 export default {
   name: 'FavoriteToggle',
     props: {
-    type: {
-      type: String,
-      default: 'Playlist',
-    },
     pid: {
       type: Number,
       required: true,
@@ -35,13 +31,7 @@ export default {
   },
   computed: {
     favorited() {
-      let exists = false
-      if ( this.type === 'Playlist' && this.$store.getters.auth.favorites.playlists.includes(this.pid) ) {
-        exists = true
-      } else if ( this.type === 'Article' && this.$store.getters.auth.favorites.articles.includes(this.pid) ) {
-        exists = true
-      }
-      return exists
+      return this.$store.getters.auth.favorites.includes(this.pid)
     },
     text() {
       if (this.loading) {
@@ -57,26 +47,22 @@ export default {
     async handleClick() {
       this.loading = true
       try {
-        const url = `/favorites/${this.type.toLowerCase()}/${this.pid}`
-        const favorites = { ...this.$store.getters.auth.favorites }
+        let favorites = [ ...this.$store.getters.auth.favorites ]
         if (!this.favorited) {
-          await this.$axios.$post(url)
-          favorites[`${this.type.toLowerCase()}s`] = [
-            ...favorites[`${this.type.toLowerCase()}s`],
+          await this.$axios.$post(`/favorites/${this.pid}`)
+          favorites = [
+            ...favorites,
             this.pid,
           ]
-          this.$toast.success(`${this.type} telah ditambahkan ke daftar favorite.`)
+          this.$toast.success(`Berhasil menambahkan ke daftar favorite.`)
         } else {
-          await this.$axios.$delete(url)
-          const data = []
-          favorites[`${this.type.toLowerCase()}s`].forEach((id) => {
-            if (id !== this.pid) data.push(id)
-          })
-          favorites[`${this.type.toLowerCase()}s`] = data
-          this.$toast.success(`${this.type} telah dihapus dari daftar favorite.`)
+          await this.$axios.$delete(`/favorites/${this.pid}`)
+          favorites = favorites.filter((id) => id !== this.pid)
+          this.$toast.success(`Berhasil menghapus favorite.`)
         }
         this.$store.commit('auth/setAuth', { ...this.$store.getters.auth, favorites })
       } catch (e) {
+        console.log(e)
         this.$toast.danger(this.$errorMessage(e))
       }
       this.loading = false
