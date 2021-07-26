@@ -45,6 +45,7 @@ export default {
       this.errors = initialError
       try {
         await this.$store.dispatch('auth/register', data)
+        await this.$store.dispatch('notification/listen')
         this.redirect()
       } catch (e) {
         data = this.$errorResponse(e)
