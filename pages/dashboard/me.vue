@@ -2,14 +2,14 @@
   <div class="py-3">
     <div class="overflow-hidden rounded-lg border">
       <div class="flex py-5 px-4">
-        <div class="p-1 w-16 rounded-full border relative">
+        <div class="relative p-1 w-16 rounded-full border">
           <v-img class="block w-full rounded-full" :src="auth.avatar" :src-placeholder="$images.avatar" />
-          <div class="bottom-0 left-0 flex justify-center transform translate-y-2/4 w-full absolute">
-            <button @click.prevent="handleClick" type="button" :disabled="loading" class="flex text-primary-600 w-7 h-7 rounded-full bg-white border hover:bg-gray-200 justify-center items-center">
+          <div class="flex absolute bottom-0 left-0 justify-center w-full transform translate-y-2/4">
+            <button type="button" :disabled="loading" class="text-primary-600 flex justify-center items-center w-7 h-7 bg-white rounded-full border hover:bg-gray-200" @click.prevent="handleClick">
               <svg-spinner v-if="loading" class="w-4" />
-              <i class="ft ft-image" v-else />
+              <i v-else class="ft ft-image" />
             </button>
-            <input type="file" @change="handleChange" class="hidden" ref="input" accept="image/*" />
+            <input ref="input" type="file" class="hidden" accept="image/*" @change="handleChange" />
           </div>
         </div>
         <div class="flex-1 pl-4 my-auto">

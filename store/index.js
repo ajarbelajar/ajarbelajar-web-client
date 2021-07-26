@@ -30,7 +30,6 @@ export const actions = {
         }
       }
     } catch (err) {
-      console.log(err)
       // No valid cookie found
     }
   },
