@@ -42,6 +42,9 @@ export const actions = {
       return res
     })
   },
+  updateProfile(ctx, payload) {
+    return this.$axios.$put('account/profile', payload)
+  },
   forgetPassword(_, payload) {
     return this.$axios.$post('auth/password', payload)
   },
