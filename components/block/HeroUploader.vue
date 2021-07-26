@@ -30,7 +30,7 @@ export default {
     },
     type: {
       type: String,
-      default: 'Playlist',
+      default: 'Video',
     },
     hero: {
       type: Object,

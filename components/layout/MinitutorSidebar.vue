@@ -45,8 +45,8 @@ export default {
           icon: '📓',
         },
         {
-          text: 'Playlist',
-          to: '/dashboard/minitutor/playlists',
+          text: 'Video',
+          to: '/dashboard/minitutor/videos',
           icon: '🎬',
         },
         {

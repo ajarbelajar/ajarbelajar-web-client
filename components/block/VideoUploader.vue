@@ -1,12 +1,11 @@
 <template>
-  <div class="panel" :class="{ 'border-danger': error }">
-    <div class="panel-body">
-      <div class="video-uploader-wrapper">
-        <div class="upload-message">
-          {{ loading ? uploadMessage : error || 'Klik atau seret video anda disini.' }}
-        </div>
-        <input ref="input" type="file" :disabled="loading" @change="handleChange" />
+  <div :class="{ 'border-danger': error }">
+    <video v-if="video" :src="video" controls class="block w-full" />
+    <div class="relative py-10 px-4">
+      <div class="font-semibold text-center">
+        {{ loading ? uploadMessage : error || 'Klik atau seret video anda disini untuk mengupload.' }}
       </div>
+      <input ref="input" type="file" class="block absolute inset-0 z-10 w-full opacity-0 cursor-pointer" :disabled="loading" @change="handleChange" />
     </div>
   </div>
 </template>
@@ -19,6 +18,10 @@ export default {
       required: true,
       default: 0,
     },
+    video: {
+      type: String,
+      default: ''
+    }
   },
   data() {
     return {
@@ -42,7 +45,7 @@ export default {
     },
     async handleChange(ev) {
       this.loading = true
-      const url = `/minitutor/request-playlists/${this.pid}/video`
+      const url = `/minitutor/request-videos/${this.pid}/video`
       const config = {
         onUploadProgress: this.onUploadProgress,
       }
@@ -66,30 +69,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-.video-uploader-wrapper {
-  display: flex;
-  position: relative;
-  height: 180px;
-  // border: 1px solid $gray-200;
-  // background-color: $gray-100;
-  input {
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    // background-color: $primary;
-    opacity: 0;
-    z-index: 5;
-  }
-  .upload-message {
-    margin: auto;
-    // padding: $spacer;
-    text-align: center;
-    font-size: 16px;
-    // font-weight: $font-weight-bold;
-    // color: $gray-400;
-  }
-}
-</style>

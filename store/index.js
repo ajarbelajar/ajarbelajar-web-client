@@ -5,7 +5,7 @@ export const getters = {
     return state.auth && state.auth.auth
   },
   minitutor(state) {
-    return state.auth && state.auth.auth.minitutor
+    return state.auth && state.auth.auth && state.auth.auth.minitutor
   },
   notifications(state) {
     return state.notification.notifications

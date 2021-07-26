@@ -2,7 +2,7 @@
   <div :class="{ 'border-primary-600': !!post.requested_at }" class="flex mb-3 bg-white rounded-lg border-l-4">
     <div class="flex flex-1 p-3 rounded-lg border border-l-0">
       <div class="w-20 md:w-32 lg:w-40">
-        <v-img class="block w-full rounded" :src="post.hero ? post.hero.thumb : $images.hero.thumb" :alt="post.title" />
+        <v-img class="block w-full rounded" :src="post.hero.thumb || $images.hero.thumb" :src-placeholder="$images.hero.thumb" :alt="post.title" />
       </div>
       <div class="flex-1 pl-3">
         <p class="fort-semibold text-xs">Diedit {{ updateago }}</p>
@@ -29,7 +29,7 @@ export default {
     },
     type: {
       type: String,
-      default: 'Playlist',
+      default: 'Video',
     },
   },
   data() {

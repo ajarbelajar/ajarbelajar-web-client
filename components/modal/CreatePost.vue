@@ -3,7 +3,7 @@
     <div class="overflow-y-auto relative p-3 w-full sm:py-14 sm:max-w-lg">
       <form v-click-outside="onClickOutside" method="POST" class="block bg-white rounded-lg shadow-lg" @submit.prevent="submit(form)" >
         <div class="flex items-center p-4 border-b">
-          <h3 class="leading-0 flex-1 text-xl font-semibold">Buat {{ type === 'Playlist' ? 'playlist' : 'artikel' }}</h3>
+          <h3 class="leading-0 flex-1 text-xl font-semibold">Buat {{ type === 'Video' ? 'video' : 'artikel' }}</h3>
           <div class="pl-3">
             <button type="button" class="flex justify-center items-center p-0 w-8 h-8 text-lg font-semibold text-red-600 bg-gray-100 rounded-full hover:text-white hover:bg-red-600" @click.prevent="$emit('close')">
               <i class="ft-x"></i>
@@ -43,7 +43,7 @@ export default {
   props: {
     type: {
       type: String,
-      default: 'Playlist'
+      default: 'Video'
     }
   },
   data() {
