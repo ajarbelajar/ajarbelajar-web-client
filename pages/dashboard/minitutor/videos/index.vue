@@ -18,7 +18,7 @@
         </div>
       </div>
       <p class="mb-2 text-sm text-gray-500">Ini adalah daftar Video kamu yang belum di publikasikan.</p>
-      <p class="text-sm text-gray-500">Video yang di tandai dengan warna <span class="bg-primary-600 inline-block p-1"> </span> adalah Playlist yang telah anda publikasikan dan akan segerah ditinjau.</p>
+      <p class="text-sm text-gray-500">Video yang di tandai dengan warna <span class="bg-primary-600 inline-block p-1"> </span> adalah Video yang telah anda publikasikan dan akan segerah ditinjau.</p>
     </div>
     <block-request-post-list v-for="post in posts" :key="post.id" :post="post" type="Video" @destroyed="onDestroyed" />
     <block-blank v-if="!posts.length" text="Belum ada Video.">

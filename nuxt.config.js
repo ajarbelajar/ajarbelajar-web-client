@@ -20,11 +20,7 @@ export default {
 
   serverMiddleware: [],
 
-  css: [
-    '~/assets/fonts/feather/style.css',
-    'izitoast/dist/css/iziToast.css',
-    'video.js/dist/video-js.css',
-  ],
+  css: ['~/assets/fonts/feather/style.css', 'izitoast/dist/css/iziToast.css'],
 
   plugins: [
     { src: '~/plugins/Moment.js', ssr: true },

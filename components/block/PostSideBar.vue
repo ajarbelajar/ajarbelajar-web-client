@@ -43,7 +43,7 @@
           :to="`/${item.type.toLowerCase()}s/${item.slug}`"
           class="first:border-t-0 block py-2 px-3 text-sm border-t hover:bg-gray-100"
         >
-          <span class="block text-xs font-semibold leading-none" :class="item.type === 'Article' ? 'text-red-600' : 'text-primary-600'">{{ item.type }}</span>
+          <span class="block text-xs font-semibold leading-none" :class="item.type === 'Article' ? 'text-red-600' : 'text-primary-600'">{{ item.type === 'article' ? 'Artikel' : 'Video' }}</span>
           {{ item.title }}
         </nuxt-link>
       </div>

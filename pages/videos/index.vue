@@ -1,13 +1,13 @@
 <template>
   <div class="py-3">
     <div class="flex justify-between items-center mb-3">
-      <h3 class="flex-1 font-semibold leading-none md:text-lg">Daftar Playlist</h3>
+      <h3 class="flex-1 font-semibold leading-none md:text-lg">Daftar Video</h3>
       <button @click.prevent="flat = !flat">
         <i class="ft" :class="flat? 'ft-list' : 'ft-grid'"></i>
       </button>
     </div>
     <div class="grid gap-3" :class="flat? 'md:grid-cols-3' : 'grid-cols-1'">
-      <block-post-list v-for="item in data" :key="item.id" :post="item" type="Playlist" :flat="flat" />
+      <block-post-list v-for="item in data" :key="item.id" :post="item" type="Video" :flat="flat" />
     </div>
     <client-only>
       <infinite-loading @infinite="infiniteHandler" />
@@ -17,10 +17,10 @@
 
 <script>
 export default {
-  name: 'Playlists',
+  name: 'Videos',
   async asyncData({ $axios, error }) {
     try {
-      return await $axios.$get(`/playlists`)
+      return await $axios.$get(`/videos`)
     } catch (e) {
       return error(e)
     }
@@ -33,7 +33,7 @@ export default {
   methods: {
     infiniteHandler($state) {
       this.$axios
-        .$get(`/playlists?page=${this.meta ? this.meta.current_page + 1 : 1}`)
+        .$get(`/videos?page=${this.meta ? this.meta.current_page + 1 : 1}`)
         .then(({ data, meta, links }) => {
           this.data = [...this.data, ...data]
           this.meta = meta

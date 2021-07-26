@@ -33,8 +33,8 @@ export default {
           icon: '📓',
         },
         {
-          text: 'Playlist',
-          to: '/playlists',
+          text: 'Video',
+          to: '/videos',
           icon: '🎬',
         },
         {
