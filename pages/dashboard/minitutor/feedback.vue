@@ -28,6 +28,8 @@
         <nuxt-link :to="`/${item.post.type}s/${item.post.slug}`" class="hover:bg-primary-600 hover:text-white bg-primary-100 inline-flex justify-center items-center px-3 h-7 text-xs font-semibold leading-none text-primary-600 rounded-full">Lihat Postingan</nuxt-link>
       </div>
     </div>
+
+    <block-blank v-if="!feedback.length" text="Belum ada Feddback Konstruktif." />
   </div>
 </template>
 
