@@ -29,10 +29,10 @@
           </div>
 
           <div v-if="auth" class="flex p-3 md:ml-auto">
-            <button class="btn-light flex relative justify-center items-center p-0 w-9 h-9 text-sm font-semibold rounded-full">
+            <nuxt-link to="/notifications" class="btn-light flex relative justify-center items-center p-0 w-9 h-9 text-sm font-semibold rounded-full">
               <i class="ft ft-bell"></i>
               <span v-if="unreadNotificationCount" class="min-w-4 block absolute top-0 right-0 px-1 h-4 text-xs leading-4 text-center text-white bg-red-600 rounded-full">{{ unreadNotificationCount }}</span>
-            </button>
+            </nuxt-link>
 
             <div class="avatar-toggle-wrapper relative ml-3 w-9 h-9">
               <button class="block p-0 w-9 h-9 rounded-full">
