@@ -20,10 +20,6 @@
       <span class="block mb-2 text-xs font-bold leading-none text-gray-500">Alamat Kampus</span>
       <h3 class="font-semibold">{{ minitutor.city_and_country_of_study }}</h3>
     </div>
-    <div v-if="user.about" class="p-3 rounded-lg border">
-      <span class="block mb-2 text-xs font-bold leading-none text-gray-500">Tentang</span>
-      <p>{{ user.about }}</p>
-    </div>
   </div>
 </template>
 
