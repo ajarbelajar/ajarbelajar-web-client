@@ -1,13 +1,13 @@
 <template>
   <div class="py-3">
     <div class="flex justify-between items-center mb-3">
-      <h3 class="flex-1 font-bold uppercase leading-none text-lg">Daftar Artikel</h3>
+      <h3 class="flex-1 font-bold uppercase leading-none text-lg">{{ category.name }}</h3>
       <button @click.prevent="flat = !flat">
         <i class="ft" :class="flat? 'ft-list' : 'ft-grid'"></i>
       </button>
     </div>
     <div class="grid gap-3" :class="flat? 'md:grid-cols-3' : 'grid-cols-1'">
-      <block-post-list v-for="item in data" :key="item.id" :post="item" type="Article" :flat="flat" />
+      <block-post-list v-for="item in data" :key="item.id" :post="item" :flat="flat" />
     </div>
     <client-only>
       <infinite-loading @infinite="infiniteHandler" />
@@ -17,10 +17,10 @@
 
 <script>
 export default {
-  name: 'Articles',
-  async asyncData({ $axios, error }) {
+  name: 'ShowCategory',
+  async asyncData({ $axios, error, params }) {
     try {
-      return await $axios.$get(`/articles`)
+      return await $axios.$get(`/categories/${params.slug}`)
     } catch (e) {
       return error(e)
     }
@@ -30,10 +30,15 @@ export default {
       flat: false
     }
   },
+  computed: {
+    category() {
+      return this.$store.getters.categories.filter(el => el.slug === this.$route.params.slug)[0]
+    }
+  },
   methods: {
     infiniteHandler($state) {
       this.$axios
-        .$get(`/articles?page=${this.meta ? this.meta.current_page + 1 : 1}`)
+        .$get(`/categories/${this.$route.params.slug}?page=${this.meta ? this.meta.current_page + 1 : 1}`)
         .then(({ data, meta, links }) => {
           this.data = [...this.data, ...data]
           this.meta = meta
