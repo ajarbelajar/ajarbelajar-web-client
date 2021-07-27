@@ -11,11 +11,11 @@
           <span class="text-2xs bg-primary-100 text-primary-600 inline-block absolute bottom-0 px-2 font-bold rounded-full border transform translate-y-5">{{ user.points }} Poin</span>
         </div>
         <div class="pl-4">
-          <a :href="user.website" v-if="user.website" target="_blank" class="inline-flex justify-center items-center text-sm hover:bg-primary-600 hover:text-white font-semibold rounded-full text-primary-600 leading-none h-8 w-8 bg-primary-100"><i class="ft ft-globe"></i></a>
+          <a v-if="user.website" :href="user.website" target="_blank" class="hover:bg-primary-600 text-primary-600 bg-primary-100 inline-flex justify-center items-center w-8 h-8 text-sm font-semibold leading-none rounded-full hover:text-white"><i class="ft ft-globe"></i></a>
           <block-follow-toggle :mid="minitutor.id" />
         </div>
       </div>
-      <p class="p-3 border-t text-sm" v-if="user.about">{{ user.about }}</p>
+      <p v-if="user.about" class="p-3 text-sm border-t">{{ user.about }}</p>
       <div class="border-top flex border-t">
         <div v-for="(link, i) in links" :key="i" class="first:border-l-0 flex flex-1 border-l">
           <nuxt-link :to="link.to" exact-active-class="border-b-4 pb-2 bg-gray-100" class="border-b-transparent border-primary-600 flex flex-1 justify-center items-center py-3 text-center hover:bg-gray-100">

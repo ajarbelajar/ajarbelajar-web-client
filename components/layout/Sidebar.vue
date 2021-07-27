@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar flex overflow-y-auto flex-1 p-3">
     <div class="flex-1">
-      <component :is="url ? 'nuxt-link' : 'div'" v-for="url, i in urls" :key="i" :to="url && url.to" active-class="bg-gray-100" :class="!url ? 'py-2' : 'flex w-full px-3 py-3 mb-1 text-gray-600 hover:bg-gray-100 rounded-lg items-center leading-none text-sm font-semibold'">
+      <component :is="url ? 'nuxt-link' : 'div'" v-for="url, i in urls" :key="i" :to="url && url.to" active-class="bg-gray-100" :class="!url ? 'py-2' : 'flex w-full px-3 py-3 mb-1 text-gray-600 hover:bg-gray-100 rounded-lg items-center leading-none text-sm font-semibold'" @click.native="onclick">
         <span v-if="url" class="mr-3 opacity-60">{{ url.icon }}</span>
         <span v-if="url">{{ url.text }}</span>
       </component>
@@ -108,6 +108,9 @@ export default {
         null,
         { message: 'Anda yakin ingin keluar?' }
       )
+    },
+    onclick() {
+      this.$sidebar.display(false)
     }
   },
 }

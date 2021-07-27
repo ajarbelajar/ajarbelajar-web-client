@@ -13,11 +13,11 @@
         </div>
       </div>
       <div class="text-primary-600 py-2 px-3 text-xs font-bold leading-none text-center border-t">
-          {{ auth.points }} POINT
+        {{ auth.points }} POINT
       </div>
     </div>
     <div class="flex-1 py-3">
-      <nuxt-link v-for="url, i in urls" :key="i" :to="url.to" :exact-active-class="i ? '' : 'bg-gray-100'" :active-class="i ? 'bg-gray-100' : ''" class="flex items-center py-3 px-3 mb-1 w-full text-sm font-semibold leading-none text-gray-600 rounded-lg hover:bg-gray-100">
+      <nuxt-link v-for="url, i in urls" :key="i" :to="url.to" :exact-active-class="i ? '' : 'bg-gray-100'" :active-class="i ? 'bg-gray-100' : ''" class="flex items-center py-3 px-3 mb-1 w-full text-sm font-semibold leading-none text-gray-600 rounded-lg hover:bg-gray-100" @click.native="onclick">
         <span class="mr-3 opacity-60">{{ url.icon }}</span>
         <span>{{ url.text }}</span>
       </nuxt-link>
@@ -60,6 +60,11 @@ export default {
           icon: '💻',
         }
       ];
+    }
+  },
+  methods: {
+    onclick() {
+      this.$sidebar.display(false)
     }
   }
 }

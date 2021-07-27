@@ -49,8 +49,8 @@
                   <h3 class="text-md capitalized truncate w-full font-semibold text-center">{{ auth.name }}</h3>
                   <p class="truncate w-full text-sm text-center text-gray-500">@{{ auth.username }}</p>
                   <div class="pt-3">
-                    <a href="#" class="btn-light flex justify-center items-center p-0 mb-3 w-full h-9 text-sm font-semibold rounded-full">Dasbor Saya</a>
-                    <a href="#" class="btn-light flex justify-center items-center p-0 mb-3 w-full h-9 text-sm font-semibold rounded-full">Edit Profil</a>
+                    <nuxt-link to="/dashboard/me" class="btn-light flex justify-center items-center p-0 mb-3 w-full h-9 text-sm font-semibold rounded-full">Dasbor Saya</nuxt-link>
+                    <nuxt-link to="/dashboard/me/edit" class="btn-light flex justify-center items-center p-0 mb-3 w-full h-9 text-sm font-semibold rounded-full">Edit Profil</nuxt-link>
                     <button class="btn-light btn-error flex items-center py-0 px-4 h-9 text-sm font-semibold rounded-full" @click="logout">Keluar</button>
                   </div>
                 </div>
