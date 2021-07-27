@@ -1,7 +1,7 @@
 <template>
   <div class="py-3">
     <div class="flex justify-between items-center mb-3">
-      <h3 class="flex-1 font-bold uppercase leading-none text-lg">Daftar Video</h3>
+      <h3 class="flex-1 text-lg font-bold leading-none uppercase">Daftar Video</h3>
       <button @click.prevent="flat = !flat">
         <i class="ft" :class="flat? 'ft-list' : 'ft-grid'"></i>
       </button>

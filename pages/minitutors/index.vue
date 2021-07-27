@@ -1,9 +1,9 @@
 <template>
   <div class="py-3">
     <div class="flex justify-between items-center mb-3">
-      <h3 class="flex-1 font-bold uppercase leading-none text-lg">Daftar Minitutor</h3>
+      <h3 class="flex-1 text-lg font-bold leading-none uppercase">Daftar Minitutor</h3>
     </div>
-    <div class="grid gap-3 grid-cols-2 md:grid-cols-4">
+    <div class="grid grid-cols-2 gap-3 md:grid-cols-4">
       <block-minitutor-list v-for="item in data" :key="item.minitutor.id" :minitutor="item.minitutor" :user="item.user"/>
     </div>
     <client-only>
