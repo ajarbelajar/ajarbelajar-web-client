@@ -24,16 +24,14 @@
         </div>
       </div>
       <div class="flex mb-2 w-full">
-        <!-- <span v-if="type === 'Article'" class="block py-1 px-2 mr-1 text-xs font-bold leading-none text-gray-500 bg-gray-100 rounded-full border">Artikel</span>
-        <span v-else class="block py-1 px-2 mr-1 text-xs font-bold leading-none text-gray-500 bg-gray-100 rounded-full border">Video</span> -->
         <span class="block py-1 px-2 mr-1 text-xs font-bold leading-none text-gray-500 bg-gray-100 rounded-full border"><i class="ft ft-eye"></i> {{ post.view_count }}</span>
         <span class="block py-1 px-2 mr-1 text-xs font-bold leading-none text-gray-500 bg-gray-100 rounded-full border"><i class="ft ft-message-circle"></i> {{ post.comments_count }}</span>
         <span class="block py-1 px-2 mr-1 text-xs font-bold leading-none text-gray-500 bg-gray-100 rounded-full border"><i class="ft ft-star"></i> {{ post.rating }}/{{ post.feedback_count }}</span>
       </div>
       <div class="flex">
-        <nuxt-link :to="postUrl" class="bg-primary-600 flex justify-center items-center px-4 h-8 text-sm font-semibold leading-none text-center text-white rounded-full">
-          <i :class="type === 'Video' ? 'ft-play' : 'ft-book'" class="ft pr-2"></i>
-          {{ type === 'Video' ? 'Tonton' : 'Baca' }}
+        <nuxt-link :to="postUrl" class="hover:bg-primary-700 bg-primary-600 flex justify-center items-center px-4 h-8 text-sm font-semibold leading-none text-center text-white rounded-full">
+          <i :class="post.type === 'video' ? 'ft-play' : 'ft-book'" class="ft pr-2"></i>
+          {{ post.type === 'video' ? 'Tonton' : 'Baca' }}
         </nuxt-link>
       </div>
     </div>
@@ -50,10 +48,6 @@ export default {
         return {}
       },
     },
-    type: {
-      type: String,
-      default: 'Video',
-    },
     flat: {
       type: Boolean,
       default: false
@@ -61,7 +55,7 @@ export default {
   },
   computed: {
     postUrl() {
-      return `/${this.type.toLowerCase()}s/${this.post.slug}`
+      return `/${this.post.type}s/${this.post.slug}`
     },
   },
 }

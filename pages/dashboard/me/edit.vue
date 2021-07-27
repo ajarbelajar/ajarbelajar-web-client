@@ -13,7 +13,7 @@
       <div class="block py-3 md:grid md:grid-cols-3 md:gap-3">
         <div class="text-sm md:text-base">
           Password
-          <p class="text-xs mb-1">Kosongkan jika tidak ingin diubah.</p>
+          <p class="mb-1 text-xs">Kosongkan jika tidak ingin diubah.</p>
         </div>
         <div class="md:col-span-2">
           <form-input v-model="form.new_password" placeholder="Password Baru" name="new_password" :error="errors.new_password" />
@@ -52,7 +52,7 @@
         <div class="text-sm md:text-base">
           Email Notifikasi
         </div>
-        <div class="md:col-span-2 pb-3">
+        <div class="pb-3 md:col-span-2">
           <input v-model="form.email_notification" type="checkbox" class="rounded border-gray-300" />
         </div>
       </label>
