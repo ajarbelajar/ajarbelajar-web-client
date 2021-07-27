@@ -29,7 +29,7 @@
       </div>
     </div>
 
-    <block-blank v-if="!feedback.length" text="Belum ada Feddback Konstruktif." />
+    <block-blank v-if="!feedback.length" text="Belum ada Feedback Konstruktif." />
   </div>
 </template>
 

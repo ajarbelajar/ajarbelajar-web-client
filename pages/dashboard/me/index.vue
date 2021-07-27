@@ -17,6 +17,7 @@
         <h3 class="font-semibold">{{ activity.post.title }}</h3>
       </div>
     </nuxt-link>
+    <block-blank v-if="!activities.length" text="Anda belum memiliki Aktifitas." />
   </div>
 </template>
 
