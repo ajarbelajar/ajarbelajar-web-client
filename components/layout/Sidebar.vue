@@ -1,12 +1,16 @@
 <template>
-  <div class="sidebar flex overflow-y-auto flex-1 p-3">
+  <div class="flex overflow-y-auto flex-1 p-3">
     <div class="flex-1">
       <component :is="url ? 'nuxt-link' : 'div'" v-for="url, i in urls" :key="i" :to="url && url.to" active-class="bg-gray-100" :class="!url ? 'py-2' : 'flex w-full px-3 py-3 mb-1 text-gray-600 hover:bg-gray-100 rounded-lg items-center leading-none text-sm font-semibold'" @click.native="onclick">
-        <span v-if="url" class="mr-3 opacity-60">{{ url.icon }}</span>
+        <span v-if="url" class="mr-3 opacity-60">
+          <i :class="`ft ft-${url.icon}`" />
+        </span>
         <span v-if="url">{{ url.text }}</span>
       </component>
       <a href="/logout" class="flex items-center py-3 px-3 mb-1 w-full text-sm font-semibold leading-none text-gray-600 rounded-lg hover:bg-gray-100" @click="logout">
-        <span class="mr-3 text-red-600">📤</span>
+        <span class="mr-3 text-red-600">
+          <i class="ft ft-log-out" />
+        </span>
         <span>Keluar</span>
       </a>
     </div>
@@ -25,27 +29,27 @@ export default {
         {
           text: 'Home',
           to: '/home',
-          icon: '🏠',
+          icon: 'home',
         },
         {
           text: 'Artikel',
           to: '/articles',
-          icon: '📓',
+          icon: 'book',
         },
         {
           text: 'Video',
           to: '/videos',
-          icon: '🎬',
+          icon: 'film',
         },
         {
           text: 'Kategori',
           to: '/categories',
-          icon: '📚',
+          icon: 'database',
         },
         {
           text: 'Minitutor',
           to: '/minitutors',
-          icon: '🎭',
+          icon: 'users',
         },
         null
 
@@ -57,21 +61,21 @@ export default {
           urls.push({
             text: 'Jadi MiniTutor',
             to: '/join-minitutor',
-            icon: '🎭',
+            icon: 'user-plus',
           })
         }
 
         urls.push({
           text: 'Dasbor kamu',
           to: '/dashboard/me',
-          icon: '🎭',
+          icon: 'user',
         })
 
         if(this.auth.minitutor && this.auth.minitutor.active) {
           urls.push({
             text: 'Dasbor MiniTutor',
             to: '/dashboard/minitutor',
-            icon: '🎭',
+            icon: 'clipboard',
           })
         }
 

@@ -1,9 +1,9 @@
 <template>
-  <div :class="scrollY > 5 ? 'border-b' : 'lg:border-b-0'" class="flex fixed top-0 right-0 left-0 z-40 items-center w-full h-16 bg-white border-b">
+  <div class="flex fixed top-0 right-0 left-0 z-40 items-center w-full h-16 bg-white border-b shadow">
     <FadeTransition>
       <modal-search v-if="openSearchModal" @close="openSearchModal = false" />
     </FadeTransition>
-    <div class="flex-1 lg:container">
+    <div class="flex-1">
       <div class="flex">
         <div class="flex lg:w-60">
           <nuxt-link to="/" class="flex items-center p-3">
@@ -14,22 +14,22 @@
 
         <div class="flex flex-1 justify-end md:justify-start">
           <div class="flex py-3 lg:pl-3">
-            <button class="btn-light flex justify-center items-center p-0 w-9 h-9 text-sm font-semibold rounded-full md:justify-between md:px-4 md:w-40" @click="openSearchModal = true">
+            <button class="flex justify-center items-center p-0 w-9 h-9 text-sm font-semibold text-gray-700 bg-gray-100 rounded-full md:justify-between md:px-4 md:w-40 hover:bg-gray-200" @click="openSearchModal = true">
               <div class="hidden md:block">Cari</div>
               <i class="ft ft-search md:text-lg"></i>
             </button>
-            <button class="btn-light flex justify-center items-center p-0 ml-3 w-9 h-9 text-sm font-semibold rounded-full lg:hidden" @click="$sidebar.display(!$sidebar.open)">
+            <button class="flex justify-center items-center p-0 ml-3 w-9 h-9 text-sm font-semibold text-gray-700 bg-gray-100 rounded-full lg:hidden hover:bg-gray-200" @click="$sidebar.display(!$sidebar.open)">
               <i :class="$sidebar.open ? 'ft ft-x' : 'ft ft-menu'"></i>
             </button>
           </div>
 
           <div v-if="!auth" class="flex p-3 ml-auto">
-            <router-link to="/login" class="btn-light flex justify-center items-center px-4 h-9 text-sm font-semibold rounded-full">Masuk</router-link>
-            <router-link to="/register" class="btn-primary flex justify-center items-center px-4 ml-3 h-9 text-sm font-semibold rounded-full">Buat Akun</router-link>
+            <router-link to="/login" class="flex justify-center items-center px-4 h-9 text-sm font-semibold text-gray-700 bg-gray-100 rounded-full hover:bg-gray-200">Masuk</router-link>
+            <router-link to="/register" class="hover:bg-primary-600 bg-primary-500 flex justify-center items-center px-4 ml-3 h-9 text-sm font-semibold text-white rounded-full">Buat Akun</router-link>
           </div>
 
           <div v-if="auth" class="flex p-3 md:ml-auto">
-            <nuxt-link to="/notifications" class="btn-light flex relative justify-center items-center p-0 w-9 h-9 text-sm font-semibold rounded-full">
+            <nuxt-link to="/notifications" class="flex relative justify-center items-center p-0 w-9 h-9 text-sm font-semibold text-gray-700 bg-gray-100 rounded-full hover:bg-gray-200">
               <i class="ft ft-bell"></i>
               <span v-if="unreadNotificationCount" class="min-w-4 block absolute top-0 right-0 px-1 h-4 text-xs leading-4 text-center text-white bg-red-600 rounded-full">{{ unreadNotificationCount }}</span>
             </nuxt-link>
@@ -49,9 +49,9 @@
                   <h3 class="text-md capitalized truncate w-full font-semibold text-center">{{ auth.name }}</h3>
                   <p class="truncate w-full text-sm text-center text-gray-500">@{{ auth.username }}</p>
                   <div class="pt-3">
-                    <nuxt-link to="/dashboard/me" class="btn-light flex justify-center items-center p-0 mb-3 w-full h-9 text-sm font-semibold rounded-full">Dasbor Saya</nuxt-link>
-                    <nuxt-link to="/dashboard/me/edit" class="btn-light flex justify-center items-center p-0 mb-3 w-full h-9 text-sm font-semibold rounded-full">Edit Profil</nuxt-link>
-                    <button class="btn-light btn-error flex items-center py-0 px-4 h-9 text-sm font-semibold rounded-full" @click="logout">Keluar</button>
+                    <nuxt-link to="/dashboard/me" class="flex justify-center items-center p-0 mb-3 w-full h-9 text-sm font-semibold text-gray-700 bg-gray-100 rounded-full hover:bg-gray-200">Dasbor Saya</nuxt-link>
+                    <nuxt-link to="/dashboard/me/edit" class="flex justify-center items-center p-0 mb-3 w-full h-9 text-sm font-semibold text-gray-700 bg-gray-100 rounded-full hover:bg-gray-200">Edit Profil</nuxt-link>
+                    <button class="flex items-center py-0 px-4 h-9 text-sm font-semibold text-white bg-red-600 rounded-full hover:bg-red-700" @click="logout">Keluar</button>
                   </div>
                 </div>
               </div>
@@ -72,8 +72,7 @@ export default {
   },
   data() {
     return {
-      openSearchModal: false,
-      scrollY: 0
+      openSearchModal: false
     }
   },
   computed: {
@@ -84,17 +83,7 @@ export default {
       return this.$store.getters.unreadNotifications.length
     }
   },
-  mounted() {
-    this.onWindowsScroll()
-    window.addEventListener('scroll', this.onWindowsScroll)
-  },
-  beforeDestroy() {
-    window.removeEventListener('scroll', this.onWindowsScroll)
-  },
   methods: {
-    onWindowsScroll() {
-      this.scrollY = window.scrollY
-    },
     logout(e) {
       e.preventDefault();
       this.$toast.confirm.danger(
@@ -115,18 +104,6 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.btn-light {
-  @apply text-gray-700 bg-gray-100 hover:bg-gray-200;
-}
-
-.btn-primary {
-  @apply text-white bg-primary-500 hover:bg-primary-600;
-}
-
-.btn-error {
-  @apply text-white bg-red-500 hover:bg-red-600;
-}
-
 .profile-dropdown {
   opacity: 0;
   visibility: hidden;
