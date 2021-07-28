@@ -1,3 +1,5 @@
+import colors from 'tailwindcss/colors'
+
 export default {
   publicRuntimeConfig: {
     baseApiUrl: process.env.BASE_API_URL,
@@ -5,6 +7,10 @@ export default {
     algoliaAppId: process.env.ALGOLIA_APP_ID,
     algoliaApiKey: process.env.ALGOLIA_API_KEY,
     algoliaIndexName: process.env.ALGOLIA_INDEX_NAME,
+  },
+
+  loading: {
+    color: colors.indigo['600'],
   },
 
   head: {
