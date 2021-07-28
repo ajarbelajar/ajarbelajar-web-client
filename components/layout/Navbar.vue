@@ -3,7 +3,7 @@
     <FadeTransition>
       <modal-search v-if="openSearchModal" @close="openSearchModal = false" />
     </FadeTransition>
-    <div class="flex-1">
+    <div class="flex-1" :class="{ container }">
       <div class="flex">
         <div class="flex lg:w-60">
           <nuxt-link to="/" class="flex items-center p-3">
@@ -18,7 +18,7 @@
               <div class="hidden md:block">Cari</div>
               <i class="ft ft-search md:text-lg"></i>
             </button>
-            <button class="flex justify-center items-center p-0 ml-3 w-9 h-9 text-sm font-semibold text-gray-700 bg-gray-100 rounded-full lg:hidden hover:bg-gray-200" @click="$sidebar.display(!$sidebar.open)">
+            <button v-if="!noSidebar" class="flex justify-center items-center p-0 ml-3 w-9 h-9 text-sm font-semibold text-gray-700 bg-gray-100 rounded-full lg:hidden hover:bg-gray-200" @click="$sidebar.display(!$sidebar.open)">
               <i :class="$sidebar.open ? 'ft ft-x' : 'ft ft-menu'"></i>
             </button>
           </div>
@@ -69,6 +69,16 @@ export default {
   name: 'Navbar',
   components: {
     FadeTransition
+  },
+  props: {
+    container: {
+      type: Boolean,
+      default: false
+    },
+    noSidebar: {
+      type: Boolean,
+      default: false
+    },
   },
   data() {
     return {
