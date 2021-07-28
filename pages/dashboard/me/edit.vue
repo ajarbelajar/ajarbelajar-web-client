@@ -1,6 +1,6 @@
 <template>
   <div class="py-3">
-    <form class="p-5 rounded-lg border" method="POST" @submit.prevent="submit(form)">
+    <form class="p-5 bg-white rounded shadow" method="POST" @submit.prevent="submit(form)">
       <label class="block py-3 md:grid md:grid-cols-3 md:gap-3">
         <div class="text-sm md:text-base">
           Username

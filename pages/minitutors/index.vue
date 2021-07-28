@@ -1,10 +1,7 @@
 <template>
-  <div class="py-3">
-    <div class="flex justify-between items-center mb-3">
-      <h3 class="flex-1 text-lg font-bold leading-none uppercase">Daftar Minitutor</h3>
-    </div>
-    <div class="grid grid-cols-2 gap-3 md:grid-cols-4">
-      <block-minitutor-list v-for="item in data" :key="item.minitutor.id" :minitutor="item.minitutor" :user="item.user"/>
+  <div class="p-3">
+    <div class="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
+      <elements-minitutor-list v-for="item in data" :key="item.minitutor.id" :minitutor="item.minitutor" :user="item.user"/>
     </div>
     <client-only>
       <infinite-loading @infinite="infiniteHandler" />
@@ -20,11 +17,6 @@ export default {
       return await $axios.$get(`/minitutors`)
     } catch (e) {
       return error(e)
-    }
-  },
-  data() {
-    return {
-      flat: false
     }
   },
   methods: {

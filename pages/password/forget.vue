@@ -3,8 +3,12 @@
     <h1 class="mt-14 mb-8 text-4xl font-light text-center text-gray-700">
       Lupa Password
     </h1>
-    <t-alert v-if="!!errors.message" class="mb-5" variant="error" show>{{ errors.message }}</t-alert>
-    <t-alert v-if="!!success" class="mb-5" show>{{ success }}</t-alert>
+    <div v-if="!!errors.message" class="flex relative items-center p-4 mb-5 bg-red-50 rounded border-l-4 border-red-500 shadow-sm">
+      <div class="flex-grow text-red-700">{{ errors.message }}</div>
+    </div>
+    <div v-if="!!success" class="bg-primary-50 border-primary-500 flex relative items-center p-4 mb-5 rounded border-l-4 shadow-sm">
+      <div class="text-primary-700 flex-grow">{{ success }}</div>
+    </div>
     <form-input v-model="form.email" placeholder="Email" name="email" :error="errors.email"/>
     <div class="py-3 text-center">
       <form-button :loading="loading" class="block w-6/12 uppercase">

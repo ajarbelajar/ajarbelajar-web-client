@@ -1,6 +1,6 @@
 <template>
-  <div class="overflow-hidden relative rounded-lg border hover:bg-gray-100 hover:shadow">
-    <div class="overflow-hidden relative p-3 rounded-lg border-l-4 cursor-pointer" :class="notification.read_at ? 'border-primary-600' : 'border-red-600'" @click="handleClick(notification.id)">
+  <div class="overflow-hidden relative bg-white rounded shadow hover:shadow-lg">
+    <div class="overflow-hidden relative p-3 rounded border-l-4 cursor-pointer" :class="notification.read_at ? 'border-primary-600' : 'border-red-600'" @click="handleClick(notification.id)">
       <p class="font-semibold">
         {{ notification.data.message }}
       </p>

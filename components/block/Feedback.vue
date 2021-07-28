@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="mb-2 text-xl font-semibold">Feedback konstruktif</div>
+  <div class="border-primary-600 p-3 mb-3 bg-white rounded border-b-4 shadow">
+    <div class="mb-2 text-2xl font-semibold">Feedback konstruktif</div>
     <div class="mb-4 text-sm text-gray-500">Feedback akan kami teruskan langsung ke MiniTutor, tidak akan ditampilkan ke publik, feedback kamu sangat berharga untuk kemajuan konten MiniTutor kedepannya.</div>
     <form @submit.prevent="submit(form)">
       <label class="block">
@@ -39,7 +39,7 @@
           Apakah bidangmu berkaitan dengan topik diatas?
         </label>
       </div>
-      <div class="block py-3">
+      <div class="block pt-3">
         <form-button class="block w-24" :loading="loading">Kirim</form-button>
       </div>
     </form>

@@ -6,7 +6,7 @@
         <layout-sidebar />
       </div>
       <div class="flex relative flex-col flex-1 pl-0 min-h-screen lg:pl-60">
-        <div class="flex-1 p-3 pt-16 w-full">
+        <div class="flex-1 pt-16 w-full">
           <nuxt />
         </div>
         <layout-footer />

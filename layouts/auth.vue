@@ -1,12 +1,12 @@
 <template>
   <div class="flex flex-col min-h-screen">
-    <header class="flex py-5 shadow">
+    <header class="flex py-5 bg-white shadow">
       <nuxt-link to="/home" class="block m-auto">
         <svg-brand no-text class="w-10 h-10" />
       </nuxt-link>
     </header>
     <main class="py-10 px-3 md:px-0">
-      <div class="mx-auto max-w-xl border">
+      <div class="mx-auto max-w-xl bg-white border">
         <div class="flex">
           <nuxt-link to="/login" active-class="is-nav-active" class="flex flex-1 justify-center items-center h-14 text-sm font-bold tracking-widest text-gray-500 uppercase bg-gray-100 border-b">
             Masuk

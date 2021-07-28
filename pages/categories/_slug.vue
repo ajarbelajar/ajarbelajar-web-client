@@ -1,13 +1,7 @@
 <template>
-  <div class="py-3">
-    <div class="flex justify-between items-center mb-3">
-      <h3 class="flex-1 text-lg font-bold leading-none uppercase">{{ category.name }}</h3>
-      <button @click.prevent="flat = !flat">
-        <i class="ft" :class="flat? 'ft-list' : 'ft-grid'"></i>
-      </button>
-    </div>
-    <div class="grid gap-3" :class="flat? 'md:grid-cols-3' : 'grid-cols-1'">
-      <block-post-list v-for="item in data" :key="item.id" :post="item" :flat="flat" />
+  <div class="p-3">
+    <div class="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
+      <elements-post-list v-for="item in data" :key="item.id" :post="item" />
     </div>
     <client-only>
       <infinite-loading @infinite="infiniteHandler" />
@@ -23,16 +17,6 @@ export default {
       return await $axios.$get(`/categories/${params.slug}`)
     } catch (e) {
       return error(e)
-    }
-  },
-  data() {
-    return {
-      flat: false
-    }
-  },
-  computed: {
-    category() {
-      return this.$store.getters.categories.filter(el => el.slug === this.$route.params.slug)[0]
     }
   },
   methods: {

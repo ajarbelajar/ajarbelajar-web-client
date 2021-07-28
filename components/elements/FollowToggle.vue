@@ -2,8 +2,8 @@
   <button
     type="button"
     :disabled="loading"
-    class="disabled:opacity-50 inline-flex justify-center items-center px-3 h-8 text-sm rounded-full border border-red-600"
-    :class="{ 'bg-transparent text-red-600': !followed, 'text-white bg-red-600': followed }"
+    class="disabled:opacity-50 inline-flex justify-center items-center font-semibold text-white rounded"
+    :class="{ 'bg-primary-600 hover:bg-primary-700': !followed, 'bg-red-600 hover:bg-red-700': followed, 'h-6 text-xs px-2': small, 'h-8 text-sm px-3': !small }"
     @click.prevent="handleClick"
   >
     {{ text }}
@@ -19,6 +19,10 @@ export default {
       required: true,
       default: 0,
     },
+    small: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {
@@ -30,9 +34,6 @@ export default {
       return this.$store.getters.auth.followings.includes(this.mid)
     },
     text() {
-      if (this.loading) {
-        return 'Sedang diproses'
-      }
       if (this.followed) {
         return 'Berhenti Mengikuti'
       }

@@ -1,5 +1,5 @@
 <template>
-  <div class="py-3">
+  <div class="p-3">
     <div class="flex justify-between items-center mb-3">
       <h3 class="flex-1 text-lg font-bold leading-none uppercase">Notifikasi</h3>
       <button :disabled="loading" class="bg-primary-600 disabled:opacity-60 flex justify-center items-center w-7 h-7 text-sm text-white rounded-full" type="button" @click.prevent="readAll">
@@ -12,7 +12,7 @@
       </button>
     </div>
     <div class="grid grid-cols-1 gap-3">
-      <block-notification-list v-for="item in $store.getters.notifications" :key="item.id" :notification="item" />
+      <elements-notification-list v-for="item in $store.getters.notifications" :key="item.id" :notification="item" />
     </div>
     <block-blank v-if="!$store.getters.notifications.length" text="Belum ada Notifikasi." />
   </div>

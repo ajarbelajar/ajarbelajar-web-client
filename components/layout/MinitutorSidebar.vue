@@ -18,7 +18,9 @@
     </div>
     <div class="flex-1 py-3">
       <nuxt-link v-for="url, i in urls" :key="i" :to="url.to" :exact-active-class="i ? '' : 'bg-gray-100'" :active-class="i ? 'bg-gray-100' : ''" class="flex items-center py-3 px-3 mb-1 w-full text-sm font-semibold leading-none text-gray-600 rounded-lg hover:bg-gray-100" @click.native="onclick">
-        <span class="mr-3 opacity-60">{{ url.icon }}</span>
+        <span class="mr-3 opacity-60">
+          <i :class="`ft ft-${url.icon}`"></i>
+        </span>
         <span>{{ url.text }}</span>
       </nuxt-link>
     </div>
@@ -37,27 +39,27 @@ export default {
         {
           text: 'Edit informasi',
           to: '/dashboard/minitutor',
-          icon: '🏠',
+          icon: 'info',
         },
         {
           text: 'Artikel',
           to: '/dashboard/minitutor/articles',
-          icon: '📓',
+          icon: 'book',
         },
         {
           text: 'Video',
           to: '/dashboard/minitutor/videos',
-          icon: '🎬',
+          icon: 'film',
         },
         {
           text: 'Komentar',
           to: '/dashboard/minitutor/comments',
-          icon: '📨',
+          icon: 'message-circle',
         },
         {
           text: 'Feedback konstruktif',
           to: '/dashboard/minitutor/feedback',
-          icon: '💻',
+          icon: 'star',
         }
       ];
     }

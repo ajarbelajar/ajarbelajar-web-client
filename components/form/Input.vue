@@ -1,6 +1,6 @@
 <template>
   <div class="relative pb-3">
-    <input :value="value" :type="type" :class="{ 'border-red-600' : error, 'shadow rounded-lg': !minimal, 'text-sm rounded': minimal }"  class="block flex-1 w-full border-gray-300" v-bind="$attrs"  @change="onChange" />
+    <input :value="value" :type="type" :class="{ 'border-red-600' : error, 'shadow rounded': !minimal, 'text-sm rounded': minimal }"  class="block flex-1 w-full border-gray-300" v-bind="$attrs"  @change="onChange" />
     <button v-if="password" type="button" class="flex absolute top-0 right-0 justify-center items-center w-10 h-10 cursor-pointer" @click="showPassword = !showPassword">
       <i class="ft" :class="showPassword ? 'ft-eye-off' : 'ft-eye'" />
     </button>

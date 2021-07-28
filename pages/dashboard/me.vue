@@ -1,6 +1,6 @@
 <template>
-  <div class="py-3">
-    <div class="overflow-hidden rounded-lg border">
+  <div class="p-3">
+    <div class="overflow-hidden bg-white rounded shadow">
       <div class="flex py-5 px-4">
         <div class="relative p-1 w-16 rounded-full border">
           <v-img class="block w-full rounded-full" :src="auth.avatar" :src-placeholder="$images.avatar" />

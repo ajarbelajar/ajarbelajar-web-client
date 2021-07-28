@@ -1,7 +1,7 @@
 <template>
   <div class="flex fixed inset-0 z-50 justify-center bg-black bg-opacity-50">
     <div class="overflow-y-auto relative p-3 w-full sm:py-14 sm:max-w-lg">
-      <form v-click-outside="onClickOutside" method="POST" class="block bg-white rounded-lg shadow-lg" @submit.prevent="submit(form)" >
+      <form v-click-outside="onClickOutside" method="POST" class="block bg-white rounded shadow-lg" @submit.prevent="submit(form)" >
         <div class="flex items-center p-4 border-b">
           <h3 class="leading-0 flex-1 text-xl font-semibold">Buat {{ type === 'Video' ? 'video' : 'artikel' }}</h3>
           <div class="pl-3">

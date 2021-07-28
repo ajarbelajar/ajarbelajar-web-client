@@ -37,7 +37,6 @@ export const actions = {
   },
   logout({ commit }) {
     return this.$axios.$delete('account/logout').then((res) => {
-      commit('setAuth', null)
       commit('removeToken')
       return res
     })

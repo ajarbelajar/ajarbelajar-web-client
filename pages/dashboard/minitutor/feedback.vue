@@ -1,7 +1,6 @@
 <template>
-  <div>
-    <h3 class="mb-3 text-xl font-semibold leading-none">Feedback Konstruktif</h3>
-    <div v-for="item in feedback" :key="item.id" class="flex p-3 mb-3 rounded-lg border">
+  <div class="p-3">
+    <div v-for="item in feedback" :key="item.id" class="flex p-3 mb-3 bg-white rounded shadow">
       <div class="w-14">
         <nuxt-link :to="`/users/${item.user.username}`" class="block p-1 bg-white rounded-full border hover:bg-gray-200">
           <v-img class="block w-full rounded-full" :src="item.user.avatar || $images.avatar" :src-placeholder="$images.avatar" :alt="item.user.username" />
@@ -25,7 +24,7 @@
           </client-only>
         </div>
         <p class="mb-3 text-gray-700">{{ item.message }}</p>
-        <nuxt-link :to="`/${item.post.type}s/${item.post.slug}`" class="hover:bg-primary-600 bg-primary-100 text-primary-600 inline-flex justify-center items-center px-3 h-7 text-xs font-semibold leading-none rounded-full hover:text-white">Lihat Postingan</nuxt-link>
+        <nuxt-link :to="`/${item.post.type}s/${item.post.slug}`" class="hover:bg-primary-600 bg-primary-100 text-primary-600 inline-flex justify-center items-center px-3 h-7 text-xs font-semibold leading-none rounded hover:text-white">Lihat Postingan</nuxt-link>
       </div>
     </div>
 

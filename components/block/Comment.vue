@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="text-2xl font-semibold">Komentar {{ commentsCount }}</div>
+  <div class="border-primary-600 p-3 mb-3 bg-white rounded border-b-4 shadow">
+    <div class="text-2xl font-semibold">Komentar {{ comments.length }}</div>
     <div class="py-3">
       <div v-for="comment in comments" :key="comment.id" class="flex mb-3">
         <div class="pr-3">
@@ -57,11 +57,6 @@ export default {
       type: String,
       required: true,
       default: '',
-    },
-    commentsCount: {
-      type: Number,
-      required: true,
-      default: 0,
     },
     comments: {
       type: Array,

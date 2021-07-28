@@ -55,7 +55,7 @@ export default {
 }
 
 .auto-suggest:not(.minimal) input {
-  @apply block flex-1 w-full rounded-lg border-gray-300 shadow;
+  @apply block flex-1 w-full rounded border-gray-300 shadow;
 }
 
 .auto-suggest.minimal input {
@@ -68,7 +68,7 @@ export default {
 
 .auto-suggest .suggestions {
   top: calc(100% + 1px);
-  @apply absolute z-10 opacity-100 left-0 right-0 bg-white rounded-lg overflow-hidden shadow-lg py-1;
+  @apply absolute z-10 opacity-100 left-0 right-0 bg-white rounded overflow-hidden shadow py-1;
 }
 
 .auto-suggest .suggestions .suggest-item {

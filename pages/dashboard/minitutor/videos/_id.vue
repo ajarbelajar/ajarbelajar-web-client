@@ -1,51 +1,53 @@
 <template>
-  <form class="grid relative md:grid-cols-3 md:gap-4" @submit.prevent>
-    <div class="order-last md:order-1 md:col-span-2">
-      <div class="mb-3 rounded-lg border">
-        <div class="py-4 px-3 border-b">
-          <h3 class="font-semibold leading-none">Video</h3>
-        </div>
-        <block-video-uploader :video="post.video" :pid="post.id" @update="onVideoUpdate" />
-      </div>
-    </div>
-    <div class="order-2">
-      <div class="mb-3 rounded-lg border">
-        <div class="py-4 px-3 border-b">
-          <h3 class="font-semibold leading-none">Cover</h3>
-        </div>
-        <block-hero-uploader :hero="post.hero" :pid="post.id" type="Video" @updated="onHeroUpdated"  />
-      </div>
-      <div class="mb-3 rounded-lg border">
-        <div class="py-4 px-3 border-b">
-          <h3 class="font-semibold leading-none">Informasi</h3>
-        </div>
-        <div class="p-3">
-          <div class="block">
-            <p class="text-sm">Kategori</p>
-            <form-category-suggest v-model="form.category" minimal :error="errors.category"  />
+  <div class="p-3">
+    <form class="grid relative md:grid-cols-3 md:gap-4" @submit.prevent>
+      <div class="order-last md:order-1 md:col-span-2">
+        <div class="mb-3 bg-white rounded shadow">
+          <div class="py-4 px-3 border-b">
+            <h3 class="font-semibold leading-none">Video</h3>
           </div>
-          <div class="block">
-            <p class="text-sm">Judul</p>
-            <form-input v-model="form.title" minimal :error="errors.title"/>
-          </div>
-          <div class="block">
-            <p class="text-sm">Deskripsi</p>
-            <form-textarea v-model="form.description" minimal :error="errors.description" />
-          </div>
-          <div class="block">
-            <label class="block py-2 text-sm text-gray-600">
-              <input v-model="form.requested" type="checkbox" class="rounded border-gray-300" />
-              Publikasikan video ini
-            </label>
-          </div>
-        </div>
-        <div class="flex p-3 border-t">
-          <form-button class="block w-24" type="button" :loading="loading" @click="submit(form)">Simpan</form-button>
-          <form-button light tag="nuxt-link" to="." class="block ml-3 w-24">Kembali</form-button>
+          <elements-video-uploader :video="post.video" :pid="post.id" @update="onVideoUpdate" />
         </div>
       </div>
-    </div>
-  </form>
+      <div class="order-2">
+        <div class="mb-3 bg-white rounded shadow">
+          <div class="py-4 px-3 border-b">
+            <h3 class="font-semibold leading-none">Cover</h3>
+          </div>
+          <elements-hero-uploader :hero="post.hero" :pid="post.id" type="Video" @updated="onHeroUpdated"  />
+        </div>
+        <div class="mb-3 bg-white rounded shadow">
+          <div class="py-4 px-3 border-b">
+            <h3 class="font-semibold leading-none">Informasi</h3>
+          </div>
+          <div class="p-3">
+            <div class="block">
+              <p class="text-sm">Kategori</p>
+              <form-category-suggest v-model="form.category" minimal :error="errors.category"  />
+            </div>
+            <div class="block">
+              <p class="text-sm">Judul</p>
+              <form-input v-model="form.title" minimal :error="errors.title"/>
+            </div>
+            <div class="block">
+              <p class="text-sm">Deskripsi</p>
+              <form-textarea v-model="form.description" minimal :error="errors.description" />
+            </div>
+            <div class="block">
+              <label class="block py-2 text-sm text-gray-600">
+                <input v-model="form.requested" type="checkbox" class="rounded border-gray-300" />
+                Publikasikan video ini
+              </label>
+            </div>
+          </div>
+          <div class="flex p-3 border-t">
+            <form-button class="block w-24" type="button" :loading="loading" @click="submit(form)">Simpan</form-button>
+            <form-button light tag="nuxt-link" to="." class="block ml-3 w-24">Kembali</form-button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 </template>
 
 <script>

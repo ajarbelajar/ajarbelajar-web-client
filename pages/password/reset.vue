@@ -3,7 +3,9 @@
     <h1 class="mt-14 mb-8 text-4xl font-light text-center text-gray-700">
       Masuk ke akun anda
     </h1>
-    <t-alert v-if="!!errors.message" class="mb-5" variant="error" show>{{ errors.message }}</t-alert>
+    <div v-if="!!errors.message" class="flex relative items-center p-4 mb-5 bg-red-50 rounded border-l-4 border-red-500 shadow-sm">
+      <div class="flex-grow text-red-700">{{ errors.message }}</div>
+    </div>
     <form-input v-model="form.email" placeholder="Email" name="email" :error="errors.email"/>
     <form-input v-model="form.password" placeholder="Password baru" password name="password" :error="errors.password" />
     <div class="py-3 text-center">

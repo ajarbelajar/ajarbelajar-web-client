@@ -1,6 +1,6 @@
 <template>
-  <div class="py-3">
-    <div class="overflow-hidden rounded-lg border">
+  <div class="p-3">
+    <div class="overflow-hidden bg-white rounded shadow">
       <div class="flex py-5 px-4">
         <div class="p-1 w-16 rounded-full border">
           <v-img class="block w-full rounded-full" :src="user.avatar" :src-placeholder="$images.avatar" />
@@ -14,7 +14,7 @@
           <a v-if="user.website" :href="user.website" target="_blank" class="hover:bg-primary-600 text-primary-600 bg-primary-100 inline-flex justify-center items-center w-8 h-8 text-sm font-semibold leading-none rounded-full hover:text-white"><i class="ft ft-globe"></i></a>
         </div>
       </div>
-      <p v-if="user.about" class="p-3 text-sm text-center border-t">{{ user.about }}</p>
+      <p v-if="user.about" class="py-3 px-4 text-sm text-center border-t">{{ user.about }}</p>
       <div class="border-top flex border-t">
         <div v-for="(link, i) in links" :key="i" class="first:border-l-0 flex flex-1 border-l">
           <nuxt-link :to="link.to" exact-active-class="border-b-4 pb-2 bg-gray-100" class="border-b-transparent border-primary-600 flex flex-1 justify-center items-center py-3 text-center hover:bg-gray-100">

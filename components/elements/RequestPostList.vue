@@ -1,6 +1,6 @@
 <template>
-  <div :class="{ 'border-primary-600': !!post.requested_at }" class="flex mb-3 bg-white rounded-lg border-l-4">
-    <div class="flex flex-1 p-3 rounded-lg border border-l-0">
+  <div :class="{ 'border-primary-600': !!post.requested_at }" class="flex mb-3 bg-white rounded border-l-4 shadow">
+    <div class="flex flex-1 p-3">
       <div class="w-20 md:w-32 lg:w-40">
         <v-img class="block w-full rounded" :src="post.hero.thumb || $images.hero.thumb" :src-placeholder="$images.hero.thumb" :alt="post.title" />
       </div>
@@ -11,8 +11,8 @@
         <p class="mb-3 text-xs">Dibuat pada {{ post.created_at | moment('dddd, Do MMMM YYYY') }}</p>
 
         <div class="flex">
-          <nuxt-link :to="`${type.toLowerCase()}s/${post.id}`"  class="hover:bg-primary-600 bg-primary-100 text-primary-600 flex justify-center items-center py-2 w-24 text-sm font-semibold leading-none rounded-full hover:text-white">Edit</nuxt-link>
-          <button type="button" :disabled="loading" class="disabled:opacity-60 flex justify-center items-center py-2 ml-3 w-24 text-sm font-semibold leading-none text-white bg-red-600 rounded-full hover:bg-red-700" @click.prevent="handleDelete">{{loading ? 'Menghapus...' : 'Hapus' }}</button>
+          <nuxt-link :to="`${type.toLowerCase()}s/${post.id}`"  class="hover:bg-primary-600 bg-primary-100 text-primary-600 flex justify-center items-center py-2 w-24 text-sm font-semibold leading-none rounded hover:text-white">Edit</nuxt-link>
+          <button type="button" :disabled="loading" class="disabled:opacity-60 flex justify-center items-center py-2 ml-3 w-24 text-sm font-semibold leading-none text-white bg-red-600 rounded hover:bg-red-700" @click.prevent="handleDelete">{{loading ? 'Menghapus...' : 'Hapus' }}</button>
         </div>
       </div>
     </div>

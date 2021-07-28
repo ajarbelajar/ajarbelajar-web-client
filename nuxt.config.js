@@ -24,7 +24,6 @@ export default {
 
   plugins: [
     { src: '~/plugins/Moment.js', ssr: true },
-    { src: '~/plugins/Tailwind.js', ssr: true },
     { src: '~/plugins/Toast.js', ssr: false },
     { src: '~/plugins/Editorjs', ssr: false },
     { src: '~/plugins/Axios.js', ssr: true },

@@ -7,7 +7,7 @@
     </FadeTransition>
     <v-img :src="preview" :src-placeholder="$images.hero.thumb" class="block w-full" />
     <div class="p-3">
-      <label light tag="label" class="block overflow-hidden relative py-3 w-full text-sm font-semibold leading-none text-center bg-gray-200 rounded-lg hover:bg-gray-300">
+      <label light tag="label" class="block overflow-hidden relative py-3 w-full text-sm font-semibold leading-none text-center bg-gray-200 rounded hover:bg-gray-300">
         Ganti Gambar
         <input v-if="!loading" ref="input" type="file" class="block absolute inset-0 w-full bg-black opacity-0 cursor-pointer" @change="onChange" />
       </label>

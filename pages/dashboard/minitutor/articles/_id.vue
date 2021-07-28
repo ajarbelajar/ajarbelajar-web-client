@@ -1,7 +1,8 @@
 <template>
+<div class="p-3">
   <form class="grid relative md:grid-cols-3 md:gap-4" @submit.prevent="submit(form)">
     <div class="order-last md:order-1 md:col-span-2">
-      <div class="rounded-lg border" style="min-height: 300px">
+      <div class="bg-white rounded shadow" style="min-height: 300px">
         <div class="py-4 px-3 border-b">
           <h3 class="font-semibold leading-none">Kontent</h3>
         </div>
@@ -13,13 +14,13 @@
       </div>
     </div>
     <div class="order-2">
-      <div class="mb-3 rounded-lg border">
+      <div class="mb-3 bg-white rounded shadow">
         <div class="py-4 px-3 border-b">
           <h3 class="font-semibold leading-none">Cover</h3>
         </div>
-        <block-hero-uploader :hero="post.hero" :pid="post.id" type="Article" @updated="onHeroUpdated"  />
+        <elements-hero-uploader :hero="post.hero" :pid="post.id" type="Article" @updated="onHeroUpdated"  />
       </div>
-      <div class="mb-3 rounded-lg border">
+      <div class="mb-3 bg-white rounded shadow">
         <div class="py-4 px-3 border-b">
           <h3 class="font-semibold leading-none">Informasi</h3>
         </div>
@@ -50,6 +51,7 @@
       </div>
     </div>
   </form>
+</div>
 </template>
 
 <script>

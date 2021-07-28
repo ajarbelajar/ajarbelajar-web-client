@@ -1,6 +1,6 @@
 <template>
-  <div class="py-3">
-    <div class="overflow-hidden mb-3 bg-cover rounded-lg" :style="`background-image: url(${require('@/assets/img/background/hero.jpg')})`">
+  <div class="p-3">
+    <div class="overflow-hidden mb-3 bg-cover rounded shadow" :style="`background-image: url(${require('@/assets/img/background/hero.jpg')})`">
       <div class="from-primary-700 p-4 bg-opacity-30 bg-gradient-to-r to-transparent">
         <div class="flex flex-col justify-center items-center py-16 text-center">
           <h1 class="mb-3 text-2xl font-bold text-white md:text-3xl lg:text-4xl">Belajar, Berbagi, Berkontribusi.</h1>
@@ -8,11 +8,11 @@
         </div>
       </div>
     </div>
-    <div v-if="allowCreate"  class="rounded-lg border">
+    <div v-if="allowCreate"  class="bg-white rounded shadow">
       <div class="py-5 px-3 text-center border-b">
         <h1 class="mb-2 text-2xl font-semibold">Input Sesuai Data Diri Anda.</h1>
         <p class="mb-3 text-sm text-gray-500">Nama, Alamat Email dan Foto secara otomatis ikut dalam formulir Anda sesuai dengan profil akun Anda.</p>
-        <a href="#" class="hover:bg-primary-600 bg-primary-500 inline-block py-2 px-4 text-sm text-white rounded-full">Download SOP Pembuatan Konten AjarBelajar</a>
+        <a href="#" class="hover:bg-primary-600 bg-primary-500 inline-block py-2 px-4 text-sm text-white rounded">Download SOP Pembuatan Konten AjarBelajar</a>
       </div>
       <form class="p-5">
         <label class="block py-3 md:grid md:grid-cols-3 md:gap-3">
@@ -95,7 +95,7 @@
             <label
               for="inputcv"
               type="text"
-              :class="{ 'border-red-600' : errors.cv }"  class="block flex-1 w-full rounded-lg border-gray-300 shadow cursor-pointer"
+              :class="{ 'border-red-600' : errors.cv }"  class="block flex-1 w-full rounded border-gray-300 shadow cursor-pointer"
             >
               {{ cvlabel || 'Pilih file : PDF' }}
             </label>
@@ -117,9 +117,9 @@
         </div>
       </div>
     </div>
-    <div v-else  class="py-5 px-3 text-center rounded-lg border">
-      <h1 class="mb-2 mb-5 text-xl font-semibold">PERMINTAAN ANDA UNTUK MENJADI MINITUTOR SEDANG DI TINJAU.</h1>
-      <a href="#" class="hover:bg-primary-600 bg-primary-500 inline-block py-2 px-4 text-sm text-white rounded-full">Download SOP Pembuatan Konten AjarBelajar</a>
+    <div v-else  class="py-5 px-3 text-center bg-white rounded shadow">
+      <h1 class="mb-4 text-xl font-semibold">PERMINTAAN ANDA UNTUK MENJADI MINITUTOR SEDANG DI TINJAU.</h1>
+      <a href="#" class="hover:bg-primary-600 bg-primary-500 inline-block py-2 px-4 text-sm text-white rounded">Download SOP Pembuatan Konten AjarBelajar</a>
     </div>
   </div>
 </template>

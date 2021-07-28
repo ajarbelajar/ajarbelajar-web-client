@@ -1,6 +1,6 @@
 <template>
   <div class="relative pb-3">
-    <select :value="value" class="block flex-1 w-full border-gray-300" v-bind="$attrs" :class="{ 'border-red-600' : error, 'shadow rounded-lg': !minimal, 'text-sm rounded': minimal }" @change="onChange">
+    <select :value="value" class="block flex-1 w-full border-gray-300" v-bind="$attrs" :class="{ 'border-red-600' : error, 'shadow rounded': !minimal, 'text-sm rounded': minimal }" @change="onChange">
       <option v-for="option in options" :key="option">{{ option }}</option>
     </select>
     <span v-if="error" class="block text-xs text-red-900">{{ error }}</span>
