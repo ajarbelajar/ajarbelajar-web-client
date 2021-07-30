@@ -2,7 +2,7 @@
   <div class="py-24 bg-white">
     <div class="container px-3">
       <div class="mx-auto mb-10 max-w-3xl">
-        <h3 class="text-primary-600 mb-3 text-4xl font-semibold text-center">Beragam dan akan terus bertumbuh!</h3>
+        <h2 class="text-primary-600 mb-3 text-4xl font-semibold text-center">Beragam dan akan terus bertumbuh!</h2>
         <p class="text-center">AjarBelajar diisi oleh konten dari MiniTutor dengan berbagai macam latar belakang. Ada banyak bidang ilmu dan topik bahasan yang bisa disimak, dan akan terus bertambah.</p>
       </div>
       <div class="grid grid-cols-1 gap-3 md:grid-cols-4 xl:grid-cols-7">

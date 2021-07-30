@@ -26,7 +26,11 @@ export default {
 
   serverMiddleware: [],
 
-  css: ['~/assets/fonts/feather/style.css', 'izitoast/dist/css/iziToast.css'],
+  css: [
+    '~/assets/fonts/feather/style.css',
+    'izitoast/dist/css/iziToast.css',
+    'vue-slick-carousel/dist/vue-slick-carousel.css',
+  ],
 
   plugins: [
     { src: '~/plugins/Moment.js', ssr: true },
