@@ -1,5 +1,5 @@
 <template>
-  <header class="fixed top-0 right-0 left-0 w-full transition-all" :class="scrollY > 5 ? 'bg-white shadow-lg py-5' : 'bg-white shadow-lg py-5 lg:py-10 lg:shadow-none lg:bg-transparent'">
+  <header v-click-outside="onClickOutside" class="fixed top-0 right-0 left-0 z-50 w-full transition-all" :class="scrollY > 5 ? 'bg-white shadow-lg py-5' : 'bg-white shadow-lg py-5 lg:py-10 lg:shadow-none lg:bg-transparent'">
     <div class="container px-3">
       <div class="flex">
         <nuxt-link to="/home" class="block mr-3">
@@ -19,8 +19,12 @@
 </template>
 
 <script>
+import vClickOutside from 'v-click-outside'
 export default {
   name: 'Navbar',
+  directives: {
+    clickOutside: vClickOutside.directive
+  },
   data() {
     return {
       scrollY: 0,
@@ -37,6 +41,9 @@ export default {
   methods: {
     setScrollY() {
       this.scrollY = window.scrollY
+    },
+    onClickOutside() {
+      this.open = false
     }
   }
 }
