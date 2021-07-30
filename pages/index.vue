@@ -24,7 +24,7 @@
             'Di AjarBelajar bisa dapet ilmu ilmu baru dari berbagai macam bidang yang bener-bener ngebuka jendela pengetahuan banget dan itu gratis tanpa ada biaya apapun. <br />Selain Itu juga adanya AjarBelajar, aku sebagai MiniTutor bisa dengan bebas untuk berbagi  bidang yang sedang aku tekuni dan bisa bermanfaat buat ornag lain.',
         },
     ]" />
-
+    <landing-call-to-actions />
   </main>
 </template>
 
