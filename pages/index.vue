@@ -25,6 +25,7 @@
         },
     ]" />
     <landing-call-to-actions />
+    <landing-footer />
   </main>
 </template>
 
