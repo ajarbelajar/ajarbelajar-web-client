@@ -10,7 +10,7 @@
             <span class="block w-6/12 h-1 bg-white rounded-full opacity-50"></span>
           </div>
         </h2>
-        <nuxt-link to="/home" class="hover:bg-primary-600 text-primary-600 inline-block py-4 px-5 text-lg font-bold leading-none text-center bg-white rounded transition-colors hover:text-white">BUAT AKUN BARU</nuxt-link>
+        <nuxt-link to="/register" class="hover:bg-primary-600 text-primary-600 inline-block py-4 px-5 text-lg font-bold leading-none text-center bg-white rounded transition-colors hover:text-white">BUAT AKUN BARU</nuxt-link>
       </div>
     </div>
   </div>
