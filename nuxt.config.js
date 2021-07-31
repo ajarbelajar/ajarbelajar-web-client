@@ -2,6 +2,7 @@ import colors from 'tailwindcss/colors'
 
 export default {
   publicRuntimeConfig: {
+    baseUrl: process.env.BASE_URL,
     baseApiUrl: process.env.BASE_API_URL,
     pusherKey: process.env.PUSHER_KEY,
     algoliaAppId: process.env.ALGOLIA_APP_ID,
@@ -14,12 +15,26 @@ export default {
   },
 
   head: {
-    title: 'ab-nuxt-v2',
+    title: 'AjarBelajar',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
+      {
+        hid: 'description',
+        name: 'description',
+        content: process.env.npm_package_description || '',
+      },
+      {
+        hid: 'og:title',
+        name: 'og:title',
+        content: 'AjarBelajar',
+      },
+      {
+        hid: 'og:description',
+        name: 'og:description',
+        content: process.env.npm_package_description || '',
+      },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },

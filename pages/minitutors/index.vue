@@ -19,6 +19,9 @@ export default {
       return error(e)
     }
   },
+  head: {
+    title: 'MiniTutor'
+  },
   methods: {
     infiniteHandler($state) {
       /* eslint-disable camelcase */

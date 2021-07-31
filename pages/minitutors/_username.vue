@@ -42,7 +42,12 @@ export default {
       return error(e)
     }
   },
-    computed: {
+  head() {
+    return {
+      title: 'MT '  + this.user.username
+    }
+  },
+  computed: {
     links() {
       return [
         {

@@ -43,7 +43,12 @@ export default {
       return error(e)
     }
   },
-    computed: {
+  head() {
+    return {
+      title: this.user.username
+    }
+  },
+  computed: {
     links() {
       return [
         {

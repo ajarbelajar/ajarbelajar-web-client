@@ -36,10 +36,47 @@ export default {
 
     return data
   },
+  head() {
+    return {
+      title: this.video.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.video.description || '',
+        },
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: this.video.title || '',
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: this.video.description || '',
+        },
+        {
+          hid: 'og:type',
+          name: 'og:type',
+          content: 'article',
+        },
+        {
+          hid: 'og:url',
+          name: 'og:url',
+          content: `${this.$config.baseUrl}/videos/${this.video.slug}`,
+        },
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          content: this.video.hero.large,
+        },
+      ],
+    }
+  },
   computed: {
     auth() {
       return this.$store.getters.auth
     }
-  }
+  },
 }
 </script>

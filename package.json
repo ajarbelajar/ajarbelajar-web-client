@@ -1,6 +1,7 @@
 {
-  "name": "ab-nuxt-v2",
-  "version": "1.0.0",
+  "name": "ajarbelajar.com",
+  "version": "2.0.0",
+  "description": "AjarBelajar diisi oleh konten dari MiniTutor dengan berbagai macam latar belakang. Ada banyak bidang ilmu dan topik bahasan yang bisa disimak.",
   "private": true,
   "scripts": {
     "dev": "nuxt",

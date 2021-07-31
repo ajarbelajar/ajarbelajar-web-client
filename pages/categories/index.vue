@@ -6,6 +6,9 @@
 
 <script>
 export default {
-  name: 'Categories'
+  name: 'Categories',
+  head: {
+    title: 'Kategori'
+  },
 }
 </script>

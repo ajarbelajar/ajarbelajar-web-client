@@ -155,7 +155,10 @@ export default {
       loading: false,
     }
   },
-    methods: {
+  head: {
+    title: 'Jadi MiniTutor'
+  },
+  methods: {
     handleChangeInput(e) {
       if (e.target.files.length) {
         this.cvlabel = e.target.files[0].name
@@ -191,6 +194,6 @@ export default {
       }
       this.loading = false
     },
-  },
+  }
 }
 </script>

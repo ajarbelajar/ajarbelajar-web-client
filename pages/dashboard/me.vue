@@ -51,6 +51,11 @@ export default {
       loading: false
     }
   },
+  head() {
+    return {
+      title: 'Dasbor'
+    }
+  },
   computed: {
     auth() {
       return this.$store.getters.auth

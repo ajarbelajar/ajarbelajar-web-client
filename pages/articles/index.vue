@@ -19,6 +19,9 @@ export default {
       return error(e)
     }
   },
+  head: {
+    title: 'Artikel'
+  },
   methods: {
     infiniteHandler($state) {
       this.$axios

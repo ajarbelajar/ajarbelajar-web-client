@@ -89,7 +89,10 @@
 <script>
 export default {
   name: 'About',
-  layout: 'blank'
+  layout: 'blank',
+  head: {
+    title: 'Tantang MiniTutor'
+  }
 }
 </script>
 

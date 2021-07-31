@@ -40,5 +40,8 @@ export default {
       return error(e)
     }
   },
+  head: {
+    title: 'Belajar, Berbagi, Berkontribusi'
+  }
 }
 </script>

@@ -41,6 +41,9 @@ export default {
       loading: false,
     }
   },
+  head: {
+    title: 'Daftar'
+  },
   methods: {
     async submit(data) {
       this.loading = true

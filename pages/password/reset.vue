@@ -48,6 +48,9 @@ export default {
       loading: false,
     }
   },
+  head: {
+    title: 'Reset Password'
+  },
   methods: {
     async submit(data) {
       this.loading = true

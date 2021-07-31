@@ -41,6 +41,9 @@ export default {
       loading: false,
     }
   },
+  head: {
+    title: 'Lupa Password'
+  },
   methods: {
     async submit(data) {
       this.loading = true

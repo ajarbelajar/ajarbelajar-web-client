@@ -27,6 +27,9 @@ export default {
       loading: false
     }
   },
+  head: {
+    title: 'Notifikasi'
+  },
   methods: {
     readAll() {
       this.loading = true

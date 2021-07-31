@@ -17,5 +17,10 @@ export default {
   name: 'MinitutorDashboard',
   layout: 'no-sidebar',
   middleware: ['auth', 'activeMinitutor'],
+  head() {
+    return {
+      title: 'Dasbor MiniTutor'
+    }
+  },
 }
 </script>

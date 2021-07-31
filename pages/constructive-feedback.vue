@@ -50,6 +50,9 @@
 <script>
 export default {
   name: 'About',
-  layout: 'blank'
+  layout: 'blank',
+  head: {
+    title: 'Tentang Feedback Konstruktif'
+  }
 }
 </script>

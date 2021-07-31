@@ -91,5 +91,8 @@ export default {
       ],
     }
   },
+  head: {
+    title: 'F.A.Q'
+  },
 }
 </script>

@@ -29,8 +29,8 @@ const initialError = {
 export default {
   name: 'LoginPage',
   layout: 'auth',
-    middleware: 'guest',
-    data() {
+  middleware: 'guest',
+  data() {
     return {
       form: {
         identity: '',
@@ -39,6 +39,9 @@ export default {
       errors: initialError,
       loading: false,
     }
+  },
+  head: {
+    title: 'Masuk'
   },
   methods: {
     async submit(data) {
