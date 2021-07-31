@@ -19,6 +19,18 @@ export default {
       return error(e)
     }
   },
+  head() {
+    return {
+      title: this.category.name || 'Detail Kategori'
+    }
+  },
+  computed: {
+    category() {
+      const temp = this.$store.getters.categories.filter(el => el.slug === this.$route.params.slug)
+      if(temp.length) return temp[0]
+      return {}
+    }
+  },
   methods: {
     infiniteHandler($state) {
       this.$axios
