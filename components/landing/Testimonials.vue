@@ -2,7 +2,7 @@
   <div class="py-24">
     <div class="container px-3">
       <h2 class="text-primary-600 mb-6 text-4xl font-semibold text-center">Testimonials</h2>
-      <VueSlickCarousel :dots="true" :arrows="false" class="testimonial-carousel">
+      <VueSlickCarousel :dots="true" :arrows="false" class="testimonial-carousel" autoplay :speed="1000" :autoplay-speed="6000">
         <div v-for="(item, i) in testimonials" :key="i" class="py-3">
           <div class="mb-4 text-center">
             <svg-quote class="block mx-auto w-10 opacity-30" />
