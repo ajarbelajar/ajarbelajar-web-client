@@ -2,7 +2,7 @@
   <main class="bg-white">
     <landing-navbar />
     <landing-header />
-    <landing-counter :count="{ user: 600, minitutor: 120, video: 120, article: 40 }" />
+    <landing-counter :count="counter" />
     <landing-info />
     <landing-testimonials :testimonials="[
         {
@@ -32,6 +32,13 @@
 <script>
 export default {
   name: 'LandingPage',
-  layout: 'blank'
+  layout: 'blank',
+  async asyncData({$axios, error}) {
+    try {
+      return await $axios.$get('/nuxt/landing')
+    } catch (e) {
+      return error(e)
+    }
+  },
 }
 </script>
