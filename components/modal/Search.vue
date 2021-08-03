@@ -22,11 +22,11 @@
         </p>
 
         <div v-if="results.length" class="custom-chrome-scrollbar flex overflow-y-auto flex-col max-h-full bg-white">
-          <a v-for="(item, i) in results" :key="i" class="group block px-4 bg-gray-100 cursor-pointer hover:bg-white" href="#">
+          <nuxt-link v-for="(item, i) in results" :key="i" :to="`/${item.type}s/${item.slug}`" class="group block px-4 bg-gray-100 cursor-pointer hover:bg-white">
             <div class="last:border-b-5 flex py-4 border-b">
               <div class="flex items-center">
                 <div class="block">
-                  <v-img :src="item.img || $images.hero.small" :src-placeholder="$images.hero.small" :alt="item.title" class="h-7 rounded" />
+                  <v-img :src="item.hero || $images.hero.small" :src-placeholder="$images.hero.small" :alt="item.title" class="h-7 rounded" />
                 </div>
               </div>
               <div class="flex flex-col flex-1 justify-center px-3">
@@ -40,7 +40,7 @@
                 <span class="text-sm text-gray-500" v-html="item._highlightResult.type.value" />
               </div>
             </div>
-          </a>
+          </nuxt-link>
         </div>
 
         <div v-if="queryResult && !results.length && input.length > 1" class="first:block flex overflow-y-auto flex-col max-h-full bg-gray-100">
@@ -95,6 +95,9 @@ export default {
     }
   },
   watch: {
+    $route() {
+      this.$emit('close')
+    },
     input(val) {
       if(val.length > 1) {
         this.typing = true
@@ -136,7 +139,7 @@ export default {
       }
       this.loading = false
     }
-  }
+  },
 }
 </script>
 
