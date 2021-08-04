@@ -8,6 +8,7 @@ export default {
     algoliaAppId: process.env.ALGOLIA_APP_ID,
     algoliaApiKey: process.env.ALGOLIA_API_KEY,
     algoliaIndexName: process.env.ALGOLIA_INDEX_NAME,
+    analyticsTrackingDd: process.env.ANALYTICS_TRACKING_ID,
   },
 
   loading: {
@@ -58,6 +59,7 @@ export default {
     { src: '~/plugins/Image.js', ssr: true },
     { src: '~/plugins/InfiniteLoading', ssr: false },
     { src: '~/plugins/StarRating', ssr: false },
+    { src: '~/plugins/ga', ssr: false },
   ],
 
   components: true,
