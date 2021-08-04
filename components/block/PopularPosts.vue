@@ -3,7 +3,7 @@
     <div v-for="(post, i) in posts" :key="i" class="p-3">
       <div class="flex overflow-hidden relative px-10 bg-white bg-cover rounded shadow"  :style="`background-image: url(${post.hero.large || $images.hero.large}); min-height: 400px`">
         <div class="relative z-10 my-auto max-w-xl">
-          <nuxt-link to="/home" class="hover:bg-primary-700 bg-primary-600 inline-block py-1 px-3 mb-1 text-xs font-bold tracking-widest text-center text-white uppercase rounded-full shadow">{{ post.category.name }}</nuxt-link>
+          <nuxt-link v-if="post.category" to="/home" class="hover:bg-primary-700 bg-primary-600 inline-block py-1 px-3 mb-1 text-xs font-bold tracking-widest text-center text-white uppercase rounded-full shadow">{{ post.category.name }}</nuxt-link>
           <h3 class="text-2xl font-bold tracking-wider text-white uppercase lg:text-3xl">{{post.title}}</h3>
           <p class="text-shadow mb-3 text-white">by {{ post.user.name }} - {{ post.created_at | moment('dddd, Do MMMM YYYY') }} - {{ post.view_count }}x dilihat</p>
           <nuxt-link :to="`/${post.type}s/${post.slug}`" class="inline-block py-2 px-5 font-semibold text-center uppercase bg-white rounded-full shadow hover:text-gray-400">
