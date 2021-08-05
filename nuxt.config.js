@@ -9,6 +9,7 @@ export default {
     algoliaApiKey: process.env.ALGOLIA_API_KEY,
     algoliaIndexName: process.env.ALGOLIA_INDEX_NAME,
     analyticsTrackingDd: process.env.ANALYTICS_TRACKING_ID,
+    production: process.env.NODE_ENV === 'production',
   },
 
   loading: {
