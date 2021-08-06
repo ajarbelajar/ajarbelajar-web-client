@@ -1,0 +1,279 @@
+[
+  {
+    "name": "about-minitutor",
+    "path": "/about-minitutor",
+    "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\about-minitutor.vue",
+    "chunkName": "pages/about-minitutor",
+    "_name": "_9601bf96"
+  },
+  {
+    "name": "articles",
+    "path": "/articles",
+    "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\articles\\\\index.vue",
+    "chunkName": "pages/articles/index",
+    "_name": "_006b16ab"
+  },
+  {
+    "name": "categories",
+    "path": "/categories",
+    "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\categories\\\\index.vue",
+    "chunkName": "pages/categories/index",
+    "_name": "_0a307c28"
+  },
+  {
+    "name": "constructive-feedback",
+    "path": "/constructive-feedback",
+    "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\constructive-feedback.vue",
+    "chunkName": "pages/constructive-feedback",
+    "_name": "_34760032"
+  },
+  {
+    "name": "faq",
+    "path": "/faq",
+    "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\faq.vue",
+    "chunkName": "pages/faq",
+    "_name": "_2c058c68"
+  },
+  {
+    "name": "home",
+    "path": "/home",
+    "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\home.vue",
+    "chunkName": "pages/home",
+    "_name": "_06168c99"
+  },
+  {
+    "name": "join-minitutor",
+    "path": "/join-minitutor",
+    "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\join-minitutor.vue",
+    "chunkName": "pages/join-minitutor",
+    "_name": "_4efc1316"
+  },
+  {
+    "name": "login",
+    "path": "/login",
+    "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\login.vue",
+    "chunkName": "pages/login",
+    "_name": "_4ac025c2"
+  },
+  {
+    "name": "minitutors",
+    "path": "/minitutors",
+    "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\minitutors\\\\index.vue",
+    "chunkName": "pages/minitutors/index",
+    "_name": "_73d5a5f4"
+  },
+  {
+    "name": "notifications",
+    "path": "/notifications",
+    "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\notifications.vue",
+    "chunkName": "pages/notifications",
+    "_name": "_78993d1e"
+  },
+  {
+    "name": "register",
+    "path": "/register",
+    "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\register.vue",
+    "chunkName": "pages/register",
+    "_name": "_571c235d"
+  },
+  {
+    "name": "videos",
+    "path": "/videos",
+    "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\videos\\\\index.vue",
+    "chunkName": "pages/videos/index",
+    "_name": "_8ab3a3a0"
+  },
+  {
+    "path": "/dashboard/me",
+    "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\dashboard\\\\me.vue",
+    "chunkName": "pages/dashboard/me",
+    "children": [
+      {
+        "name": "dashboard-me",
+        "path": "",
+        "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\dashboard\\\\me\\\\index.vue",
+        "chunkName": "pages/dashboard/me/index",
+        "_name": "_171c9b40"
+      },
+      {
+        "name": "dashboard-me-edit",
+        "path": "edit",
+        "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\dashboard\\\\me\\\\edit.vue",
+        "chunkName": "pages/dashboard/me/edit",
+        "_name": "_609aa4ec"
+      },
+      {
+        "name": "dashboard-me-favorites",
+        "path": "favorites",
+        "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\dashboard\\\\me\\\\favorites.vue",
+        "chunkName": "pages/dashboard/me/favorites",
+        "_name": "_27fa8336"
+      },
+      {
+        "name": "dashboard-me-followings",
+        "path": "followings",
+        "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\dashboard\\\\me\\\\followings.vue",
+        "chunkName": "pages/dashboard/me/followings",
+        "_name": "_275f3b64"
+      }
+    ],
+    "_name": "_6d9d403c"
+  },
+  {
+    "path": "/dashboard/minitutor",
+    "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\dashboard\\\\minitutor.vue",
+    "chunkName": "pages/dashboard/minitutor",
+    "children": [
+      {
+        "name": "dashboard-minitutor",
+        "path": "",
+        "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\dashboard\\\\minitutor\\\\index.vue",
+        "chunkName": "pages/dashboard/minitutor/index",
+        "_name": "_6b06547d"
+      },
+      {
+        "name": "dashboard-minitutor-articles",
+        "path": "articles",
+        "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\dashboard\\\\minitutor\\\\articles\\\\index.vue",
+        "chunkName": "pages/dashboard/minitutor/articles/index",
+        "_name": "_c70b5a40"
+      },
+      {
+        "name": "dashboard-minitutor-comments",
+        "path": "comments",
+        "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\dashboard\\\\minitutor\\\\comments.vue",
+        "chunkName": "pages/dashboard/minitutor/comments",
+        "_name": "_955eb0ce"
+      },
+      {
+        "name": "dashboard-minitutor-feedback",
+        "path": "feedback",
+        "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\dashboard\\\\minitutor\\\\feedback.vue",
+        "chunkName": "pages/dashboard/minitutor/feedback",
+        "_name": "_1dfb84aa"
+      },
+      {
+        "name": "dashboard-minitutor-videos",
+        "path": "videos",
+        "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\dashboard\\\\minitutor\\\\videos\\\\index.vue",
+        "chunkName": "pages/dashboard/minitutor/videos/index",
+        "_name": "_d35e18b6"
+      },
+      {
+        "name": "dashboard-minitutor-articles-id",
+        "path": "articles/:id",
+        "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\dashboard\\\\minitutor\\\\articles\\\\_id.vue",
+        "chunkName": "pages/dashboard/minitutor/articles/_id",
+        "_name": "_0380e570"
+      },
+      {
+        "name": "dashboard-minitutor-videos-id",
+        "path": "videos/:id",
+        "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\dashboard\\\\minitutor\\\\videos\\\\_id.vue",
+        "chunkName": "pages/dashboard/minitutor/videos/_id",
+        "_name": "_0f3cc966"
+      }
+    ],
+    "_name": "_ef7f9736"
+  },
+  {
+    "name": "password-forget",
+    "path": "/password/forget",
+    "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\password\\\\forget.vue",
+    "chunkName": "pages/password/forget",
+    "_name": "_3793b542"
+  },
+  {
+    "name": "password-reset",
+    "path": "/password/reset",
+    "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\password\\\\reset.vue",
+    "chunkName": "pages/password/reset",
+    "_name": "_7b7e558a"
+  },
+  {
+    "name": "articles-slug",
+    "path": "/articles/:slug",
+    "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\articles\\\\_slug.vue",
+    "chunkName": "pages/articles/_slug",
+    "_name": "_0297153a"
+  },
+  {
+    "name": "categories-slug",
+    "path": "/categories/:slug",
+    "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\categories\\\\_slug.vue",
+    "chunkName": "pages/categories/_slug",
+    "_name": "_0d9dbeb8"
+  },
+  {
+    "path": "/minitutors/:username",
+    "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\minitutors\\\\_username.vue",
+    "chunkName": "pages/minitutors/_username",
+    "children": [
+      {
+        "name": "minitutors-username",
+        "path": "",
+        "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\minitutors\\\\_username\\\\index.vue",
+        "chunkName": "pages/minitutors/_username/index",
+        "_name": "_ff45e86a"
+      },
+      {
+        "name": "minitutors-username-articles",
+        "path": "articles",
+        "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\minitutors\\\\_username\\\\articles.vue",
+        "chunkName": "pages/minitutors/_username/articles",
+        "_name": "_b6bca558"
+      },
+      {
+        "name": "minitutors-username-followers",
+        "path": "followers",
+        "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\minitutors\\\\_username\\\\followers.vue",
+        "chunkName": "pages/minitutors/_username/followers",
+        "_name": "_229dd50e"
+      },
+      {
+        "name": "minitutors-username-videos",
+        "path": "videos",
+        "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\minitutors\\\\_username\\\\videos.vue",
+        "chunkName": "pages/minitutors/_username/videos",
+        "_name": "_01f904af"
+      }
+    ],
+    "_name": "_5c4af8d7"
+  },
+  {
+    "path": "/users/:username?",
+    "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\users\\\\_username.vue",
+    "chunkName": "pages/users/_username",
+    "children": [
+      {
+        "name": "users-username",
+        "path": "",
+        "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\users\\\\_username\\\\index.vue",
+        "chunkName": "pages/users/_username/index",
+        "_name": "_5636293b"
+      },
+      {
+        "name": "users-username-followings",
+        "path": "followings",
+        "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\users\\\\_username\\\\followings.vue",
+        "chunkName": "pages/users/_username/followings",
+        "_name": "_11a9d569"
+      }
+    ],
+    "_name": "_0d91cd32"
+  },
+  {
+    "name": "videos-slug",
+    "path": "/videos/:slug",
+    "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\videos\\\\_slug.vue",
+    "chunkName": "pages/videos/_slug",
+    "_name": "_8e20e630"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "C:\\\\xampp\\\\htdocs\\\\ab\\\\nuxt\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_10f84a08"
+  }
+]
