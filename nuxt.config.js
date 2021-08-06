@@ -8,8 +8,10 @@ export default {
     algoliaAppId: process.env.ALGOLIA_APP_ID,
     algoliaApiKey: process.env.ALGOLIA_API_KEY,
     algoliaIndexName: process.env.ALGOLIA_INDEX_NAME,
-    analyticsTrackingDd: process.env.ANALYTICS_TRACKING_ID,
     production: process.env.NODE_ENV === 'production',
+    googleAnalytics: {
+      id: process.env.ANALYTICS_TRACKING_ID,
+    },
   },
 
   loading: {
@@ -60,12 +62,15 @@ export default {
     { src: '~/plugins/Image.js', ssr: true },
     { src: '~/plugins/InfiniteLoading', ssr: false },
     { src: '~/plugins/StarRating', ssr: false },
-    { src: '~/plugins/ga', ssr: false },
   ],
 
   components: true,
 
-  buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/tailwindcss'],
+  buildModules: [
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/google-analytics',
+  ],
 
   modules: ['@nuxtjs/axios', '@nuxtjs/pwa', 'nuxt-client-init-module'],
 
@@ -78,6 +83,10 @@ export default {
     manifest: {
       lang: 'en',
     },
+  },
+
+  googleAnalytics: {
+    id: process.env.ANALYTICS_TRACKING_ID,
   },
 
   build: {},
